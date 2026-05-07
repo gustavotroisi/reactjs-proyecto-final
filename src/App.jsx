@@ -1,3 +1,4 @@
+import "bootswatch/dist/cosmo/bootstrap.min.css";
 import "./App.css";
 
 import { Layout } from "./componentes/layout/Layout";
