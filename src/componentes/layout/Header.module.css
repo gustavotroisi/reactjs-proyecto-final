@@ -5,6 +5,9 @@
     padding: 10px;
     color: white;
 }
+.logo{
+    max-width: 200px;
+}
 .nav{
     display: flex;
     gap: 10px;

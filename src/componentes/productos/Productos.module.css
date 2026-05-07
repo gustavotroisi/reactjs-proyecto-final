@@ -3,6 +3,7 @@
 }
 .productos ul {
     display: flex;
+    justify-content: center;
     gap: 1em;
     list-style: none;
 }

@@ -1,11 +1,15 @@
 import styles from "./Header.module.css";
+import logo from "../../../public/images/logo_proyecto_react_gt.png";
 function Header() {
   return (
     <header>
-      <nav className="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
+      <nav
+        className="navbar navbar-expand-lg bg-secondary"
+        data-bs-theme="dark"
+      >
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Proyecto React
+            <img className={styles.logo} src={logo} />
           </a>
           <button
             className="navbar-toggler"

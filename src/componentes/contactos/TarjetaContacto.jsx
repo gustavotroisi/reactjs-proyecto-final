@@ -6,7 +6,7 @@ export function TarjetaContacto(contacto) {
       <img src={contacto.foto} />
       <h2>{contacto.nombre}</h2>
       <p>{contacto.email}</p>
-      <p>{contacto.puesto}</p>
+      <p className="badge bg-secondary">{contacto.puesto}</p>
     </div>
   );
 }
