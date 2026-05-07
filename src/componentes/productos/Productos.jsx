@@ -35,8 +35,8 @@ export default function Productos() {
 
   return (
     <>
-      <div>{mensaje}</div>
       <div className={styles.productos}>
+        <div className={styles.message}>{mensaje}</div>
         <ul>
           {productos.map((producto) => (
             <li key={producto.id}>
