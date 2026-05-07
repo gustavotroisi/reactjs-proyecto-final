@@ -33,8 +33,8 @@ export function Directorio() {
 
   return (
     <div className={styles.directorio}>
-      {nosotros.map((person, index) => (
-        <TarjetaContacto key={index} {...person} />
+      {nosotros.map((person) => (
+        <TarjetaContacto key={person.id} {...person} />
       ))}
     </div>
   );

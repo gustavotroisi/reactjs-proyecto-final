@@ -16,3 +16,10 @@
 .message{
     padding: 2em;
 }
+.nombre{
+    font-size: 1.4em;
+    font-weight: 600;
+}
+.imagen{
+    max-width: 200px;
+}

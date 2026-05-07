@@ -40,9 +40,12 @@ export default function Productos() {
         <ul>
           {productos.map((producto) => (
             <li key={producto.id}>
-              {" "}
-              {producto.nombre}
-              <img src={producto.imagen} alt={producto.nombre} width="150" />
+              <h2 className={styles.nombre}>{producto.nombre}</h2>
+              <img
+                className={styles.imagen}
+                src={producto.imagen}
+                alt={producto.nombre}
+              />
               <p>$ {producto.precio}</p>
             </li>
           ))}
