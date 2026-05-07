@@ -1,7 +1,8 @@
-.directorio{
-    padding: 2em;
+.itemlist{
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
     justify-content: center;
+    gap: 1em;
+    padding: 2em;
 }
+        

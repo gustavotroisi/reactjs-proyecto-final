@@ -3,14 +3,14 @@ import "bootswatch/dist/solar/bootstrap.min.css";
 import "./App.css";
 
 import { Layout } from "./componentes/layout/Layout";
-import Productos from "./componentes/productos/Productos";
+import ItemListContainer from "./componentes/productos/ItemListContainer";
 import { Directorio } from "./componentes/contactos/Directorio";
 import FormularioContainer from "./componentes/formularioProductos/FormularioContainer";
 
 function App() {
   return (
     <Layout>
-      <Productos />
+      <ItemListContainer />
       <Directorio />
       <FormularioContainer />
     </Layout>
