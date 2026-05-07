@@ -1,8 +1,17 @@
-import { useState } from "react";
 import "./App.css";
 
-function App() {
-  return <>Test</>;
-}
+import { Layout } from "./componentes/layout/Layout";
+import Productos from "./componentes/productos/Productos";
+import { Directorio } from "./componentes/contactos/Directorio";
+import FormularioContainer from "./componentes/formularioProductos/FormularioContainer";
 
+function App() {
+  return (
+    <Layout>
+      <Productos />
+      <Directorio />
+      <FormularioContainer />
+    </Layout>
+  );
+}
 export default App;

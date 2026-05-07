@@ -1,0 +1,15 @@
+.productos{
+    background-color: #ccc;
+    padding: 2em;
+}
+.productos ul {
+    display: flex;
+    gap: 1em;
+    list-style: none;
+}
+.productos ul li{
+    border: solid 3px #c3c3c3;
+    border-radius: 20px;
+    background-color: white;
+    padding: 2em;
+}

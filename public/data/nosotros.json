@@ -1,0 +1,20 @@
+[
+  {
+    "nombre": "Juan Carlos",
+    "email": "juan@carlos.com",
+    "puesto": "SEO",
+    "foto": "/images/persona3.jpg"
+  },
+  {
+    "nombre": "Pedro Raul",
+    "email": "pedro@raul.com",
+    "puesto": "Diseñador",
+    "foto": "/images/persona2.jpg"
+  },
+  {
+    "nombre": "Noemi Evelyn",
+    "email": "noemi@evelyn.com",
+    "puesto": "Redactora",
+    "foto": "/images/persona1.jpg"
+  }
+]
