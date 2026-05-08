@@ -13,35 +13,42 @@ export default function Item({ nombre, precio, stock, imagen }) {
     <div className={styles.card}>
       <img src={imagen} alt={nombre} className={styles.productImage} />
 
-      <h3 className={styles.nombre}>
-        {nombre}{" "}
-        <span className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
-          {esFavorito ? "❤️" : "🖤"}
-        </span>
-      </h3>
+      <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
+        {esFavorito ? "❤️" : "🖤"}
+      </div>
+
+      <h3 className={styles.nombre}>{nombre}</h3>
       <p className={styles.precio}>${precio}</p>
       <p className={styles.stock}>Stock disponible: {stock}</p>
 
-      <div className={styles.cantidadContainer}>
-        <button
-          onClick={() => setCantidad(cantidad - 1)}
-          disabled={cantidad <= 1}
-        >
-          -
-        </button>
-        <span className={styles.cantidad}>{cantidad}</span>
-        <button
-          onClick={() => setCantidad(cantidad + 1)}
-          disabled={cantidad >= stock}
-        >
-          +
-        </button>
-      </div>
-      <p>
-        <button className="btn btn-secondary" onClick={agregarAlCarrito}>
-          Comprar
-        </button>
-      </p>
+      {stock > 0 ? (
+        <>
+          <div className={styles.cantidadContainer}>
+            <button
+              className={styles.btn}
+              onClick={() => setCantidad(cantidad - 1)}
+              disabled={cantidad <= 1}
+            >
+              -
+            </button>
+            <span className={styles.cantidad}>{cantidad}</span>
+            <button
+              className={styles.btn}
+              onClick={() => setCantidad(cantidad + 1)}
+              disabled={cantidad >= stock}
+            >
+              +
+            </button>
+          </div>
+          <p>
+            <button className="btn btn-secondary" onClick={agregarAlCarrito}>
+              Comprar
+            </button>
+          </p>
+        </>
+      ) : (
+        "Sin stock"
+      )}
     </div>
   );
 }

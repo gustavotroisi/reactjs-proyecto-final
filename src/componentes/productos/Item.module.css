@@ -7,15 +7,16 @@
     display: flex;
     flex-direction: column;
     background-color: white;
+    position: relative;
 }
-.card button{
+.card .btn{
     padding: .2em .5em;
     margin: 3px;
     border-radius: 8px;
     font-weight: 800;
     text-transform: uppercase;
     cursor: pointer;
-    
+    width: 35px;
 }
  
 .card button:disabled{
@@ -25,23 +26,30 @@
 
 .nombre{
     display: flex;
-    justify-content: space-between;
     padding: 10px 0;
-    width: 100%;
     font-size: 1.4em;
     font-weight: 600;
+    text-align: center;
+    margin: 0;
 }
 .precio{
     color: #606060;
     font-size: 1.2em;
     font-weight: 600;
+    margin: 0;
 }
 .stock{
     font-size: .8em;
     padding: 5px 0;
+    margin: 0;
 }
 .fav{
     cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
+.cantidadContainer{
+    margin-bottom: 10px;
 }
 .cantidad{
     font-size: 1.2em;

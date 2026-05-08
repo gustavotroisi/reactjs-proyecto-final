@@ -3,7 +3,7 @@
     "id": 1,
     "nombre": "Camara Instantánea",
     "precio": 85000,
-    "stock": 22,
+    "stock": 8,
     "imagen": "/images/CamaraInstantanea.png"
   },
   {
@@ -15,9 +15,16 @@
   },
   {
     "id": 3,
+    "nombre": "PC de Escritorio",
+    "precio": 550000,
+    "stock": 0,
+    "imagen": "/images/pcdeEsritorio.jpg"
+  },
+  {
+    "id": 4,
     "nombre": "Monitor Curvo",
     "precio": 110000,
-    "stock": 2,
+    "stock": 4,
     "imagen": "/images/MonitorCurvo.jpg"
   }
 ]
