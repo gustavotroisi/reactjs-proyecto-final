@@ -10,8 +10,8 @@ export default function Item({ nombre, precio, stock, imagen }) {
   };
 
   return (
-    <div class={styles.card}>
-      <img src={imagen} alt={nombre} />
+    <div className={styles.card}>
+      <img src={imagen} alt={nombre} className={styles.productImage} />
 
       <h3 className={styles.nombre}>
         {nombre}{" "}

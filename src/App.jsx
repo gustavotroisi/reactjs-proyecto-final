@@ -10,7 +10,7 @@ import FormularioContainer from "./componentes/formularioProductos/FormularioCon
 function App() {
   return (
     <Layout>
-      <ItemListContainer />
+      <ItemListContainer titulo="Nuestros Productos Destacados" />
       <Directorio />
       <FormularioContainer />
     </Layout>
