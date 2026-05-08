@@ -41,7 +41,10 @@ export default function Item({ nombre, precio, stock, imagen }) {
             </button>
           </div>
           <p>
-            <button className="btn btn-secondary" onClick={agregarAlCarrito}>
+            <button
+              className="btn btn-lg btn-secondary"
+              onClick={agregarAlCarrito}
+            >
               Comprar
             </button>
           </p>
