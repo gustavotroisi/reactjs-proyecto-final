@@ -17,6 +17,7 @@
     text-transform: uppercase;
     cursor: pointer;
     width: 35px;
+    border: 0;
 }
  
 .card button:disabled{

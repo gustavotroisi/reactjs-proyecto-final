@@ -8,46 +8,51 @@ export default function FormularioProductos({
 }) {
   return (
     <form onSubmit={manejarEnvio} className={styles.formproducto}>
-      <h3>Agregar Nuevo Producto</h3>
+      <h2 className={styles.titulo}>Agregar Nuevo Producto</h2>
       <div>
-        <label>Nombre del Producto:</label>
+        <label>Nombre del Producto</label>
         <input
           type="text"
           placeholder="Ej: Teclado Mecánico"
           name="nombre"
           value={datosForm.nombre}
           onChange={manejarCambio}
+          className="form-control"
         />
       </div>
       <div>
-        <label>Precio:</label>
+        <label>Precio</label>
         <input
           type="number"
           placeholder="Ej: 95"
           name="precio"
           value={datosForm.precio}
           onChange={manejarCambio}
+          className="form-control"
         />
       </div>
       <div>
-        <label>Stock:</label>
+        <label>Stock</label>
         <input
           type="number"
           placeholder="Ej: 5"
           name="stock"
           value={datosForm.stock}
           onChange={manejarCambio}
+          className="form-control"
         />
       </div>
       <div>
-        <label>Imagen:</label>
+        <label>Imagen</label>
         <input
           type="file"
-          placeholder="https://..."
           onChange={manejarCambioImagen}
+          className="form-control"
         />
       </div>
-      <button type="submit">Guardar Producto</button>
+      <button type="submit" className="btn btn-secondary btn-lg">
+        Guardar Producto
+      </button>
     </form>
   );
 }

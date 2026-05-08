@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import styles from "./Directorio.module.css";
 import { TarjetaContacto } from "./TarjetaContacto";
 
-export function Directorio() {
+export function Directorio({ titulo }) {
   const [nosotros, setNosotros] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [error, setError] = useState(false);
@@ -24,7 +24,7 @@ export function Directorio() {
   }, []);
 
   if (cargando) {
-    return <>Cargando...</>;
+    return <>Cargando equipo...</>;
   }
 
   if (error) {
@@ -32,10 +32,13 @@ export function Directorio() {
   }
 
   return (
-    <div className={styles.directorio}>
-      {nosotros.map((person) => (
-        <TarjetaContacto key={person.id} {...person} />
-      ))}
-    </div>
+    <>
+      <h2 className="page-title">{titulo}</h2>
+      <div className={styles.directorio}>
+        {nosotros.map((person) => (
+          <TarjetaContacto key={person.id} {...person} />
+        ))}
+      </div>
+    </>
   );
 }
