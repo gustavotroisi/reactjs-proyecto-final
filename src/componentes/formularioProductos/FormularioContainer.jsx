@@ -19,7 +19,7 @@ export default function FormularioContainer() {
     const { name, value } = e.target;
     //console.log(name, value);
     setdatosForm({ ...datosForm, [name]: value });
-    console.log(datosForm);
+    //console.log(datosForm);
   };
 
   const manejarCambioImagen = (e) => {
@@ -28,12 +28,13 @@ export default function FormularioContainer() {
 
   const manejarEnvio = async (e) => {
     e.preventDefault();
-    setLoading(true);
 
     if (!imageFile) {
       alert("Por favor seleccione una imagen");
       return;
     }
+
+    setLoading(true);
 
     const apiKey = "f15a13482952f9419b9a16b2c9655897";
     const formData = new FormData();
