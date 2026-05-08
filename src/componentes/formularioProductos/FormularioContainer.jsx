@@ -10,6 +10,8 @@ export default function FormularioContainer() {
 
   const [imageFile, setImageFile] = useState(null);
 
+  const [loading, setLoading] = useState(false);
+
   const manejarCambio = (e) => {
     /*let elem = e.target.name;
     let val = e.target.value;
@@ -26,6 +28,7 @@ export default function FormularioContainer() {
 
   const manejarEnvio = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     if (!imageFile) {
       alert("Por favor seleccione una imagen");
@@ -61,6 +64,8 @@ export default function FormularioContainer() {
       } else {
         throw new Error("Error al enviar imagen");
       }
+
+      setLoading(false);
     } catch (e) {
       console.log("Error: ", e);
     }
@@ -72,6 +77,7 @@ export default function FormularioContainer() {
       manejarCambio={manejarCambio}
       manejarEnvio={manejarEnvio}
       manejarCambioImagen={manejarCambioImagen}
+      loading={loading}
     />
   );
 }

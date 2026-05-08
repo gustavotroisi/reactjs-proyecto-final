@@ -5,6 +5,7 @@ export default function FormularioProductos({
   manejarCambio,
   manejarEnvio,
   manejarCambioImagen,
+  loading,
 }) {
   return (
     <form onSubmit={manejarEnvio} className={styles.formproducto}>
@@ -50,8 +51,12 @@ export default function FormularioProductos({
           className="form-control"
         />
       </div>
-      <button type="submit" className="btn btn-secondary btn-lg">
-        Guardar Producto
+      <button
+        type="submit"
+        className="btn btn-secondary btn-lg"
+        disabled={loading}
+      >
+        {loading ? "Guardando Producto..." : "Guardar Producto"}
       </button>
     </form>
   );
