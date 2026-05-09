@@ -5,3 +5,10 @@
     gap: 1em;
     justify-content: center;
 }
+.texto{
+    padding: 20px;
+    text-align: center;
+}
+.texto p{
+    color: white;
+}

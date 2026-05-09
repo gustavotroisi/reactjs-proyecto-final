@@ -36,7 +36,7 @@ export default function ItemListContainer({ titulo }) {
   return (
     <div className="product-grid">
       <h2 className="page-title">{titulo}</h2>
-      {/*<div>{mensaje}</div>*/}
+      {console.log(mensaje)}
       <ItemList productos={productos} />
     </div>
   );

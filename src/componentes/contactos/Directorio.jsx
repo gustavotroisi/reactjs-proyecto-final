@@ -34,6 +34,16 @@ export function Directorio({ titulo }) {
   return (
     <>
       <h2 className="page-title">{titulo}</h2>
+      <section className={styles.texto}>
+        <p>
+          <strong>Proyecto React</strong> es una empresa dedicada a la venta de
+          equipos de tecnología.
+        </p>
+        <p>
+          NUestro equipo está formado por un grupo de profesionales dispuestos a
+          ayudarlo en conseguir sus objetivos.
+        </p>
+      </section>
       <div className={styles.directorio}>
         {nosotros.map((person) => (
           <TarjetaContacto key={person.id} {...person} />
