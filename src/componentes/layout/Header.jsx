@@ -1,5 +1,7 @@
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_proyecto_react_gt.png";
+import { Link } from "react-router-dom";
+
 function Header() {
   return (
     <header>
@@ -8,9 +10,9 @@ function Header() {
         data-bs-theme="dark"
       >
         <div className="container-fluid">
-          <a className="navbar-brand" href="#">
+          <Link to="/" className="navbar-brand">
             <img className={styles.logo} src={logo} />
-          </a>
+          </Link>
           <button
             className="navbar-toggler"
             type="button"
@@ -25,25 +27,25 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <a className="nav-link active" href="#">
+                <Link to="/" className="nav-link">
                   Inicio
                   <span className="visually-hidden">(current)</span>
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <Link to="/productos" className="nav-link">
                   Productos
-                </a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Carrito
-                </a>
+                <Link to="/nosotros" className="nav-link">
+                  Nosotros
+                </Link>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Contacto
-                </a>
+                <Link to="alta-productos" className="nav-link">
+                  Agregar Nuevo Producto
+                </Link>
               </li>
               {/*<li className="nav-item dropdown">
                 <a

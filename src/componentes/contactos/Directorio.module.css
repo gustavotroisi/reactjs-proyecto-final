@@ -2,7 +2,7 @@
     
     display: flex;
     flex-wrap: wrap;
-    gap: 1em;
+    gap: 2em;
     justify-content: center;
 }
 .texto{
