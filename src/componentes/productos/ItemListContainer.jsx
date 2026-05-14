@@ -1,7 +1,7 @@
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
 
-export default function ItemListContainer({ titulo }) {
+export default function ItemListContainer({ titulo, destacados }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(true);
@@ -33,11 +33,15 @@ export default function ItemListContainer({ titulo }) {
     return <p>Error: {error}</p>;
   }
 
+  const productosAMostrar = destacados
+    ? productos.filter((prod) => prod.destacado)
+    : productos;
+
   return (
     <div className="product-grid">
       <h2 className="page-title">{titulo}</h2>
       {console.log(mensaje)}
-      <ItemList productos={productos} />
+      <ItemList productos={productosAMostrar} />
     </div>
   );
 }

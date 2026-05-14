@@ -4,27 +4,31 @@
     "nombre": "Camara Instantánea",
     "precio": 85000,
     "stock": 3,
-    "imagen": "/images/CamaraInstantanea.png"
+    "imagen": "/images/CamaraInstantanea.png",
+    "destacado": false
   },
   {
     "id": 2,
     "nombre": "Camara Nikon",
     "precio": 97500,
     "stock": 6,
-    "imagen": "/images/CamaraNikon.webp"
+    "imagen": "/images/CamaraNikon.webp",
+    "destacado": false
   },
   {
     "id": 3,
     "nombre": "PC de Escritorio",
     "precio": 550000,
     "stock": 0,
-    "imagen": "/images/pcdeEsritorio.jpg"
+    "imagen": "/images/pcdeEsritorio.jpg",
+    "destacado": true
   },
   {
     "id": 4,
     "nombre": "Monitor Curvo",
     "precio": 110000,
     "stock": 1,
-    "imagen": "/images/MonitorCurvo.jpg"
+    "imagen": "/images/MonitorCurvo.jpg",
+    "destacado": false
   }
 ]
