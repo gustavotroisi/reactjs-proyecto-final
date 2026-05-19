@@ -3,21 +3,21 @@
     "id": 1,
     "nombre": "Juan Carlos",
     "email": "juan@carlos.com",
-    "puesto": "SEO",
+    "puesto": "Gerente",
     "foto": "/images/persona3.jpg"
   },
   {
     "id": 2,
     "nombre": "Pedro Raul",
     "email": "pedro@raul.com",
-    "puesto": "Diseñador",
+    "puesto": "Ventas",
     "foto": "/images/persona2.jpg"
   },
   {
     "id": 3,
     "nombre": "Noemi Evelyn",
     "email": "noemi@evelyn.com",
-    "puesto": "Redactora",
+    "puesto": "Cuentas",
     "foto": "/images/persona1.jpg"
   }
 ]

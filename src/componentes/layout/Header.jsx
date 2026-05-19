@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import logo from "../../../public/images/logo_tech_store.png";
+import logo from "../../../public/images/logo_tech_store3.png";
 import { Link } from "react-router-dom";
 
 function Header() {
@@ -11,7 +11,7 @@ function Header() {
       >
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
-            <img className={styles.logo} src={logo} />
+            <img className={styles.logo} src={logo} alt="Tech Store logo" />
           </Link>
           <button
             className="navbar-toggler"
