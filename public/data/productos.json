@@ -15,7 +15,7 @@
     "stock": 6,
     "imagen": "/images/CamaraNikon.webp",
     "descripcion": "Cámara Nikon de alta calidad con excelente resolución y rendimiento para fotografía profesional.",
-    "destacado": false
+    "destacado": true
   },
   {
     "id": 3,
@@ -42,6 +42,6 @@
     "stock": 4,
     "imagen": "/images/NotebookPro.jpeg",
     "descripcion": "Notebook Pro X15 de alto rendimiento con procesador de última generación, pantalla Full HD y almacenamiento SSD ideal para trabajo y entretenimiento.",
-    "destacado": true
+    "destacado": false
   }
 ]
