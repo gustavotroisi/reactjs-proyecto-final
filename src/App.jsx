@@ -8,6 +8,7 @@ import ItemListContainer from "./componentes/productos/ItemListContainer";
 import { Directorio } from "./componentes/contactos/Directorio";
 import FormularioContainer from "./componentes/formularioProductos/FormularioContainer";
 import Inicio from "./componentes/inicio/Inicio";
+import ItemDetalle from "./componentes/productos/ItemDetalle/ItemDetalle";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           path="productos"
           element={<ItemListContainer titulo={"Productos Destacados"} />}
         />
+        <Route path="/producto/:id" element={<ItemDetalle />} />
         <Route path="/nosotros" element={<Directorio titulo={"Nosotros"} />} />
         <Route path="/alta-productos" element={<FormularioContainer />} />
       </Route>

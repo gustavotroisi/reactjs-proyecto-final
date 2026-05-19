@@ -1,0 +1,73 @@
+.card {
+    border: solid 6px #ccc;
+    padding: 1em;
+    margin: .5em;
+    border-radius: 16px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    position: relative;
+}
+
+.card .btn {
+    padding: .2em .5em;
+    margin: 3px;
+    border-radius: 8px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    width: 35px;
+    border: 0;
+}
+
+.card button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.nombre {
+    display: flex;
+    padding: 10px 0;
+    font-size: 1.4em;
+    font-weight: 600;
+    text-align: center;
+    margin: 0;
+}
+
+.precio {
+    color: #606060;
+    font-size: 1.2em;
+    font-weight: 600;
+    margin: 0;
+}
+
+.stock {
+    font-size: .8em;
+    padding: 5px 0;
+    margin: 0;
+}
+
+.fav {
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+}
+
+.cantidadContainer {
+    margin-bottom: 10px;
+}
+
+.cantidad {
+    font-size: 1.2em;
+    font-weight: 600;
+    padding: 0 10px;
+    color: var(--color-secondary);
+    width: 30px;
+    text-align: center;
+    display: inline-block;
+}
+
+.productImage {
+    max-width: 200px;
+}

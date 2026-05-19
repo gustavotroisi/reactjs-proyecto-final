@@ -5,6 +5,7 @@
     "precio": 85000,
     "stock": 3,
     "imagen": "/images/CamaraInstantanea.png",
+    "descripcion": "Cámara compacta e instantánea ideal para capturar y revelar recuerdos al momento.",
     "destacado": false
   },
   {
@@ -13,6 +14,7 @@
     "precio": 97500,
     "stock": 6,
     "imagen": "/images/CamaraNikon.webp",
+    "descripcion": "Cámara Nikon de alta calidad con excelente resolución y rendimiento para fotografía profesional.",
     "destacado": false
   },
   {
@@ -21,6 +23,7 @@
     "precio": 550000,
     "stock": 0,
     "imagen": "/images/pcdeEsritorio.jpg",
+    "descripcion": "PC de escritorio potente y versátil, perfecta para trabajo, estudio y entretenimiento.",
     "destacado": true
   },
   {
@@ -29,6 +32,7 @@
     "precio": 110000,
     "stock": 1,
     "imagen": "/images/MonitorCurvo.jpg",
+    "descripcion": "Monitor curvo de gran tamaño que ofrece una experiencia visual inmersiva y cómoda.",
     "destacado": false
   }
 ]

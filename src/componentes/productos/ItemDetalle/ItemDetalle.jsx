@@ -1,10 +1,40 @@
-import styles from "./Item.module.css";
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import styles from "./ItemDetalle.module.css";
 
-export default function Item({ id, nombre, precio, stock, imagen }) {
+export default function ItemDetalle() {
+  const [producto, setProducto] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+  const [esFavorito, setEsFavorito] = useState(null);
   const [cantidad, setCantidad] = useState(1);
-  const [esFavorito, setEsFavorito] = useState(false);
+
+  const { id } = useParams();
+
+  useEffect(() => {
+    fetch("/data/productos.json")
+      .then((respuesta) => {
+        if (!respuesta.ok) throw new Error("No se pudo leer el archivo.");
+        return respuesta.json();
+      })
+      .then((data) => {
+        const producto = data.find((p) => p.id === parseInt(id));
+        //console.log(producto);
+        setProducto(producto);
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setLoading(false));
+  }, []);
+
+  if (loading) {
+    return <>Cargando...</>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
+  const { nombre, precio, stock, imagen, descripcion, destacado } = producto;
 
   const agregarAlCarrito = () => {
     alert(`Has seleccionado ${cantidad} unidades de ${nombre}`);
@@ -55,7 +85,7 @@ export default function Item({ id, nombre, precio, stock, imagen }) {
         "Sin stock"
       )}
       <p>
-        <Link to={`/producto/${id}`}>Ver mas info</Link>
+        <Link to="/productos">Ver todos los productos</Link>
       </p>
     </div>
   );
