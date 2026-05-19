@@ -1,4 +1,8 @@
 .titulo {
     text-align: center;
     padding: 60px;
+    
+}
+.titulo strong{
+    color: rgb(16, 127, 212);
 }

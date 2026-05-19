@@ -33,11 +33,11 @@ export function Directorio({ titulo }) {
 
   return (
     <>
-      <h2 className="page-title">{titulo}</h2>
+      <h1 className="page-title">{titulo}</h1>
       <section className={styles.texto}>
         <p>
-          <strong>Proyecto React</strong> es una empresa dedicada a la venta de
-          equipos de tecnología.
+          <strong>Tech Store</strong> es una empresa dedicada a la importación y
+          distribución de tecnología.
         </p>
         <p>
           NUestro equipo está formado por un grupo de profesionales dispuestos a

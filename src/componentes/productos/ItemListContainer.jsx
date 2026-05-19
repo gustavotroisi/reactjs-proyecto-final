@@ -39,7 +39,7 @@ export default function ItemListContainer({ titulo, destacados }) {
 
   return (
     <div className="product-grid">
-      <h2 className="page-title">{titulo}</h2>
+      <h1 className="page-title">{titulo}</h1>
       {console.log(mensaje)}
       <ItemList productos={productosAMostrar} />
     </div>

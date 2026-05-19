@@ -6,7 +6,7 @@ function Footer() {
       data-bs-theme="dark"
     >
       <p>
-        &copy;2026 <strong>Proyecto React</strong> - Gustavo Troisi
+        &copy;2026 <strong>Tech Store</strong> - Desarrollado por Gustavo Troisi
       </p>
     </footer>
   );

@@ -1,5 +1,5 @@
 import styles from "./Header.module.css";
-import logo from "../../../public/images/logo_proyecto_react_gt.png";
+import logo from "../../../public/images/logo_tech_store.png";
 import { Link } from "react-router-dom";
 
 function Header() {
