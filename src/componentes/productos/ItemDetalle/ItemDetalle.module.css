@@ -60,6 +60,12 @@
     color: black;
 }
 
+.error {
+    font-size: 1.5em;
+    text-align: center;
+    padding: 60px; 
+}
+
 .destacado{
     position: absolute;
     left: 10px;

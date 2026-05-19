@@ -19,19 +19,19 @@ export default function ItemDetalle() {
       })
       .then((data) => {
         const producto = data.find((p) => p.id === parseInt(id));
-        //console.log(producto);
+        if (!producto) throw new Error("No se encontró el ID del producto.");
         setProducto(producto);
       })
       .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
-  }, []);
+  }, [id]);
 
   if (loading) {
     return <>Cargando...</>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <div className={styles.error}>Error: {error}</div>;
   }
 
   const { nombre, precio, stock, imagen, descripcion, destacado } = producto;
