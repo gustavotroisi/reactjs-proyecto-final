@@ -34,5 +34,14 @@
     "imagen": "/images/MonitorCurvo.jpg",
     "descripcion": "Monitor curvo de gran tamaño que ofrece una experiencia visual inmersiva y cómoda.",
     "destacado": false
+  },
+  {
+    "id": 5,
+    "nombre": "Notebook Pro X15",
+    "precio": 245000,
+    "stock": 4,
+    "imagen": "/images/NotebookPro.jpeg",
+    "descripcion": "Notebook Pro X15 de alto rendimiento con procesador de última generación, pantalla Full HD y almacenamiento SSD ideal para trabajo y entretenimiento.",
+    "destacado": true
   }
 ]
