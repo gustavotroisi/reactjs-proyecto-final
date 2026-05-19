@@ -2,7 +2,7 @@ import styles from "./Item.module.css";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-export default function Item({ id, nombre, precio, stock, imagen }) {
+export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
   const [cantidad, setCantidad] = useState(1);
   const [esFavorito, setEsFavorito] = useState(false);
 
@@ -11,8 +11,10 @@ export default function Item({ id, nombre, precio, stock, imagen }) {
   };
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${destacado ? styles.dest : ""}`}>
       <img src={imagen} alt={nombre} className={styles.productImage} />
+
+      {destacado ? <div className={styles.destacado}>⭐</div> : ""}
 
       <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
         {esFavorito ? "❤️" : "🖤"}

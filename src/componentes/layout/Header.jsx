@@ -43,8 +43,13 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="alta-productos" className="nav-link">
+                <Link to="/alta-productos" className="nav-link">
                   Agregar Nuevo Producto
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/carrito" className="nav-link">
+                  Carrito
                 </Link>
               </li>
               {/*<li className="nav-item dropdown">

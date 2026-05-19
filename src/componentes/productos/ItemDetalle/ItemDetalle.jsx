@@ -41,14 +41,17 @@ export default function ItemDetalle() {
   };
 
   return (
-    <div className={styles.card}>
+    <div className={`${styles.card} ${destacado ? styles.dest : ""}`}>
       <img src={imagen} alt={nombre} className={styles.productImage} />
 
+      {destacado ? <div className={styles.destacado}>⭐</div> : ""}
       <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
         {esFavorito ? "❤️" : "🖤"}
       </div>
 
       <h3 className={styles.nombre}>{nombre}</h3>
+
+      <p>{descripcion}</p>
       <p className={styles.precio}>${precio}</p>
       <p className={styles.stock}>Stock disponible: {stock}</p>
 
@@ -85,7 +88,7 @@ export default function ItemDetalle() {
         "Sin stock"
       )}
       <p>
-        <Link to="/productos">Ver todos los productos</Link>
+        <Link to="/productos">Ver otros productos</Link>
       </p>
     </div>
   );

@@ -9,7 +9,9 @@
     background-color: white;
     position: relative;
 }
-
+.card.dest {
+    border-color: #FFCC00;
+}
 .card .btn {
     padding: .2em .5em;
     margin: 3px;
@@ -52,6 +54,11 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
+}
+
+.destacado{
+    position: absolute;
+    left: 10px;
 }
 
 .cantidadContainer {
