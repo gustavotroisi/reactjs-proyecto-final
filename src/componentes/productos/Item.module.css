@@ -51,10 +51,15 @@
     cursor: pointer;
     position: absolute;
     right: 10px;
+    border: solid 2px;
+    border-radius: 12px;
+    background-color: white;
+    color: black;
 }
 .destacado {
     position: absolute;
     left: 10px;
+    font-size: 1.5em;
 }
 .cantidadContainer{
     margin-bottom: 10px;
