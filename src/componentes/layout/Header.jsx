@@ -53,8 +53,18 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link to="/carrito" className="nav-link">
-                  Carrito 🛒 {totalItems > 0 && <span>{totalItems}</span>}
+                  Carrito
                 </Link>
+              </li>
+              <li className="nav-item">
+                <div className={styles.cartIcon}>
+                  <Link to="/carrito">
+                    🛒{" "}
+                    {totalItems > 0 && (
+                      <div className={styles.total}>{totalItems}</div>
+                    )}
+                  </Link>
+                </div>
               </li>
               {/*<li className="nav-item dropdown">
                 <a

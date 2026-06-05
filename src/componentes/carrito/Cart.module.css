@@ -1,9 +1,10 @@
 .header{
-    background-color: white;
-    color: #000;
+    color: white;
     text-align: center;
-    margin: .6em 0 1em 0;
+    margin: 1em 0 1.5em 0;
     text-transform: uppercase;
+    letter-spacing: 1.0em;
+
 }
 .cart{
     border: solid 2px white;
@@ -45,8 +46,6 @@
     padding-left: 10px;
 }
 .btnPagar{
-    background-color: #000;
-    color: white;
     padding: 6px 22px;
     text-transform: uppercase;
     border: none;
@@ -54,6 +53,8 @@
     font-weight: 400;
     letter-spacing: .15em;
     margin: 1em 0;
+    border-radius: 8px;
+
 }
 .btnVaciar{
     background: none;

@@ -40,8 +40,8 @@ export function Directorio({ titulo }) {
           distribución de tecnología.
         </p>
         <p>
-          NUestro equipo está formado por un grupo de profesionales dispuestos a
-          ayudarlo en conseguir sus objetivos.
+          Nuestro equipo está conformado por un grupo de profesionales
+          encargados de que puedas lograr tus objetivos.
         </p>
       </section>
       <div className={styles.directorio}>

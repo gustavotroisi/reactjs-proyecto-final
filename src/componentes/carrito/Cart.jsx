@@ -1,5 +1,6 @@
 import { useCart } from "../../context/CartContext";
 import styles from "./Cart.module.css";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const { cart, clearCart, getCartTotal } = useCart();
@@ -36,12 +37,14 @@ export default function Cart() {
               {cart.map((item) => (
                 <tr key={item.id}>
                   <td>
-                    <img
-                      src={item.imagen}
-                      alt={item.nombre}
-                      className={styles.productImage}
-                    />
-                    {item.nombre}
+                    <Link to={`/producto/${item.id}`}>
+                      <img
+                        src={item.imagen}
+                        alt={item.nombre}
+                        className={styles.productImage}
+                      />
+                      {item.nombre}
+                    </Link>
                   </td>
                   <td>{item.quantity}</td>
                   <td>$ {item.precio}</td>
