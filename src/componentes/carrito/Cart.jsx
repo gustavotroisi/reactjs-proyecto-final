@@ -3,7 +3,7 @@ import styles from "./Cart.module.css";
 
 export default function Cart() {
   const { cart, clearCart, getCartTotal } = useCart();
-  const cartHeader = <h1>Carrito</h1>;
+  const cartHeader = <h1 className={styles.header}>Carrito</h1>;
 
   if (cart.length === 0) {
     return (
@@ -52,12 +52,14 @@ export default function Cart() {
           <span className={styles.totalPrecio}>$ {getCartTotal()}</span>
         </div>
       </div>
-      <div style={{ marginTop: "1em" }}>
-        <button className={styles.btnPagar}>Pagar</button>
+      <div className={styles.actionsWrapper}>
+        <div style={{ marginTop: "1em" }}>
+          <button className={styles.btnPagar}>Pagar</button>
+        </div>
+        <button className={styles.btnVaciar} onClick={clearCart}>
+          Vaciar Carrito
+        </button>
       </div>
-      <button className={styles.btnVaciar} onClick={clearCart}>
-        Vaciar Carrito
-      </button>
     </div>
   );
 }

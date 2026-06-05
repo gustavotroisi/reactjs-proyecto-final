@@ -1,3 +1,10 @@
+.header{
+    background-color: white;
+    color: #000;
+    text-align: center;
+    margin: .6em 0 1em 0;
+    text-transform: uppercase;
+}
 .cart{
     border: solid 2px white;
     padding: 20px;
@@ -12,6 +19,8 @@
     display: flex;
     align-items: end;
     gap: 1em;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 .table thead{
     background-color:#000;
@@ -19,11 +28,11 @@
     
 }
 .table thead th{
-    padding: 6px;
+    padding: 12px;
 }
 .table td{
     border: dashed 1px;
-    padding: 6px;
+    padding: 12px;
 }
 .total{
     background-color: white;
@@ -44,6 +53,7 @@
     font-size: 1.2em;
     font-weight: 400;
     letter-spacing: .15em;
+    margin: 1em 0;
 }
 .btnVaciar{
     background: none;
@@ -51,8 +61,20 @@
     color: white;
     text-decoration: underline;
     margin-top: 1em;
+    font-size: .8em;
 }
 .productImage{
     max-width: 5em;
-    margin-right: 1em;
+    margin-right: .5em;
 }
+.actionsWrapper{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*
+@media (max-width: 1024px) {
+    .tablewrapper {
+        flex-direction: column;
+    }
+}*/
