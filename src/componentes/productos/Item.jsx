@@ -1,12 +1,17 @@
-import styles from "./Item.module.css";
 import { useState } from "react";
+import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import styles from "./Item.module.css";
 
 export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
+  const producto = { id, nombre, precio, stock, imagen, destacado };
   const [cantidad, setCantidad] = useState(1);
   const [esFavorito, setEsFavorito] = useState(false);
 
+  const { addToCart } = useCart();
+
   const agregarAlCarrito = () => {
+    addToCart(producto, cantidad);
     alert(`Has seleccionado ${cantidad} unidades de ${nombre}`);
   };
 

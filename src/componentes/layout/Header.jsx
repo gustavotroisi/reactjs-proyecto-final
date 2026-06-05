@@ -1,8 +1,12 @@
+import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_tech_store3.png";
-import { Link } from "react-router-dom";
 
 function Header() {
+  const { getCartQuantity } = useCart();
+  const totalItems = getCartQuantity();
+
   return (
     <header>
       <nav
@@ -49,7 +53,7 @@ function Header() {
               </li>
               <li className="nav-item">
                 <Link to="/carrito" className="nav-link">
-                  Carrito
+                  Carrito 🛒 {totalItems > 0 && <span>{totalItems}</span>}
                 </Link>
               </li>
               {/*<li className="nav-item dropdown">
