@@ -37,6 +37,7 @@ export default function FormularioContainer() {
     setLoading(true);
 
     const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
+
     const formData = new FormData();
     formData.append("image", imageFile);
     //console.log("Envio realizado");
