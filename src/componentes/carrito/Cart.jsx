@@ -9,7 +9,12 @@ export default function Cart() {
     return (
       <div className={styles.cart}>
         {cartHeader}
-        <p>Agrega productos para iniciar tu pedido</p>
+        <p style={{ textAlign: "center" }}>
+          <strong>El carrito está vacío.</strong>
+        </p>
+        <p style={{ textAlign: "center" }}>
+          Agregá productos para iniciar un pedido.
+        </p>
       </div>
     );
   }

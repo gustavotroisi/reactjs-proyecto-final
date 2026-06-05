@@ -12,7 +12,9 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
-    alert(`Has seleccionado ${cantidad} unidades de ${nombre}`);
+    alert(
+      `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
+    );
   };
 
   return (
