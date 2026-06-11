@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_tech_store3.png";
+import cartIcon from "../../../public/images/cart-svgrepo-com.svg";
 
 function Header() {
   const { getCartQuantity } = useCart();
@@ -59,23 +60,7 @@ function Header() {
               <li className="nav-item">
                 <div className={styles.cartIcon}>
                   <Link to="/carrito">
-                    <svg
-                      class="w-6 h-6 text-gray-800 dark:text-white"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        stroke="currentColor"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312"
-                      />
-                    </svg>
+                    <img src={cartIcon} alt="cart icon" />
 
                     {totalItems > 0 && (
                       <div className={styles.total}>{totalItems}</div>

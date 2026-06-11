@@ -31,8 +31,9 @@
     position: relative;
     font-size: 1.5em;   
 }
-.cartIcon svg{
-    color: white;
+
+.cartIcon img{
+    filter: invert(1) brightness(2);
     width: 1.2em;
     height: 1.2em;
 }
