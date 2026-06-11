@@ -8,7 +8,9 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
   const [cantidad, setCantidad] = useState(1);
   const [esFavorito, setEsFavorito] = useState(false);
 
-  const { addToCart } = useCart();
+  const { addToCart, getCantidadActual } = useCart();
+
+  const cantidadActual = getCantidadActual(producto.id);
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
@@ -30,6 +32,14 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
       <h3 className={styles.nombre}>{nombre}</h3>
       <p className={styles.precio}>${precio}</p>
       <p className={styles.stock}>Stock disponible: {stock}</p>
+
+      {cantidadActual > 0 ? (
+        <p style={{ margin: "0 15px", fontWeight: "bold" }}>
+          Tienes {cantidadActual} agregadas en el carrito.
+        </p>
+      ) : (
+        ""
+      )}
 
       {stock > 0 ? (
         <>
