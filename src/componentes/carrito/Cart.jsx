@@ -3,7 +3,7 @@ import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
 
 export default function Cart() {
-  const { cart, clearCart, getCartTotal } = useCart();
+  const { cart, clearCart, removeItem, getCartTotal } = useCart();
   const cartHeader = <h1 className={styles.header}>Carrito</h1>;
 
   if (cart.length === 0) {
@@ -49,7 +49,11 @@ export default function Cart() {
                   <td>{item.quantity}</td>
                   <td>$ {item.precio}</td>
                   <td>$ {item.precio * item.quantity}</td>
-                  <td>Quitar</td>
+                  <td>
+                    <button onClick={() => removeItem(item.id)}>
+                      Eliminar
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>
