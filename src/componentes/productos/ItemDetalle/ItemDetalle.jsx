@@ -1,6 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import styles from "./ItemDetalle.module.css";
+import { useCart } from "../../../context/CartContext";
 
 export default function ItemDetalle() {
   const [producto, setProducto] = useState(null);
@@ -9,7 +10,11 @@ export default function ItemDetalle() {
   const [esFavorito, setEsFavorito] = useState(null);
   const [cantidad, setCantidad] = useState(1);
 
+  const { addToCart, getCantidadActual } = useCart();
+
   const { id } = useParams();
+
+  const cantidadActual = getCantidadActual(parseInt(id));
 
   useEffect(() => {
     fetch("/data/productos.json")
@@ -37,7 +42,10 @@ export default function ItemDetalle() {
   const { nombre, precio, stock, imagen, descripcion, destacado } = producto;
 
   const agregarAlCarrito = () => {
-    alert(`Has seleccionado ${cantidad} unidades de ${nombre}`);
+    addToCart(producto, cantidad);
+    alert(
+      `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
+    );
   };
 
   return (
@@ -54,6 +62,14 @@ export default function ItemDetalle() {
       <p>{descripcion}</p>
       <p className={styles.precio}>${precio}</p>
       <p className={styles.stock}>Stock disponible: {stock}</p>
+
+      {cantidadActual > 0 ? (
+        <p style={{ margin: "0 15px", fontWeight: "bold" }}>
+          Tienes {cantidadActual} agregadas en el carrito.
+        </p>
+      ) : (
+        ""
+      )}
 
       {stock > 0 ? (
         <>

@@ -1,18 +1,10 @@
 import { useCart } from "../../context/CartContext";
 import styles from "./Cart.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export default function Cart() {
   const { cart, clearCart, getCartTotal } = useCart();
   const cartHeader = <h1 className={styles.header}>Carrito</h1>;
-
-  const navigate = useNavigate();
-
-  const handleFinalizarCompra = () => {
-    alert("Gracias por tu compra!");
-    clearCart();
-    navigate("/");
-  };
 
   if (cart.length === 0) {
     return (
@@ -70,9 +62,16 @@ export default function Cart() {
       </div>
       <div className={styles.actionsWrapper}>
         <div style={{ marginTop: "1em" }}>
-          <button onClick={handleFinalizarCompra} className={styles.btnPagar}>
-            Pagar
-          </button>
+          <Link
+            to="/"
+            className={styles.btnPagar}
+            onClick={() => {
+              alert("Gracias por comprar");
+              clearCart();
+            }}
+          >
+            Finalizar compra
+          </Link>
         </div>
         <button className={styles.btnVaciar} onClick={clearCart}>
           Vaciar Carrito
