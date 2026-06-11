@@ -10,6 +10,7 @@ import FormularioContainer from "./componentes/formularioProductos/FormularioCon
 import Inicio from "./componentes/inicio/Inicio";
 import ItemDetalle from "./componentes/productos/ItemDetalle/ItemDetalle";
 import Cart from "./componentes/carrito/Cart";
+import ProductosNacionales from "./componentes/ProductosNacionales/ProductosNacionales";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/nosotros" element={<Directorio titulo={"Nosotros"} />} />
         <Route path="/alta-productos" element={<FormularioContainer />} />
         <Route path="/carrito" element={<Cart />} />
+        <Route path="/productos-nacionales" element={<ProductosNacionales />} />
       </Route>
     </Routes>
   );
