@@ -31,9 +31,14 @@
     position: relative;
     font-size: 1.5em;   
 }
+.cartIcon svg{
+    color: white;
+    width: 1.2em;
+    height: 1.2em;
+}
 .total{
     position: absolute;
-    top: -5px;
+    top: 0px;
     left: 20px;
     background-color: white;
     color: black;

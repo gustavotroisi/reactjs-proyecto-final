@@ -28,15 +28,15 @@ export default function Cart() {
           <table className={styles.table}>
             <thead>
               <th>Producto</th>
+              <th>Precio Unitario</th>
               <th>Cantidad</th>
-              <th>Precio</th>
               <th>Subtotal</th>
               <th></th>
             </thead>
             <tbody>
               {cart.map((item) => (
                 <tr key={item.id}>
-                  <td>
+                  <td className={styles.producto}>
                     <Link to={`/producto/${item.id}`}>
                       <img
                         src={item.imagen}
@@ -46,11 +46,15 @@ export default function Cart() {
                       {item.nombre}
                     </Link>
                   </td>
-                  <td>{item.quantity}</td>
-                  <td>$ {item.precio}</td>
-                  <td>$ {item.precio * item.quantity}</td>
+
+                  <td align="right">$ {item.precio}</td>
+                  <td align="center">{item.quantity}</td>
+                  <td align="right">$ {item.precio * item.quantity}</td>
                   <td>
-                    <button onClick={() => removeItem(item.id)}>
+                    <button
+                      onClick={() => removeItem(item.id)}
+                      className={styles.btnEliminar}
+                    >
                       Eliminar
                     </button>
                   </td>
@@ -65,18 +69,20 @@ export default function Cart() {
         </div>
       </div>
       <div className={styles.actionsWrapper}>
-        <div style={{ marginTop: "1em" }}>
-          <Link
-            to="/"
-            className={styles.btnPagar}
-            onClick={() => {
-              alert("Gracias por comprar");
-              clearCart();
-            }}
-          >
-            Finalizar compra
-          </Link>
-        </div>
+        <Link to="/productos" className={styles.verMasProductos}>
+          Ver más productos
+        </Link>
+        <Link
+          to="/"
+          className={styles.btnPagar}
+          onClick={() => {
+            alert("Gracias por comprar");
+            clearCart();
+          }}
+        >
+          Finalizar compra
+        </Link>
+
         <button className={styles.btnVaciar} onClick={clearCart}>
           Vaciar Carrito
         </button>

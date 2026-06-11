@@ -26,7 +26,6 @@
 .table thead{
     background-color:#000;
     border: solid #000 4px;
-    
 }
 .table thead th{
     padding: 12px;
@@ -34,6 +33,19 @@
 .table td{
     border: dashed 1px;
     padding: 12px;
+}
+.table .producto a{
+    color: white;
+    text-decoration:none;
+    font-size:1.2em;
+}
+.table .productImage {
+    max-width: 5em;
+    margin-right: .5em;
+    border-radius: 6px;
+}
+.table .producto a:hover {
+    text-decoration: underline;
 }
 .total{
     background-color: white;
@@ -45,33 +57,57 @@
     font-weight: 800;
     padding-left: 10px;
 }
+
+.actionsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2em;
+}
+
+
 .btnPagar{
-    padding: 6px 22px;
+    display: block;
+    padding: 12px 22px;
     text-transform: uppercase;
     border: none;
     font-size: 1.2em;
     font-weight: 400;
-    letter-spacing: .15em;
-    margin: 1em 0;
+    margin: 1em;
     border-radius: 8px;
-
+    background-color: rgb(31, 31, 31);
+    color: white;
+    text-decoration: none;
+    transition: background .5s;
+}
+.btnPagar:hover { 
+    background-color: black; 
+}
+.btnEliminar{
+    padding: 6px 12px;
+    border-radius: 8px;
+    background-color: rgb(31, 31, 31);
+    border: none;
+    color: white;
+    transition: background .5s;
+}
+.btnEliminar:hover {
+    background-color: black;
 }
 .btnVaciar{
     background: none;
     border: none;
     color: white;
     text-decoration: underline;
-    margin-top: 1em;
     font-size: .8em;
 }
-.productImage{
-    max-width: 5em;
-    margin-right: .5em;
+.verMasProductos{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
 }
-.actionsWrapper{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.verMasProductos:hover{
+    text-decoration: underline;
 }
 /*
 @media (max-width: 1024px) {
