@@ -7,7 +7,7 @@ const ProductosNacionales = () => {
   // Estado para guardar los productos que traigamos de la DB
   const [productos, setProductos] = useState([]);
   useEffect(() => {
-    const productosDB = collection(db, "productos nacionales");
+    const productosDB = collection(db, "productos");
     getDocs(productosDB).then((resp) => {
       console.log(resp);
       setProductos(

@@ -7,12 +7,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDJYI71PW6gRE_87MYMkp5CjWmJvr3CiIE",
-  authDomain: "talentotech-ee5be.firebaseapp.com",
-  projectId: "talentotech-ee5be",
-  storageBucket: "talentotech-ee5be.firebasestorage.app",
-  messagingSenderId: "117867693878",
-  appId: "1:117867693878:web:31b510a27b006119f91597",
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID,
 };
 
 // Initialize Firebase
