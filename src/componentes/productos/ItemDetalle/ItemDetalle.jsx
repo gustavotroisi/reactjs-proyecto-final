@@ -1,5 +1,10 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+
+//Firestore
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../../../firebase/config";
+
 import styles from "./ItemDetalle.module.css";
 import { useCart } from "../../../context/CartContext";
 
@@ -17,6 +22,21 @@ export default function ItemDetalle() {
   const cantidadActual = getCantidadActual(parseInt(id));
 
   useEffect(() => {
+    const docRef = doc(db, "productos", id);
+
+    getDoc(docRef)
+      .then((resp) => {
+        if (resp.exists()) {
+          // Verificamos si el documento existe
+          setProducto({ id: resp.id, ...resp.data() });
+        } else {
+          setError("Producto no encontrado");
+        }
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setLoading(false));
+
+    /*
     fetch("/data/productos.json")
       .then((respuesta) => {
         if (!respuesta.ok) throw new Error("No se pudo leer el archivo.");
@@ -29,6 +49,7 @@ export default function ItemDetalle() {
       })
       .catch((error) => setError(error.message))
       .finally(() => setLoading(false));
+    */
   }, [id]);
 
   if (loading) {

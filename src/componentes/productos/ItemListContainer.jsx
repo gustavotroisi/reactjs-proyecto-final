@@ -1,6 +1,10 @@
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
 
+//Firestore
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/config";
+
 export default function ItemListContainer({ titulo, destacados }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
@@ -8,7 +12,24 @@ export default function ItemListContainer({ titulo, destacados }) {
   const [mensaje, setMensaje] = useState(null);
 
   useEffect(() => {
-    fetch("/data/productos.json")
+    const productosDB = collection(db, "productos");
+
+    getDocs(productosDB)
+      .then((response) => {
+        if (response.empty) throw new Error("Error al obtener los datos");
+
+        //console.log(response);
+        setProductos(
+          response.docs.map((doc) => {
+            //console.log(doc.data());
+            return { id: doc.id, ...doc.data() };
+          }),
+        );
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setCargando(false));
+
+    /*fetch("/data/productos.json")
       .then((respuesta) => {
         if (!respuesta.ok) {
           throw new Error("No se pudo cargar el archivo de productos");
@@ -24,6 +45,7 @@ export default function ItemListContainer({ titulo, destacados }) {
         setMensaje("Error al cargar el archivo");
       })
       .finally(() => setCargando(false));
+      */
   }, []);
 
   if (cargando) {
@@ -36,6 +58,8 @@ export default function ItemListContainer({ titulo, destacados }) {
   const productosAMostrar = destacados
     ? productos.filter((prod) => prod.destacado)
     : productos;
+
+  console.log(productosAMostrar);
 
   return (
     <div className="product-grid">
