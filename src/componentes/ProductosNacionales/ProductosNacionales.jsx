@@ -4,8 +4,10 @@ import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
 const ProductosNacionales = () => {
+  
   // Estado para guardar los productos que traigamos de la DB
   const [productos, setProductos] = useState([]);
+
   useEffect(() => {
     const productosDB = collection(db, "productos");
     getDocs(productosDB).then((resp) => {
@@ -17,6 +19,7 @@ const ProductosNacionales = () => {
       );
     });
   }, []); // El array vacío asegura que este efecto se ejecute solo una vez
+  
   return (
     <div>
       <h1>Productos Nacionales</h1>
