@@ -1,4 +1,9 @@
 import { useState, useEffect } from "react";
+
+//Firestore
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../firebase/config";
+
 import styles from "./Directorio.module.css";
 import { TarjetaContacto } from "./TarjetaContacto";
 
@@ -8,6 +13,24 @@ export function Directorio({ titulo }) {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    const nosotrosDB = collection(db, "nosotros");
+
+    getDocs(nosotrosDB)
+      .then((response) => {
+        if (response.empty) throw new Error("Error al obtener los datos");
+
+        //console.log(response);
+        setNosotros(
+          response.docs.map((doc) => {
+            //console.log(doc.data());
+            return { ...doc.data(), id: doc.id };
+          }),
+        );
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setCargando(false));
+
+    /*
     fetch("/data/nosotros.json")
       .then((response) => {
         if (!response.ok) throw new Error("Error al leer archivo");
@@ -21,6 +44,7 @@ export function Directorio({ titulo }) {
       .finally(() => {
         setCargando(false);
       });
+      */
   }, []);
 
   if (cargando) {

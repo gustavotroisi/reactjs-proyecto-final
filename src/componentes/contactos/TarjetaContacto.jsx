@@ -3,10 +3,10 @@ import styles from "./TarjetaContacto.module.css";
 export function TarjetaContacto(contacto) {
   return (
     <div className={styles.card}>
-      <img src={contacto.foto} />
+      <img src={contacto.fotoURL} alt={contacto.nombre} />
       <h2 className={styles.nombre}>{contacto.nombre}</h2>
-      <p>{contacto.email}</p>
-      <p className="badge bg-secondary">{contacto.puesto}</p>
+      <p>{contacto.linkedinURL}</p>
+      <p className="badge bg-secondary">{contacto.rol}</p>
     </div>
   );
 }
