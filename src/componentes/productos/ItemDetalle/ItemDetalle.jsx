@@ -2,7 +2,8 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 //Firestore
-import { doc, getDoc } from "firebase/firestore";
+//import { doc, getDoc } from "firebase/firestore";
+import { query, collection, where, getDocs } from "firebase/firestore";
 import { db } from "../../../firebase/config";
 
 import styles from "./ItemDetalle.module.css";
@@ -22,13 +23,22 @@ export default function ItemDetalle() {
   const cantidadActual = getCantidadActual(parseInt(id));
 
   useEffect(() => {
-    const docRef = doc(db, "productos", id);
+    //buscar por id del documento
+    //const docRef = doc(db, "productos", id);
 
-    getDoc(docRef)
+    if (!id) return;
+
+    //buscar por id de la coleccion
+    const docRef = query(
+      collection(db, "productos"),
+      where("id", "==", Number(id)),
+    );
+
+    getDocs(docRef)
       .then((resp) => {
-        if (resp.exists()) {
+        if (!resp.empty) {
           // Verificamos si el documento existe
-          setProducto({ id: resp.id, ...resp.data() });
+          setProducto({ ...resp.docs[0].data(), id: resp.docs[0].id });
         } else {
           setError("Producto no encontrado");
         }
