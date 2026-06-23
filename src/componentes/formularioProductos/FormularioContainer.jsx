@@ -16,6 +16,7 @@ export default function FormularioContainer() {
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mensaje, setMensaje] = useState(null);
+  const [fileKey, setFileKey] = useState(0);
 
   const manejarCambio = (e) => {
     /*let elem = e.target.name;
@@ -40,6 +41,20 @@ export default function FormularioContainer() {
 
   const manejarCambioImagen = (e) => {
     setImageFile(e.target.files[0]);
+  };
+
+  const resetForm = () => {
+    setdatosForm({
+      categoria: "",
+      descripcion: "",
+      destacado: false,
+      id: "",
+      nombre: "",
+      precio: "",
+      stock: "",
+    });
+    setImageFile(null);
+    setFileKey((prev) => prev + 1);
   };
 
   const manejarEnvio = async (e) => {
@@ -99,6 +114,7 @@ export default function FormularioContainer() {
       }
 
       setMensaje({ texto: "Producto guardado con éxito", tipo: "success" });
+      resetForm();
     } catch (e) {
       setMensaje({ texto: "Error al subir la imagen", tipo: "danger" });
       console.log("Error: ", e);
@@ -116,6 +132,7 @@ export default function FormularioContainer() {
       manejarCambioImagen={manejarCambioImagen}
       loading={loading}
       mensaje={mensaje}
+      fileKey={fileKey}
     />
   );
 }
