@@ -1,24 +1,40 @@
 import FormularioProductos from "./FormularioProductos";
 import { useState } from "react";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 
 export default function FormularioContainer() {
   const [datosForm, setdatosForm] = useState({
+    categoria: "",
+    descripcion: "",
+    destacado: false,
+    id: "",
     nombre: "",
     precio: "",
     stock: "",
   });
 
   const [imageFile, setImageFile] = useState(null);
-
   const [loading, setLoading] = useState(false);
+  const [mensaje, setMensaje] = useState(null);
 
   const manejarCambio = (e) => {
     /*let elem = e.target.name;
     let val = e.target.value;
     */
-    const { name, value } = e.target;
+    const { name, value, type, checked } = e.target;
     //console.log(name, value);
-    setdatosForm({ ...datosForm, [name]: value });
+    //setdatosForm({ ...datosForm, [name]: value });
+    let nuevoValor = value;
+    if (type === "checkbox") nuevoValor = checked;
+    if (type === "number") {
+      nuevoValor =
+        value === ""
+          ? ""
+          : name === "precio"
+            ? parseFloat(value)
+            : parseInt(value, 10);
+    }
+    setdatosForm({ ...datosForm, [name]: nuevoValor });
     //console.log(datosForm);
   };
 
@@ -30,7 +46,8 @@ export default function FormularioContainer() {
     e.preventDefault();
 
     if (!imageFile) {
-      alert("Por favor seleccione una imagen");
+      //alert("Por favor seleccione una imagen");
+      setMensaje({ texto: "Por favor seleccione una imagen", tipo: "danger" });
       return;
     }
 
@@ -60,16 +77,34 @@ export default function FormularioContainer() {
       if (datosImgbb.success) {
         const productoCompleto = {
           ...datosForm,
-          urlImagen: datosImgbb.data.url,
+          imagen: datosImgbb.data.url,
         };
         console.log("Imagen enviada: ", productoCompleto);
+
+        try {
+          console.log("Enviando producto a Firebase:", productoCompleto);
+          // Obtenemos la instancia de la base de datos
+          const db = getFirestore();
+          // Apuntamos a la colección "productos" (si no existe, se crea)
+          const productosCollection = collection(db, "productos");
+          // Agregamos el nuevo documento a la colección
+          await addDoc(productosCollection, productoCompleto);
+        } catch (e) {
+          setMensaje({ texto: "Error al enviar el producto", tipo: "danger" });
+          console.log("Error: ", e);
+        }
       } else {
+        setMensaje({ texto: "Error al enviar la imagen", tipo: "danger" });
         throw new Error("Error al enviar imagen");
       }
 
-      setLoading(false);
+      setMensaje({ texto: "Producto guardado con éxito", tipo: "success" });
     } catch (e) {
+      setMensaje({ texto: "Error al subir la imagen", tipo: "danger" });
       console.log("Error: ", e);
+    } finally {
+      setLoading(false);
+      setTimeout(() => setMensaje(null), 4000);
     }
   };
 
@@ -80,6 +115,7 @@ export default function FormularioContainer() {
       manejarEnvio={manejarEnvio}
       manejarCambioImagen={manejarCambioImagen}
       loading={loading}
+      mensaje={mensaje}
     />
   );
 }
