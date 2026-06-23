@@ -48,8 +48,8 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/alta-productos" className="nav-link">
-                  Agregar Nuevo Producto
+                <Link to="/gestion" className="nav-link">
+                  Gestión
                 </Link>
               </li>
               <li className="nav-item">

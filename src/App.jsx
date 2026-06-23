@@ -6,7 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { Layout } from "./componentes/layout/Layout";
 import ItemListContainer from "./componentes/productos/ItemListContainer";
 import { Directorio } from "./componentes/contactos/Directorio";
-import FormularioContainer from "./componentes/formularioProductos/FormularioContainer";
+import GestionProductos from "./componentes/gestion/GestionProductos";
 import Inicio from "./componentes/inicio/Inicio";
 import ItemDetalle from "./componentes/productos/ItemDetalle/ItemDetalle";
 import Cart from "./componentes/carrito/Cart";
@@ -23,7 +23,7 @@ function App() {
         />
         <Route path="/producto/:id" element={<ItemDetalle />} />
         <Route path="/nosotros" element={<Directorio titulo={"Nosotros"} />} />
-        <Route path="/alta-productos" element={<FormularioContainer />} />
+        <Route path="/gestion" element={<GestionProductos />} />
         <Route path="/carrito" element={<Cart />} />
         <Route path="/productos-nacionales" element={<ProductosNacionales />} />
       </Route>
