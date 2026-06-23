@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { db } from "../../firebase/config";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import FormularioContainer from "../FormularioProductos/FormularioContainer";
+import styles from "./GestionProductos.module.css";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
-
+  /*
   const estadoInicialForm = {
     nombre: "",
     categoria: "",
@@ -13,12 +14,13 @@ const GestionProductos = () => {
     stock: 0,
     imagen: "",
   };
+  */
 
   useEffect(() => {
     const cargarProductos = async () => {
       const productosRef = collection(db, "productos");
       const resp = await getDocs(productosRef);
-      setProductos(resp.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+      setProductos(resp.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
     };
     cargarProductos();
   }, []);
@@ -37,25 +39,27 @@ const GestionProductos = () => {
 
   return (
     <div>
-      <h2>Gestión de Productos</h2>
+      <h2 className={styles.titulo}>Gestión de Productos</h2>
       <hr />
       <FormularioContainer />
       <hr />
-      <h3>Lista de Productos</h3>
-      <table>
+      <h3 className={styles.subtitulo}>Listado de Productos</h3>
+      <table className={styles.gestionTable}>
+        <thead>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Precio</th>
+          <th>Acciones</th>
+        </thead>
         {productos.map((prod) => (
           <tr key={prod.id}>
+            <td style={{ textAlign: "right" }}>{prod.id}</td>
             <td>{prod.nombre}</td>
+            <td style={{ textAlign: "right" }}>$ {prod.precio}</td>
             <td>
-              {" "}
-              ${prod.precio}
-              {/*acá agregamos los botones de acción */}
-            </td>
-            <td>
-              {" "}
               <button
                 onClick={() => handleDelete(prod.id)}
-                style={{ marginLeft: "10px" }}
+                className="btn btn-danger"
               >
                 Eliminar
               </button>

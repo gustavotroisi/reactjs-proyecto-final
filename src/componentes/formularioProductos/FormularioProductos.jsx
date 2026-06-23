@@ -12,7 +12,7 @@ export default function FormularioProductos({
   return (
     <>
       <form onSubmit={manejarEnvio} className={styles.formproducto}>
-        <h1 className={styles.titulo}>Agregar Nuevo Producto</h1>
+        <h3 className={styles.titulo}>Agregar Nuevo Producto</h3>
         <div>
           <label>ID</label>
           <input

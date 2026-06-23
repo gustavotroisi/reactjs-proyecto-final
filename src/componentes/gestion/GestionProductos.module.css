@@ -1,0 +1,24 @@
+.gestionTable {
+    border: solid 1px #ccc;
+    margin: 0 auto;
+}
+
+.gestionTable td {
+    padding: 3px 12px;
+    border: solid 1px;
+}
+.gestionTable th {
+    padding: 3px 12px;
+    text-align: center;
+   
+}
+.titulo {
+    text-align: center;
+    margin: 30px;
+    font-weight: 600;
+}
+.subtitulo{
+    text-align: center;
+    margin: 30px;
+    font-weight: 600;
+}
