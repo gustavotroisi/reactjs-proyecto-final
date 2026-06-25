@@ -1,5 +1,6 @@
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
+import { Container } from "react-bootstrap";
 
 //Firestore
 import { collection, getDocs } from "firebase/firestore";
@@ -62,10 +63,10 @@ export default function ItemListContainer({ titulo, destacados }) {
   console.log(productosAMostrar);
 
   return (
-    <div className="product-grid">
+    <Container className="mt-4">
       <h1 className="page-title">{titulo}</h1>
       {console.log(mensaje)}
       <ItemList productos={productosAMostrar} />
-    </div>
+    </Container>
   );
 }

@@ -1,5 +1,7 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import styled from "styled-components";
 
 //Firestore
 //import { doc, getDoc } from "firebase/firestore";
@@ -21,6 +23,30 @@ export default function ItemDetalle() {
   const { id } = useParams();
 
   const cantidadActual = getCantidadActual(parseInt(id));
+
+  const BotonAccion = styled.button`
+    background-color: transparent;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 8px;
+    transition: all 0.2s ease;
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  `;
+
+  const BotonVerOtros = styled(BotonAccion)`
+    border-color: ##0d6efd;
+    color: ##0d6efd;
+    text-decoration: none;
+
+    &:hover {
+      background-color: ##0d6efd;
+    }
+  `;
 
   useEffect(() => {
     //buscar por id del documento
@@ -80,63 +106,83 @@ export default function ItemDetalle() {
   };
 
   return (
-    <div className={`${styles.card} ${destacado ? styles.dest : ""}`}>
-      <img src={imagen} alt={nombre} className={styles.productImage} />
+    <Container className="mt-4">
+      <Row>
+        <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+          <Card
+            className={`h-100 ${styles.card} ${destacado ? styles.dest : ""}`}
+          >
+            <Card.Img variant="top" src={imagen} alt={nombre} />
+            {destacado ? <div className={styles.destacado}>⭐</div> : ""}
+            <Card.Body className="d-flex flex-column">
+              <div
+                className={styles.fav}
+                onClick={() => setEsFavorito(!esFavorito)}
+              >
+                {esFavorito ? "❤️" : "🖤"}
+              </div>
 
-      {destacado ? <div className={styles.destacado}>⭐</div> : ""}
-      <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
-        {esFavorito ? "❤️" : "🖤"}
-      </div>
+              <Card.Title>{nombre}</Card.Title>
 
-      <h3 className={styles.nombre}>{nombre}</h3>
+              <Card.Text>{descripcion}</Card.Text>
 
-      <p>{descripcion}</p>
-      <p className={styles.precio}>${precio}</p>
-      <p className={styles.stock}>Stock disponible: {stock}</p>
+              <Card.Text>$ {precio}</Card.Text>
 
-      {cantidadActual > 0 ? (
-        <p style={{ margin: "0 15px", fontWeight: "bold" }}>
-          Tienes {cantidadActual} agregadas en el carrito.
-        </p>
-      ) : (
-        ""
-      )}
+              <Card.Text className={styles.stock}>
+                Stock disponible: {stock}
+              </Card.Text>
 
-      {stock > 0 ? (
-        <>
-          <div className={styles.cantidadContainer}>
-            <button
-              className={styles.btn}
-              onClick={() => setCantidad(cantidad - 1)}
-              disabled={cantidad <= 1}
-            >
-              -
-            </button>
-            <span className={styles.cantidad}>{cantidad}</span>
-            <button
-              className={styles.btn}
-              onClick={() => setCantidad(cantidad + 1)}
-              disabled={cantidad >= stock}
-            >
-              +
-            </button>
-          </div>
+              {cantidadActual > 0 ? (
+                <Card.Text style={{ margin: "0 15px", fontWeight: "bold" }}>
+                  Tienes {cantidadActual} agregadas en el carrito.
+                </Card.Text>
+              ) : (
+                ""
+              )}
 
-          <p>
-            <button
-              className="btn btn-lg btn-secondary"
-              onClick={agregarAlCarrito}
-            >
-              Comprar
-            </button>
-          </p>
-        </>
-      ) : (
-        "Sin stock"
-      )}
-      <p>
-        <Link to="/productos">Ver otros productos</Link>
-      </p>
-    </div>
+              {stock > 0 ? (
+                <Row>
+                  <Col xs={12} md={3} lg={3} className="mb-4">
+                    <div className={styles.cantidadContainer}>
+                      <button
+                        className={styles.btn}
+                        onClick={() => setCantidad(cantidad - 1)}
+                        disabled={cantidad <= 1}
+                      >
+                        -
+                      </button>
+                      <span className={styles.cantidad}>{cantidad}</span>
+                      <button
+                        className={styles.btn}
+                        onClick={() => setCantidad(cantidad + 1)}
+                        disabled={cantidad >= stock}
+                      >
+                        +
+                      </button>
+                    </div>
+                  </Col>
+                  <Col xs={12} md={9} lg={9} className="mb-4">
+                    <Button
+                      as={Link}
+                      to={`/producto/${id}`}
+                      variant="primary"
+                      className="mt-auto w-100"
+                      onClick={agregarAlCarrito}
+                    >
+                      Comprar
+                    </Button>
+                  </Col>
+                </Row>
+              ) : (
+                "Sin stock"
+              )}
+              <BotonVerOtros as={Link} to="/productos" className="text-center">
+                Ver otros productos
+              </BotonVerOtros>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
   );
 }

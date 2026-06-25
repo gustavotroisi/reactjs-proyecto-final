@@ -1,17 +1,20 @@
 import Item from "./Item";
-import styles from "./ItemList.module.css";
+import { Row, Col } from "react-bootstrap";
+//import styles from "./ItemList.module.css";
 
 export default function ItemList({ productos }) {
   return (
-    <div className={styles.itemlist}>
+    <Row>
       {productos.map(
         (prod) => (
-          <Item key={prod.id} {...prod} />
+          <Col key={prod.id} xs={12} md={6} lg={4} className="mb-4">
+            <Item {...prod} />
+          </Col>
         ),
         {
           /*  prod.stock ? <Item key={prod.id} {...prod} /> : false, */
         },
       )}
-    </div>
+    </Row>
   );
 }

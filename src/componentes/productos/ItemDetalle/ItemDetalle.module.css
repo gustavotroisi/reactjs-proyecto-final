@@ -1,12 +1,4 @@
 .card {
-    border: solid 6px #ccc;
-    padding: 1em;
-    margin: .5em;
-    border-radius: 16px;
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    background-color: white;
     position: relative;
 }
 .card.dest {

@@ -1,5 +1,6 @@
-import * as bootstrap from "bootstrap";
-import "bootswatch/dist/solar/bootstrap.min.css";
+//import * as bootstrap from "bootstrap";
+//import "bootswatch/dist/solar/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 

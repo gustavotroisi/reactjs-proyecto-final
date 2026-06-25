@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
+import { Row, Col, Card, Button } from "react-bootstrap";
 import styles from "./Item.module.css";
 
 export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
@@ -20,62 +21,74 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
   };
 
   return (
-    <div className={`${styles.card} ${destacado ? styles.dest : ""}`}>
-      <img src={imagen} alt={nombre} className={styles.productImage} />
-
+    <Card className={`h-100 ${styles.card} ${destacado ? styles.dest : ""}`}>
+      <Card.Img variant="top" src={imagen} alt={nombre} />
       {destacado ? <div className={styles.destacado}>⭐</div> : ""}
+      <Card.Body className="d-flex flex-column">
+        <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
+          {esFavorito ? "❤️" : "🖤"}
+        </div>
 
-      <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
-        {esFavorito ? "❤️" : "🖤"}
-      </div>
+        <Card.Title>{nombre}</Card.Title>
+        <Card.Text>
+          $ {precio}
+          <p className={styles.stock}>Stock disponible: {stock}</p>
+        </Card.Text>
 
-      <h3 className={styles.nombre}>{nombre}</h3>
-      <p className={styles.precio}>${precio}</p>
-      <p className={styles.stock}>Stock disponible: {stock}</p>
-
-      {cantidadActual > 0 ? (
-        <p style={{ margin: "0 15px", fontWeight: "bold" }}>
-          Tienes {cantidadActual} agregadas en el carrito.
-        </p>
-      ) : (
-        ""
-      )}
-
-      {stock > 0 ? (
-        <>
-          <div className={styles.cantidadContainer}>
-            <button
-              className={styles.btn}
-              onClick={() => setCantidad(cantidad - 1)}
-              disabled={cantidad <= 1}
-            >
-              -
-            </button>
-            <span className={styles.cantidad}>{cantidad}</span>
-            <button
-              className={styles.btn}
-              onClick={() => setCantidad(cantidad + 1)}
-              disabled={cantidad >= stock}
-            >
-              +
-            </button>
-          </div>
-
-          <p>
-            <button
-              className="btn btn-lg btn-secondary"
-              onClick={agregarAlCarrito}
-            >
-              Comprar
-            </button>
+        {cantidadActual > 0 ? (
+          <p style={{ margin: "0 15px", fontWeight: "bold" }}>
+            Tienes {cantidadActual} agregadas en el carrito.
           </p>
-        </>
-      ) : (
-        "Sin stock"
-      )}
-      <p>
-        <Link to={`/producto/${id}`}>Ver mas info</Link>
-      </p>
-    </div>
+        ) : (
+          ""
+        )}
+
+        {stock > 0 ? (
+          <Row>
+            <Col xs={12} md={5} lg={5} className="mb-4">
+              <div className={styles.cantidadContainer}>
+                <button
+                  className={styles.btn}
+                  onClick={() => setCantidad(cantidad - 1)}
+                  disabled={cantidad <= 1}
+                >
+                  -
+                </button>
+                <span className={styles.cantidad}>{cantidad}</span>
+                <button
+                  className={styles.btn}
+                  onClick={() => setCantidad(cantidad + 1)}
+                  disabled={cantidad >= stock}
+                >
+                  +
+                </button>
+              </div>
+            </Col>
+            <Col xs={12} md={7} lg={7} className="mb-4">
+              <Button
+                as={Link}
+                to={`/producto/${id}`}
+                variant="primary"
+                className="mt-auto w-100"
+                onClick={agregarAlCarrito}
+              >
+                Comprar
+              </Button>
+            </Col>
+          </Row>
+        ) : (
+          "Sin stock"
+        )}
+
+        <Button
+          as={Link}
+          to={`/producto/${id}`}
+          variant="primary"
+          className="mt-auto"
+        >
+          Ver detalle
+        </Button>
+      </Card.Body>
+    </Card>
   );
 }
