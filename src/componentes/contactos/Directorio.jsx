@@ -59,7 +59,7 @@ export function Directorio({ titulo }) {
   return (
     <Container className="mt-4">
       <Row>
-        <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+        <Col xs={12} md={12} lg={12} className="mb-4">
           <h1 className="page-title">{titulo}</h1>
           <section className={styles.texto}>
             <p>
