@@ -23,7 +23,7 @@ export default function Inicio() {
                   fontWeight: 600,
                   letterSpacing: "3px",
                   textTransform: "uppercase",
-                  color: "#00C2FF",
+                  color: "var(--color-primary)",
                   marginBottom: "16px",
                 }}
               >
@@ -52,16 +52,16 @@ export default function Inicio() {
                   maxWidth: "420px",
                 }}
               >
-                Equipos y accesorios de computación. <br />
-                Los mejores precios y atención.
+                Equipos y accesorios de computación. Los mejores precios, la
+                mejor atención.
               </p>
 
               <div className="d-flex flex-wrap gap-3">
                 <Button
                   href="/productos"
                   style={{
-                    backgroundColor: "#00C2FF",
-                    borderColor: "#00C2FF",
+                    backgroundColor: "var(--color-primary)",
+                    borderColor: "var(--color-primary)",
                     color: "#080D1A",
                     fontWeight: 700,
                     fontSize: "14px",

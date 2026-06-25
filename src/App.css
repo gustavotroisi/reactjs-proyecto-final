@@ -8,7 +8,7 @@
     display: block;
     width: 80px;
     height: 2px;
-    background: #00C2FF;
+    background: var(--color-primary);
     margin-top: 8px;
     border-radius: 2px;
 }
@@ -20,8 +20,21 @@ transition: all 0.2s ease;
     }
 }
 
+.btn-primary{
+    background-color: var(--color-primary);
+    color: black;
+    &:hover{
+        background-color: var(--color-primary);
+        color: black;
+    }
+}
+
 .card-title {
     font-weight: 700;
+}
+
+footer {
+    background-color: var(--color-primary);
 }
 
 @media (max-width: 1024px) {

@@ -39,12 +39,13 @@ export default function ItemDetalle() {
   `;
 
   const BotonVerOtros = styled(BotonAccion)`
-    border-color: ##0d6efd;
-    color: ##0d6efd;
+    border-color: var(--color-primary);
+    color: var(--color-primary);
     text-decoration: none;
 
     &:hover {
-      background-color: ##0d6efd;
+      background-color: var(--color-primary);
+      color: black;
     }
   `;
 

@@ -2,7 +2,7 @@ import styles from "./Footer.module.css";
 function Footer() {
   return (
     <footer
-      className={`navbar navbar-expand-lg bg-secondary ${styles.footer}`}
+      className={`navbar navbar-expand-lg ${styles.footer}`}
       data-bs-theme="dark"
     >
       <p>
