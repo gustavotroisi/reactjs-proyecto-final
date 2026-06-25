@@ -1,8 +1,7 @@
 .titulo {
     text-align: center;
     padding: 60px;
-    background-color: var(--bs-secondary);
-    color: black;
+    color: white;
 }
 .titulo strong{
     color: white;

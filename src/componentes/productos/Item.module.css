@@ -1,5 +1,6 @@
 .card {
     position: relative;
+    border: solid 3px;
 }
 .card.dest{
     border-color: #FFCC00;

@@ -1,4 +1,5 @@
 import { useCart } from "../../context/CartContext";
+import { Container, Row, Col } from "react-bootstrap";
 import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
 
@@ -8,15 +9,19 @@ export default function Cart() {
 
   if (cart.length === 0) {
     return (
-      <div className={styles.cart}>
-        {cartHeader}
-        <p style={{ textAlign: "center" }}>
-          <strong>El carrito está vacío.</strong>
-        </p>
-        <p style={{ textAlign: "center" }}>
-          Agregá productos para iniciar un pedido.
-        </p>
-      </div>
+      <Container className={`mt-4 ${styles.cart}`}>
+        <Row>
+          <Col xs={12} md={8} lg={8} className={`mb-4 mx-auto `}>
+            {cartHeader}
+            <p style={{ textAlign: "center" }}>
+              <strong>El carrito está vacío.</strong>
+            </p>
+            <p style={{ textAlign: "center" }}>
+              Agregá productos para iniciar un pedido.
+            </p>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 

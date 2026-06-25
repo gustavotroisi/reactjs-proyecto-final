@@ -14,7 +14,6 @@
 body {
   font-family: 'Helvetica', sans-serif;
   margin: 0;
-  background-color: #f4f4f4;
 }
 
 h1,
@@ -25,6 +24,10 @@ p {
   font-size: 16px;
 }
 
+ #root{
+  background-color: #080D1A;
+}
 main{
   margin-bottom: 30px;
+ 
 }
