@@ -22,16 +22,21 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
 
   return (
     <Card className={`h-100 ${styles.card} ${destacado ? styles.dest : ""}`}>
-      <Card.Img variant="top" src={imagen} alt={nombre} />
+      <Card.Img
+        variant="top"
+        src={imagen}
+        alt={nombre}
+        className={styles.imagen}
+      />
       {destacado ? <div className={styles.destacado}>⭐</div> : ""}
       <Card.Body className="d-flex flex-column">
         <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
           {esFavorito ? "❤️" : "🖤"}
         </div>
 
-        <Card.Title>{nombre}</Card.Title>
+        <Card.Title className={styles.nombre}>{nombre}</Card.Title>
         <Card.Text>
-          $ {precio}
+          <p className={styles.precio}> $ {precio}</p>
           <p className={styles.stock}>Stock disponible: {stock}</p>
         </Card.Text>
 

@@ -1,5 +1,6 @@
 .card {
     position: relative;
+    background-color: transparent;
 }
 .card.dest {
     border-color: #FFCC00;
@@ -19,7 +20,9 @@
     background-color: #ccc;
     cursor: not-allowed;
 }
-
+.imagen{
+    border-radius: 3px 0 0 3px;
+}
 .nombre {
     display: flex;
     padding: 10px 0;
@@ -27,10 +30,14 @@
     font-weight: 600;
     text-align: center;
     margin: 0;
+    color: var(--color-primary);
+}
+.texto{
+    color: white;
 }
 
 .precio {
-    color: #606060;
+    color: white;
     font-size: 1.2em;
     font-weight: 600;
     margin: 0;
@@ -40,6 +47,7 @@
     font-size: .8em;
     padding: 5px 0;
     margin: 0;
+    color: var(--color-secondary);
 }
 
 .fav {
@@ -80,4 +88,10 @@
 
 .productImage {
     max-width: 200px;
+}
+
+@media (max-width: 1024px) {
+    .imagen {
+            border-radius: 3px 3px 0 0;
+        }
 }

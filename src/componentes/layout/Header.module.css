@@ -1,7 +1,7 @@
 .header{
     display: flex;
     justify-content: flex-end;
-    background-color: var(--color-primary);
+    /*background-color: var(--color-primary);*/
     padding: 10px;
     color: white;
 }
@@ -16,7 +16,7 @@
     padding: 10px !important;
     border: solid 2px white;
     text-decoration: none;
-    color: white;
+    color: var(--color-primary);
     border-radius: 6px;
     cursor: pointer;
     font-weight: 800;
@@ -24,7 +24,7 @@
     transition: all .5s;
 }
 .nav a:hover{
-    background-color: var(--color-accent);
+    background-color: var(--color-primary);
 }
 
 .cartIcon{

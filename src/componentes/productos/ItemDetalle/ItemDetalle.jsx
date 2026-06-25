@@ -108,79 +108,94 @@ export default function ItemDetalle() {
   return (
     <Container className="mt-4">
       <Row>
-        <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+        <Col xs={12} md={12} lg={12} className="mb-4">
           <Card
             className={`h-100 ${styles.card} ${destacado ? styles.dest : ""}`}
           >
-            <Card.Img variant="top" src={imagen} alt={nombre} />
             {destacado ? <div className={styles.destacado}>⭐</div> : ""}
-            <Card.Body className="d-flex flex-column">
-              <div
-                className={styles.fav}
-                onClick={() => setEsFavorito(!esFavorito)}
-              >
-                {esFavorito ? "❤️" : "🖤"}
-              </div>
+            <Row>
+              <Col xs={12} md={6} lg={6}>
+                <Card.Img
+                  variant="top"
+                  src={imagen}
+                  alt={nombre}
+                  className={styles.imagen}
+                />
+              </Col>
+              <Col xs={12} md={6} lg={6}>
+                <Card.Body className="d-flex flex-column">
+                  <div
+                    className={styles.fav}
+                    onClick={() => setEsFavorito(!esFavorito)}
+                  >
+                    {esFavorito ? "❤️" : "🖤"}
+                  </div>
 
-              <Card.Title>{nombre}</Card.Title>
+                  <Card.Title className={styles.nombre}>{nombre}</Card.Title>
 
-              <Card.Text>{descripcion}</Card.Text>
+                  <Card.Text className={styles.texto}>{descripcion}</Card.Text>
 
-              <Card.Text>$ {precio}</Card.Text>
+                  <Card.Text className={styles.precio}>$ {precio}</Card.Text>
 
-              <Card.Text className={styles.stock}>
-                Stock disponible: {stock}
-              </Card.Text>
+                  <Card.Text className={styles.stock}>
+                    Stock disponible: {stock}
+                  </Card.Text>
 
-              {cantidadActual > 0 ? (
-                <Card.Text style={{ margin: "0 15px", fontWeight: "bold" }}>
-                  Tienes {cantidadActual} agregadas en el carrito.
-                </Card.Text>
-              ) : (
-                ""
-              )}
+                  {cantidadActual > 0 ? (
+                    <Card.Text style={{ margin: "0 15px", fontWeight: "bold" }}>
+                      Tienes {cantidadActual} agregadas en el carrito.
+                    </Card.Text>
+                  ) : (
+                    ""
+                  )}
 
-              {stock > 0 ? (
-                <Row>
-                  <Col xs={12} md={3} lg={3} className="mb-4">
-                    <div className={styles.cantidadContainer}>
-                      <button
-                        className={styles.btn}
-                        onClick={() => setCantidad(cantidad - 1)}
-                        disabled={cantidad <= 1}
-                      >
-                        -
-                      </button>
-                      <span className={styles.cantidad}>{cantidad}</span>
-                      <button
-                        className={styles.btn}
-                        onClick={() => setCantidad(cantidad + 1)}
-                        disabled={cantidad >= stock}
-                      >
-                        +
-                      </button>
-                    </div>
-                  </Col>
-                  <Col xs={12} md={9} lg={9} className="mb-4">
-                    <Button
-                      as={Link}
-                      to={`/producto/${id}`}
-                      variant="primary"
-                      className="mt-auto w-100"
-                      onClick={agregarAlCarrito}
-                    >
-                      Comprar
-                    </Button>
-                  </Col>
-                </Row>
-              ) : (
-                "Sin stock"
-              )}
-              <BotonVerOtros as={Link} to="/productos" className="text-center">
-                Ver otros productos
-              </BotonVerOtros>
-            </Card.Body>
+                  {stock > 0 ? (
+                    <Row>
+                      <Col xs={12} md={3} lg={3} className="mb-4">
+                        <div className={styles.cantidadContainer}>
+                          <button
+                            className={styles.btn}
+                            onClick={() => setCantidad(cantidad - 1)}
+                            disabled={cantidad <= 1}
+                          >
+                            -
+                          </button>
+                          <span className={styles.cantidad}>{cantidad}</span>
+                          <button
+                            className={styles.btn}
+                            onClick={() => setCantidad(cantidad + 1)}
+                            disabled={cantidad >= stock}
+                          >
+                            +
+                          </button>
+                        </div>
+                      </Col>
+                      <Col xs={12} md={9} lg={9} className="mb-4">
+                        <Button
+                          as={Link}
+                          to={`/producto/${id}`}
+                          variant="primary"
+                          className="mt-auto w-100"
+                          onClick={agregarAlCarrito}
+                        >
+                          Comprar
+                        </Button>
+                      </Col>
+                    </Row>
+                  ) : (
+                    "Sin stock"
+                  )}
+                </Card.Body>
+              </Col>
+            </Row>
           </Card>
+        </Col>
+      </Row>
+      <Row>
+        <Col xs={12} md={12} lg={12} className="mb-4">
+          <BotonVerOtros as={Link} to="/productos" className="text-center">
+            Ver otros productos
+          </BotonVerOtros>
         </Col>
       </Row>
     </Container>

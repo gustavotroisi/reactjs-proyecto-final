@@ -1,11 +1,28 @@
 .page-title{
-    text-align:center;
-    padding: 1em;
+    padding: 1em 0;
     font-weight: 500;
     color: white;
 }
+.page-title::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 2px;
+    background: #00C2FF;
+    margin-top: 8px;
+    border-radius: 2px;
+}
+.btn{
+transition: all 0.2s ease;
+&:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+}
 
-
+.card-title {
+    font-weight: 700;
+}
 
 @media (max-width: 1024px) {
     

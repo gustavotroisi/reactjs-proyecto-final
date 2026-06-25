@@ -5,14 +5,14 @@
 }
 
 :root {
-  --color-primary: #58d1fc;
+  --color-primary: #00C2FF;
   --color-secondary: #839496;
   --color-accent: #f16cc0;
   --color-highlight: #b9468f;
 }
 
 body {
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Inter", sans-serif;
   margin: 0;
 }
 

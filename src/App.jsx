@@ -1,4 +1,4 @@
-//import * as bootstrap from "bootstrap";
+import * as bootstrap from "bootstrap";
 //import "bootswatch/dist/solar/bootstrap.min.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";

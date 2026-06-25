@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import styles from "./Header.module.css";
-import logo from "../../../public/images/logo_tech_store3.png";
+import logo from "../../../public/images/logo_techstore4.png";
 import cartIcon from "../../../public/images/cart-svgrepo-com.svg";
 
 function Header() {
@@ -10,10 +10,7 @@ function Header() {
 
   return (
     <header>
-      <nav
-        className="navbar navbar-expand-lg bg-secondary"
-        data-bs-theme="dark"
-      >
+      <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <div className="container-fluid">
           <Link to="/" className="navbar-brand">
             <img className={styles.logo} src={logo} alt="Tech Store logo" />

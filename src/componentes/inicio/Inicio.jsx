@@ -1,6 +1,6 @@
 import ItemListContainer from "../productos/ItemListContainer";
 import styles from "./Inicio.module.css";
-import logo from "../../../public/images/logo_tech_store3.png";
+import logo from "../../../public/images/logo_techstore4.png";
 
 export default function Inicio() {
   return (
