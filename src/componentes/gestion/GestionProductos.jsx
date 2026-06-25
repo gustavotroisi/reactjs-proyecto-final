@@ -3,7 +3,7 @@ import { db } from "../../firebase/config";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import FormularioContainer from "../FormularioProductos/FormularioContainer";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import styles from "./GestionProductos.module.css";
 
 const GestionProductos = () => {

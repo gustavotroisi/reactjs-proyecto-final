@@ -1,3 +1,4 @@
+import { FaFloppyDisk } from "react-icons/fa6";
 import styles from "./FormularioProductos.module.css";
 
 export default function FormularioProductos({
@@ -115,6 +116,7 @@ export default function FormularioProductos({
           className="btn btn-secondary btn-lg"
           disabled={loading}
         >
+          <FaFloppyDisk style={{ marginRight: "5px" }} />
           {loading ? "Guardando Producto..." : "Guardar Producto"}
         </button>
       </form>
