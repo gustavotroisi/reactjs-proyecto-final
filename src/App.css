@@ -47,6 +47,20 @@ footer {
 }
 
 
+@media (min-width: 1025px) {/* Desktop only*/
+
+    header {
+        border-bottom: solid 1px;
+    }
+    header .navbar-nav {
+        width: 98%;
+        justify-content: flex-end;
+        gap: 4em;
+    }
+
+}
+
+
 @media (max-width: 1024px) {
     .nav-link {
         text-align: center;
