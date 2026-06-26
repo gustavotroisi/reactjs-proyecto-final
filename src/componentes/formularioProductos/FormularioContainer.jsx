@@ -106,7 +106,7 @@ export default function FormularioContainer() {
           await addDoc(productosCollection, productoCompleto);
         } catch (e) {
           setMensaje({ texto: "Error al enviar el producto", tipo: "danger" });
-          //console.log("Error: ", e);
+          console.log("Error: ", e);
         }
       } else {
         setMensaje({ texto: "Error al enviar la imagen", tipo: "danger" });
@@ -117,7 +117,7 @@ export default function FormularioContainer() {
       resetForm();
     } catch (e) {
       setMensaje({ texto: "Error al subir la imagen", tipo: "danger" });
-      //console.log("Error: ", e);
+      console.log("Error: ", e);
     } finally {
       setLoading(false);
       setTimeout(() => setMensaje(null), 4000);

@@ -11,7 +11,7 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(true);
-  const [mensaje, setMensaje] = useState(null);
+  //const [mensaje, setMensaje] = useState(null);
 
   useEffect(() => {
     const productosDB = collection(db, "productos");
