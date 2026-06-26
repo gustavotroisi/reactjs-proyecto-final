@@ -14,7 +14,12 @@ import {
 
 import { db } from "../../firebase/config";
 
-export default function ItemListContainer({ titulo, destacados, buscador }) {
+export default function ItemListContainer({
+  titulo,
+  destacados,
+  buscador,
+  paginacion = true,
+}) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(true);
@@ -25,55 +30,6 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
   const [ultimoVisible, setUltimoVisible] = useState(null);
   const [hayMas, setHayMas] = useState(true);
   const PRODUCTOS_POR_PAGINA = 6;
-
-  useEffect(() => {
-    obtenerProductosIniciales();
-    /* 
-    
-    TODOS LOS PRODUCTOS
-
-    const productosDB = collection(db, "productos");
-
-    getDocs(productosDB)
-      .then((response) => {
-        if (response.empty) throw new Error("Error al obtener los datos");
-
-        //console.log(response);
-        setProductos(
-          response.docs.map((doc) => {
-            //console.log(doc.data());
-            return { id: doc.id, ...doc.data() };
-          }),
-        );
-      })
-      .catch((error) => setError(error.message))
-      .finally(() => setCargando(false));
-
-      */
-    /*
-    
-    FETCH JSON
-
-    fetch("/data/productos.json")
-      .then((respuesta) => {
-        if (!respuesta.ok) {
-          throw new Error("No se pudo cargar el archivo de productos");
-        }
-        return respuesta.json();
-      })
-      .then((datos) => {
-        setProductos(datos);
-        setMensaje("Se han cargado los productos");
-      })
-      .catch((error) => {
-        setError(error.message);
-        setMensaje("Error al cargar el archivo");
-      })
-      .finally(() => setCargando(false));
-
-  
-      */
-  }, []);
 
   /*
 
@@ -144,6 +100,55 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
     window.scrollTo(0, 0);
   };
 
+  useEffect(() => {
+    obtenerProductosIniciales();
+    /* 
+    
+    TODOS LOS PRODUCTOS
+
+    const productosDB = collection(db, "productos");
+
+    getDocs(productosDB)
+      .then((response) => {
+        if (response.empty) throw new Error("Error al obtener los datos");
+
+        //console.log(response);
+        setProductos(
+          response.docs.map((doc) => {
+            //console.log(doc.data());
+            return { id: doc.id, ...doc.data() };
+          }),
+        );
+      })
+      .catch((error) => setError(error.message))
+      .finally(() => setCargando(false));
+
+      */
+    /*
+    
+    FETCH JSON
+
+    fetch("/data/productos.json")
+      .then((respuesta) => {
+        if (!respuesta.ok) {
+          throw new Error("No se pudo cargar el archivo de productos");
+        }
+        return respuesta.json();
+      })
+      .then((datos) => {
+        setProductos(datos);
+        setMensaje("Se han cargado los productos");
+      })
+      .catch((error) => {
+        setError(error.message);
+        setMensaje("Error al cargar el archivo");
+      })
+      .finally(() => setCargando(false));
+
+  
+      */
+  }, []);
+
   if (cargando) {
     return (
       <div
@@ -193,34 +198,38 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
         <ItemList productos={productosAMostrar} buscador={buscador} />
 
         {/* Logica de renderizado para los botones --- */}
-        <Row className="mt-4">
-          <Col className="text-center d-flex justify-content-center gap-2">
-            {/* El boton "Ver menos" solo aparece si hay mas de una pagina cargada */}
-            {productos.length > PRODUCTOS_POR_PAGINA && (
-              <Button variant="secondary" onClick={verMenos}>
-                Ver menos
-              </Button>
-            )}
+        {paginacion ? (
+          <Row className="mt-4">
+            <Col className="text-center d-flex justify-content-center gap-2">
+              {/* El boton "Ver menos" solo aparece si hay mas de una pagina cargada */}
+              {productos.length > PRODUCTOS_POR_PAGINA && (
+                <Button variant="secondary" onClick={verMenos}>
+                  Ver menos
+                </Button>
+              )}
 
-            {/* Boton "Cargar mas" */}
-            {hayMas ? (
-              <Button onClick={obtenerMasProductos} disabled={cargandoMas}>
-                {cargandoMas ? (
-                  <Spinner as="span" animation="border" size="sm" />
-                ) : (
-                  "Cargar mas"
-                )}
-              </Button>
-            ) : (
-              // No mostramos el alert si solo hay una pagina de resultados
-              productos.length > PRODUCTOS_POR_PAGINA && (
-                <Alert variant="light" className="m-0">
-                  No hay mas productos para mostrar.
-                </Alert>
-              )
-            )}
-          </Col>
-        </Row>
+              {/* Boton "Cargar mas" */}
+              {hayMas ? (
+                <Button onClick={obtenerMasProductos} disabled={cargandoMas}>
+                  {cargandoMas ? (
+                    <Spinner as="span" animation="border" size="sm" />
+                  ) : (
+                    "Cargar mas"
+                  )}
+                </Button>
+              ) : (
+                // No mostramos el alert si solo hay una pagina de resultados
+                productos.length > PRODUCTOS_POR_PAGINA && (
+                  <Alert variant="light" className="m-0">
+                    No hay mas productos para mostrar.
+                  </Alert>
+                )
+              )}
+            </Col>
+          </Row>
+        ) : (
+          ""
+        )}
       </Container>
     </>
   );

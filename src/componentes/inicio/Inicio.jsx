@@ -116,6 +116,7 @@ export default function Inicio() {
         titulo="Productos Destacados"
         destacados={true}
         buscador={false}
+        paginacion={false}
       />
     </>
   );
