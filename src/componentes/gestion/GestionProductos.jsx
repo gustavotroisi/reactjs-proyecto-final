@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../../firebase/config";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
-import FormularioContainer from "../FormularioProductos/FormularioContainer";
+import FormularioContainer from "../formularioProductos/FormularioContainer";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import styles from "./GestionProductos.module.css";
