@@ -21,7 +21,9 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
   };
 
   return (
-    <Card className={`h-100 ${styles.card} ${destacado ? styles.dest : ""}`}>
+    <Card
+      className={`h-100 p-3 ${styles.card} ${destacado ? styles.dest : ""}`}
+    >
       <Card.Img
         variant="top"
         src={imagen}

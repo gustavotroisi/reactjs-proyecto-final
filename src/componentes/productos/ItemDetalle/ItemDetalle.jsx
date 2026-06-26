@@ -111,7 +111,7 @@ export default function ItemDetalle() {
       <Row>
         <Col xs={12} md={12} lg={12} className="mb-4">
           <Card
-            className={`h-100 ${styles.card} ${destacado ? styles.dest : ""}`}
+            className={`h-100 p-3 ${styles.card} ${destacado ? styles.dest : ""}`}
           >
             {destacado ? <div className={styles.destacado}>⭐</div> : ""}
             <Row>

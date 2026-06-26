@@ -102,7 +102,7 @@ export default function FormularioProductos({
           </div>
         </div>
         <div>
-          <label>Imagen</label>
+          <label>Imagen (800x600px)</label>
           <input
             type="file"
             onChange={manejarCambioImagen}

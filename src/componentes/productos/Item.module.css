@@ -1,6 +1,6 @@
 .card {
     position: relative;
-    border: solid 3px;
+    border: solid 2px;
     background-color: transparent;
 }
 .card.dest{
@@ -60,7 +60,7 @@
 }
 .destacado {
     position: absolute;
-    left: 10px;
+    left: 20px;
     font-size: 1.5em;
 }
 .cantidadContainer{
