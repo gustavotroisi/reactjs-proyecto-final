@@ -87,11 +87,12 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
 
     getDocs(q)
       .then((resp) => {
-        const productosData = resp.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
-        setProductos(productosData);
+        setProductos(
+          resp.docs.map((doc) => {
+            //console.log(doc.data());
+            return { id: doc.id, ...doc.data() };
+          }),
+        );
 
         const ultimoDoc = resp.docs[resp.docs.length - 1];
         setUltimoVisible(ultimoDoc);
@@ -117,10 +118,11 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
 
     getDocs(q)
       .then((resp) => {
-        const productosData = resp.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        }));
+        const productosData = resp.docs.map((doc) => {
+          //console.log(doc.data());
+          return { id: doc.id, ...doc.data() };
+        });
+
         setProductos((productosAnteriores) => [
           ...productosAnteriores,
           ...productosData,
