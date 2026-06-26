@@ -37,7 +37,7 @@ export default function ItemListContainer({
   
   */
   const obtenerProductosIniciales = () => {
-    setCargando(true);
+    //setCargando(true);
     const productosDB = collection(db, "productos");
     const q = query(productosDB, limit(PRODUCTOS_POR_PAGINA));
 
