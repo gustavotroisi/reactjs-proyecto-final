@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 //Firestore
 import { collection, getDocs } from "firebase/firestore";
@@ -57,27 +58,36 @@ export function Directorio({ titulo }) {
   }
 
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col xs={12} md={12} lg={12} className="mb-4">
-          <h1 className="page-title">{titulo}</h1>
-          <section className={styles.texto}>
-            <p>
-              <strong>Tech Store</strong> es una empresa dedicada a la
-              importación y distribución de tecnología.
-            </p>
-            <p>
-              Nuestro equipo está conformado por un grupo de profesionales
-              encargados de que puedas lograr tus objetivos.
-            </p>
-          </section>
-          <div className={styles.directorio}>
-            {nosotros.map((person) => (
-              <TarjetaContacto key={person.id} {...person} />
-            ))}
-          </div>
-        </Col>
-      </Row>
-    </Container>
+    <>
+      <Helmet>
+        <title>TechStore | Nosotros</title>
+        <meta
+          name="description"
+          content={`Nuestro equipo está conformado por un grupo de profesionales.`}
+        />
+      </Helmet>
+      <Container className="mt-4">
+        <Row>
+          <Col xs={12} md={12} lg={12} className="mb-4">
+            <h1 className="page-title">{titulo}</h1>
+            <section className={styles.texto}>
+              <p>
+                <strong>Tech Store</strong> es una empresa dedicada a la
+                importación y distribución de tecnología.
+              </p>
+              <p>
+                Nuestro equipo está conformado por un grupo de profesionales
+                encargados de que puedas lograr tus objetivos.
+              </p>
+            </section>
+            <div className={styles.directorio}>
+              {nosotros.map((person) => (
+                <TarjetaContacto key={person.id} {...person} />
+              ))}
+            </div>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

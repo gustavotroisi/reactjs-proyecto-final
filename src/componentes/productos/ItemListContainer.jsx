@@ -1,6 +1,7 @@
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
 import { Container } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 
 //Firestore
 import { collection, getDocs } from "firebase/firestore";
@@ -63,10 +64,19 @@ export default function ItemListContainer({ titulo, destacados }) {
   console.log(productosAMostrar);
 
   return (
-    <Container className="mt-4">
-      <h1 className="page-title">{titulo}</h1>
-      {console.log(mensaje)}
-      <ItemList productos={productosAMostrar} />
-    </Container>
+    <>
+      <Helmet>
+        <title>TechStore | Productos</title>
+        <meta
+          name="description"
+          content={`Los mejores productos para tu oficina y hogar.`}
+        />
+      </Helmet>
+      <Container className="mt-4">
+        <h1 className="page-title">{titulo}</h1>
+        {console.log(mensaje)}
+        <ItemList productos={productosAMostrar} />
+      </Container>
+    </>
   );
 }

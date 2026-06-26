@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import styled from "styled-components";
 
@@ -108,103 +109,116 @@ export default function ItemDetalle() {
   };
 
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col xs={12} md={12} lg={12} className="mb-4">
-          <Card
-            className={`h-100 p-3 ${styles.card} ${destacado ? styles.dest : ""}`}
-          >
-            {destacado ? <div className={styles.destacado}>⭐</div> : ""}
-            <Row>
-              <Col xs={12} md={6} lg={6}>
-                <Card.Img
-                  variant="top"
-                  src={imagen}
-                  alt={nombre}
-                  className={styles.imagen}
-                />
-              </Col>
-              <Col xs={12} md={6} lg={6}>
-                <Card.Body className="d-flex flex-column">
-                  <div
-                    className={styles.fav}
-                    onClick={() => setEsFavorito(!esFavorito)}
-                  >
-                    {esFavorito ? "❤️" : "🖤"}
-                  </div>
+    <>
+      <Helmet>
+        <title>TechStore | {nombre}</title>
+        <meta
+          name="description"
+          content={`Detalles y precio del producto ${nombre}.`}
+        />
+      </Helmet>
+      <Container className="mt-4">
+        <Row>
+          <Col xs={12} md={12} lg={12} className="mb-4">
+            <Card
+              className={`h-100 p-3 ${styles.card} ${destacado ? styles.dest : ""}`}
+            >
+              {destacado ? <div className={styles.destacado}>⭐</div> : ""}
+              <Row>
+                <Col xs={12} md={6} lg={6}>
+                  <Card.Img
+                    variant="top"
+                    src={imagen}
+                    alt={nombre}
+                    className={styles.imagen}
+                  />
+                </Col>
+                <Col xs={12} md={6} lg={6}>
+                  <Card.Body className="d-flex flex-column">
+                    <div
+                      className={styles.fav}
+                      onClick={() => setEsFavorito(!esFavorito)}
+                    >
+                      {esFavorito ? "❤️" : "🖤"}
+                    </div>
 
-                  <Card.Title className={styles.nombre}>{nombre}</Card.Title>
+                    <Card.Title className={styles.nombre}>{nombre}</Card.Title>
 
-                  <Card.Text className={styles.texto}>{descripcion}</Card.Text>
+                    <Card.Text className={styles.texto}>
+                      {descripcion}
+                    </Card.Text>
 
-                  <div className={styles.precio}>
-                    $ {precio}
-                    {stock > 0 ? (
-                      <Card.Text className={styles.stock}>
-                        Stock disponible: {stock}
-                      </Card.Text>
+                    <div className={styles.precio}>
+                      $ {precio}
+                      {stock > 0 ? (
+                        <Card.Text className={styles.stock}>
+                          Stock disponible: {stock}
+                        </Card.Text>
+                      ) : (
+                        <Card.Text className={styles.stock}>
+                          Sin stock
+                        </Card.Text>
+                      )}
+                    </div>
+
+                    {cantidadActual > 0 ? (
+                      <Badge className="mb-2 bg-secondary">
+                        Tienes {cantidadActual} agregado
+                        {cantidadActual > 1 ? "s" : ""} al carrito
+                      </Badge>
                     ) : (
-                      <Card.Text className={styles.stock}>Sin stock</Card.Text>
+                      ""
                     )}
-                  </div>
 
-                  {cantidadActual > 0 ? (
-                    <Badge className="mb-2 bg-secondary">
-                      Tienes {cantidadActual} agregado
-                      {cantidadActual > 1 ? "s" : ""} al carrito
-                    </Badge>
-                  ) : (
-                    ""
-                  )}
-
-                  {stock > 0 ? (
-                    <Row>
-                      <Col xs={12} md={3} lg={3} className="mb-4">
-                        <div className={styles.cantidadContainer}>
-                          <button
-                            className={styles.btn}
-                            onClick={() => setCantidad(cantidad - 1)}
-                            disabled={cantidad <= 1}
+                    {stock > 0 ? (
+                      <Row>
+                        <Col xs={12} md={3} lg={3} className="mb-4">
+                          <div className={styles.cantidadContainer}>
+                            <button
+                              className={styles.btn}
+                              onClick={() => setCantidad(cantidad - 1)}
+                              disabled={cantidad <= 1}
+                            >
+                              -
+                            </button>
+                            <span className={styles.cantidad}>{cantidad}</span>
+                            <button
+                              className={styles.btn}
+                              onClick={() => setCantidad(cantidad + 1)}
+                              disabled={cantidad >= stock}
+                            >
+                              +
+                            </button>
+                          </div>
+                        </Col>
+                        <Col xs={12} md={9} lg={9} className="mb-4">
+                          <Button
+                            as={Link}
+                            variant="primary"
+                            className="mt-auto w-100"
+                            onClick={agregarAlCarrito}
                           >
-                            -
-                          </button>
-                          <span className={styles.cantidad}>{cantidad}</span>
-                          <button
-                            className={styles.btn}
-                            onClick={() => setCantidad(cantidad + 1)}
-                            disabled={cantidad >= stock}
-                          >
-                            +
-                          </button>
-                        </div>
-                      </Col>
-                      <Col xs={12} md={9} lg={9} className="mb-4">
-                        <Button
-                          as={Link}
-                          variant="primary"
-                          className="mt-auto w-100"
-                          onClick={agregarAlCarrito}
-                        >
-                          Comprar
-                        </Button>
-                      </Col>
-                    </Row>
-                  ) : (
-                    ""
-                  )}
-                </Card.Body>
-              </Col>
-            </Row>
-          </Card>
-        </Col>
-      </Row>
-      <Row>
-        <Col xs={12} md={12} lg={12} className="mb-4">
-          <BotonVerOtros as={Link} to="/productos" className="text-center">
-            Ver otros productos
-          </BotonVerOtros>
-        </Col>
-      </Row>
-    </Container>
+                            Comprar
+                          </Button>
+                        </Col>
+                      </Row>
+                    ) : (
+                      ""
+                    )}
+                  </Card.Body>
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={12} md={12} lg={12} className="mb-4">
+            <BotonVerOtros as={Link} to="/productos" className="text-center">
+              Ver otros productos
+            </BotonVerOtros>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }

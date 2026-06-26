@@ -1,11 +1,19 @@
 import ItemListContainer from "../productos/ItemListContainer";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import styles from "./Inicio.module.css";
 import homeImage from "../../../public/images/home_imagen.png";
 
 export default function Inicio() {
   return (
     <>
+      <Helmet>
+        <title>TechStore</title>
+        <meta
+          name="description"
+          content={`Equipos y accesorios de computación. Los mejores precios, la mejor atención.`}
+        />
+      </Helmet>
       <section
         style={{
           backgroundColor: "#080D1A",

@@ -4,6 +4,7 @@ import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import FormularioContainer from "../formularioProductos/FormularioContainer";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { Helmet } from "react-helmet";
 import styles from "./GestionProductos.module.css";
 
 const GestionProductos = () => {
@@ -40,55 +41,60 @@ const GestionProductos = () => {
   };
 
   return (
-    <Container className="mt-4">
-      <Row>
-        <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
-          <h2 className={styles.titulo}>Gestión de Productos</h2>
-          <hr />
-          <FormularioContainer />
-          <hr />
-          <h3 className={styles.subtitulo}>Listado de Productos</h3>
-          <table className={styles.gestionTable}>
-            <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Precio</th>
-                <th>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {productos.map((prod) => (
-                <tr key={prod.id}>
-                  <td style={{ textAlign: "right" }}>{prod.id}</td>
-                  <td>{prod.nombre}</td>
-                  <td style={{ textAlign: "right" }}>$ {prod.precio}</td>
-                  <td>
-                    <Button
-                      onClick={() =>
-                        alert(`Editar producto con ID: ${prod.id}`)
-                      }
-                      variant="primary"
-                      className="my-2"
-                      style={{ marginRight: "10px" }}
-                    >
-                      <FaEdit style={{ marginRight: "5px" }} /> Editar
-                    </Button>
-                    <Button
-                      onClick={() => handleDelete(prod.id)}
-                      variant="danger"
-                      className="my-2"
-                    >
-                      <FaTrash style={{ marginRight: "5px" }} /> Eliminar
-                    </Button>
-                  </td>
+    <>
+      <Helmet>
+        <title>TechStore | Gestión</title>
+      </Helmet>
+      <Container className="mt-4">
+        <Row>
+          <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+            <h2 className={styles.titulo}>Gestión de Productos</h2>
+            <hr />
+            <FormularioContainer />
+            <hr />
+            <h3 className={styles.subtitulo}>Listado de Productos</h3>
+            <table className={styles.gestionTable}>
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Precio</th>
+                  <th>Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        </Col>
-      </Row>
-    </Container>
+              </thead>
+              <tbody>
+                {productos.map((prod) => (
+                  <tr key={prod.id}>
+                    <td style={{ textAlign: "right" }}>{prod.id}</td>
+                    <td>{prod.nombre}</td>
+                    <td style={{ textAlign: "right" }}>$ {prod.precio}</td>
+                    <td>
+                      <Button
+                        onClick={() =>
+                          alert(`Editar producto con ID: ${prod.id}`)
+                        }
+                        variant="primary"
+                        className="my-2"
+                        style={{ marginRight: "10px" }}
+                      >
+                        <FaEdit style={{ marginRight: "5px" }} /> Editar
+                      </Button>
+                      <Button
+                        onClick={() => handleDelete(prod.id)}
+                        variant="danger"
+                        className="my-2"
+                      >
+                        <FaTrash style={{ marginRight: "5px" }} /> Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 export default GestionProductos;
