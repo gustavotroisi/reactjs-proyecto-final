@@ -102,7 +102,7 @@ export default function ItemDetalle() {
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
-    console.log(producto, cantidad);
+    //console.log(producto, cantidad);
     alert(
       `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
     );

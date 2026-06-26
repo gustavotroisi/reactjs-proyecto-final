@@ -61,7 +61,7 @@ export default function ItemListContainer({ titulo, destacados }) {
     ? productos.filter((prod) => prod.destacado)
     : productos;
 
-  console.log(productosAMostrar);
+  //console.log(productosAMostrar);
 
   return (
     <>
@@ -74,7 +74,7 @@ export default function ItemListContainer({ titulo, destacados }) {
       </Helmet>
       <Container className="mt-4">
         <h1 className="page-title">{titulo}</h1>
-        {console.log(mensaje)}
+        {/*console.log(mensaje)*/}
         <ItemList productos={productosAMostrar} />
       </Container>
     </>

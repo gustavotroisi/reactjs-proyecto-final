@@ -87,17 +87,17 @@ export default function FormularioContainer() {
 
       const datosImgbb = await respuestaImgbb.json();
 
-      console.log(datosImgbb);
+      //console.log(datosImgbb);
 
       if (datosImgbb.success) {
         const productoCompleto = {
           ...datosForm,
           imagen: datosImgbb.data.url,
         };
-        console.log("Imagen enviada: ", productoCompleto);
+        //console.log("Imagen enviada: ", productoCompleto);
 
         try {
-          console.log("Enviando producto a Firebase:", productoCompleto);
+          //console.log("Enviando producto a Firebase:", productoCompleto);
           // Obtenemos la instancia de la base de datos
           const db = getFirestore();
           // Apuntamos a la colección "productos" (si no existe, se crea)
@@ -106,7 +106,7 @@ export default function FormularioContainer() {
           await addDoc(productosCollection, productoCompleto);
         } catch (e) {
           setMensaje({ texto: "Error al enviar el producto", tipo: "danger" });
-          console.log("Error: ", e);
+          //console.log("Error: ", e);
         }
       } else {
         setMensaje({ texto: "Error al enviar la imagen", tipo: "danger" });
@@ -117,7 +117,7 @@ export default function FormularioContainer() {
       resetForm();
     } catch (e) {
       setMensaje({ texto: "Error al subir la imagen", tipo: "danger" });
-      console.log("Error: ", e);
+      //console.log("Error: ", e);
     } finally {
       setLoading(false);
       setTimeout(() => setMensaje(null), 4000);
