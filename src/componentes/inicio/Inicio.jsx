@@ -1,7 +1,6 @@
 import ItemListContainer from "../productos/ItemListContainer";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import styles from "./Inicio.module.css";
-import logo from "../../../public/images/logo_techstore4.png";
 import homeImage from "../../../public/images/home_imagen.png";
 
 export default function Inicio() {

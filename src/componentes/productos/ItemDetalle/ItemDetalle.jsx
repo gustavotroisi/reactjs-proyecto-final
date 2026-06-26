@@ -136,11 +136,16 @@ export default function ItemDetalle() {
 
                   <Card.Text className={styles.texto}>{descripcion}</Card.Text>
 
-                  <Card.Text className={styles.precio}>$ {precio}</Card.Text>
-
-                  <Card.Text className={styles.stock}>
-                    Stock disponible: {stock}
-                  </Card.Text>
+                  <div className={styles.precio}>
+                    $ {precio}
+                    {stock > 0 ? (
+                      <Card.Text className={styles.stock}>
+                        Stock disponible: {stock}
+                      </Card.Text>
+                    ) : (
+                      <Card.Text className={styles.stock}>Sin stock</Card.Text>
+                    )}
+                  </div>
 
                   {cantidadActual > 0 ? (
                     <Card.Text style={{ margin: "0 15px", fontWeight: "bold" }}>
@@ -184,7 +189,7 @@ export default function ItemDetalle() {
                       </Col>
                     </Row>
                   ) : (
-                    "Sin stock"
+                    ""
                   )}
                 </Card.Body>
               </Col>

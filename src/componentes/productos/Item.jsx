@@ -37,10 +37,16 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
         </div>
 
         <Card.Title className={styles.nombre}>{nombre}</Card.Title>
-        <Card.Text>
-          <p className={styles.precio}> $ {precio}</p>
-          <p className={styles.stock}>Stock disponible: {stock}</p>
-        </Card.Text>
+        <div className={styles.precio}>
+          $ {precio}
+          {stock > 0 ? (
+            <Card.Text className={styles.stock}>
+              Stock disponible: {stock}
+            </Card.Text>
+          ) : (
+            <Card.Text className={styles.stock}>Sin stock</Card.Text>
+          )}
+        </div>
 
         {cantidadActual > 0 ? (
           <p style={{ margin: "0 15px", fontWeight: "bold" }}>
@@ -52,7 +58,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
 
         {stock > 0 ? (
           <Row>
-            <Col xs={12} md={5} lg={5} className="mb-4">
+            <Col xs={12} md={6} lg={6} className="mb-4">
               <div className={styles.cantidadContainer}>
                 <button
                   className={styles.btn}
@@ -71,7 +77,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
                 </button>
               </div>
             </Col>
-            <Col xs={12} md={7} lg={7} className="mb-4">
+            <Col xs={12} md={6} lg={6} className="mb-4">
               <Button
                 as={Link}
                 to={`/producto/${id}`}
@@ -84,7 +90,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
             </Col>
           </Row>
         ) : (
-          "Sin stock"
+          ""
         )}
 
         <Button
