@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 
 //Firestore
@@ -50,11 +50,31 @@ export function Directorio({ titulo }) {
   }, []);
 
   if (cargando) {
-    return <>Cargando equipo...</>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh" }}
+      >
+        <Spinner
+          animation="border"
+          variant="primary"
+          role="status"
+          style={{ width: "3rem", height: "3rem" }}
+        >
+          <span className="visually-hidden">Cargando...</span>
+        </Spinner>
+      </div>
+    );
   }
-
   if (error) {
-    return <>Error: {error}</>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh", color: "var(--color-secondary)" }}
+      >
+        Error: {error}
+      </div>
+    );
   }
 
   return (

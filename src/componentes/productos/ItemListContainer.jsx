@@ -1,6 +1,6 @@
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 
 //Firestore
@@ -51,10 +51,31 @@ export default function ItemListContainer({ titulo, destacados, buscador }) {
   }, []);
 
   if (cargando) {
-    return <p>Cargando productos, por favor espere...</p>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh" }}
+      >
+        <Spinner
+          animation="border"
+          variant="primary"
+          role="status"
+          style={{ width: "3rem", height: "3rem" }}
+        >
+          <span className="visually-hidden">Cargando...</span>
+        </Spinner>
+      </div>
+    );
   }
   if (error) {
-    return <p>Error: {error}</p>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh", color: "var(--color-secondary)" }}
+      >
+        Error: {error}
+      </div>
+    );
   }
 
   const productosAMostrar = destacados
