@@ -1,6 +1,7 @@
 .footer{
     padding: 1em;
     justify-content: center;
+    background-color: var(--color-secondary);
     
 }
 .footer p{

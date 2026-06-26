@@ -9,6 +9,7 @@
   --color-secondary: #839496;
   --color-accent: #f16cc0;
   --color-highlight: #b9468f;
+  --color-bg: #080D1A;
 }
 
 body {
@@ -25,7 +26,7 @@ p {
 }
 
  #root{
-  background-color: #080D1A;
+  background-color: var(--color-bg);
 }
 main{
   margin-bottom: 30px;

@@ -16,7 +16,7 @@ export default function Inicio() {
       </Helmet>
       <section
         style={{
-          backgroundColor: "#080D1A",
+          backgroundColor: "var(--color-bg)",
           borderBottom: "1px solid rgba(255,255,255,0.06)",
           padding: "56px 0 48px",
         }}
@@ -69,7 +69,7 @@ export default function Inicio() {
                   style={{
                     backgroundColor: "var(--color-primary)",
                     borderColor: "var(--color-primary)",
-                    color: "#080D1A",
+                    color: "var(--color-bg)",
                     fontWeight: 700,
                     fontSize: "14px",
                     padding: "11px 26px",
