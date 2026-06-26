@@ -7,7 +7,7 @@ import { Helmet } from "react-helmet";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebase/config";
 
-export default function ItemListContainer({ titulo, destacados }) {
+export default function ItemListContainer({ titulo, destacados, buscador }) {
   const [productos, setProductos] = useState([]);
   const [error, setError] = useState(null);
   const [cargando, setCargando] = useState(true);
@@ -75,7 +75,7 @@ export default function ItemListContainer({ titulo, destacados }) {
       <Container className="mt-4">
         <h1 className="page-title">{titulo}</h1>
         {/*console.log(mensaje)*/}
-        <ItemList productos={productosAMostrar} />
+        <ItemList productos={productosAMostrar} buscador={buscador} />
       </Container>
     </>
   );

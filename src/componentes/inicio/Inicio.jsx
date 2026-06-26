@@ -112,7 +112,11 @@ export default function Inicio() {
         </Container>
       </section>
 
-      <ItemListContainer titulo="Productos Destacados" destacados={true} />
+      <ItemListContainer
+        titulo="Productos Destacados"
+        destacados={true}
+        buscador={false}
+      />
     </>
   );
 }
