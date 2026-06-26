@@ -113,7 +113,7 @@ export default function FormularioProductos({
         </div>
         <button
           type="submit"
-          className="btn btn-secondary btn-lg"
+          className="btn btn-primary btn-lg"
           disabled={loading}
         >
           <FaFloppyDisk style={{ marginRight: "5px" }} />

@@ -24,6 +24,7 @@
     text-transform: uppercase;
     transition: all .5s;
 }
+
 .nav a:hover{
     background-color: var(--color-primary);
 }
@@ -35,13 +36,13 @@
 
 .cartIcon img{
     filter: invert(1) brightness(2);
-    width: 1.2em;
-    height: 1.2em;
+    width: 1em;
+    height: 1em;
 }
 .total{
     position: absolute;
     top: 0px;
-    left: 20px;
+    left: 15px;
     background-color: white;
     color: black;
     width:20px;
@@ -50,4 +51,12 @@
     border-radius:999px;
     font-weight: 600;
     font-size: .58em;
+}
+
+
+@media (max-width: 1024px) {
+    .cartIcon {
+        margin-left: 5px;
+        align-items: center;
+    }
 }

@@ -3,7 +3,7 @@ import { db } from "../../firebase/config";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import FormularioContainer from "../FormularioProductos/FormularioContainer";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button } from "react-bootstrap";
 import styles from "./GestionProductos.module.css";
 
 const GestionProductos = () => {
@@ -61,19 +61,21 @@ const GestionProductos = () => {
                 <td>{prod.nombre}</td>
                 <td style={{ textAlign: "right" }}>$ {prod.precio}</td>
                 <td>
-                  <button
+                  <Button
                     onClick={() => alert(`Editar producto con ID: ${prod.id}`)}
-                    className="btn btn-primary"
+                    variant="primary"
+                    className="my-2"
                     style={{ marginRight: "10px" }}
                   >
                     <FaEdit style={{ marginRight: "5px" }} /> Editar
-                  </button>
-                  <button
+                  </Button>
+                  <Button
                     onClick={() => handleDelete(prod.id)}
-                    className="btn btn-danger"
+                    variant="danger"
+                    className="my-2"
                   >
                     <FaTrash style={{ marginRight: "5px" }} /> Eliminar
-                  </button>
+                  </Button>
                 </td>
               </tr>
             ))}

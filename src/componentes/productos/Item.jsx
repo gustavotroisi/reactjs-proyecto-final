@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { Link } from "react-router-dom";
-import { Row, Col, Card, Button } from "react-bootstrap";
+import { Row, Col, Card, Button, Badge } from "react-bootstrap";
 import styles from "./Item.module.css";
 
 export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
@@ -49,9 +49,10 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
         </div>
 
         {cantidadActual > 0 ? (
-          <p style={{ margin: "0 15px", fontWeight: "bold" }}>
-            Tienes {cantidadActual} agregadas en el carrito.
-          </p>
+          <Badge className="mb-2 bg-secondary">
+            Tienes {cantidadActual} agregado{cantidadActual > 1 ? "s" : ""} al
+            carrito
+          </Badge>
         ) : (
           ""
         )}
@@ -80,7 +81,6 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
             <Col xs={12} md={6} lg={6} className="mb-4">
               <Button
                 as={Link}
-                to={`/producto/${id}`}
                 variant="primary"
                 className="mt-auto w-100"
                 onClick={agregarAlCarrito}

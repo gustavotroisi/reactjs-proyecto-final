@@ -34,11 +34,31 @@ transition: all 0.2s ease;
 }
 
 footer {
-    background-color: var(--color-primary);
+    background-color: var(--color-secondary);
+}
+.linkCarrito {
+    display: flex;
+    text-decoration: none;
+    justify-content: center;
 }
 
-@media (max-width: 1024px) {
-    
+.linkCarrito span.nav-link {
+    padding-right: 5px !important;
 }
+
+
+@media (max-width: 1024px) {
+    .nav-link {
+        text-align: center;
+        font-size: 1.3em;
+    }
+    .linkCarrito{
+        align-items: center;
+    }
+    .linkCarrito span.nav-link {
+        padding-right: 0 !important;
+    }
+}
+
 
  

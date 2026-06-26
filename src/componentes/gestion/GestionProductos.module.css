@@ -1,6 +1,7 @@
 .gestionTable {
     border: solid 1px #ccc;
     margin: 0 auto;
+    color: #ccc;
 }
 
 .gestionTable td {
@@ -10,15 +11,21 @@
 .gestionTable th {
     padding: 3px 12px;
     text-align: center;
+    color: var(--color-primary);
    
 }
 .titulo {
     text-align: center;
     margin: 30px;
     font-weight: 600;
+    color: #ccc;
 }
 .subtitulo{
     text-align: center;
     margin: 30px;
     font-weight: 600;
+    color: #ccc;
+}
+hr{
+    color: white;
 }

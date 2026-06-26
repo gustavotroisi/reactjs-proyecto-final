@@ -50,20 +50,15 @@ function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/carrito" className="nav-link">
-                  Carrito
-                </Link>
-              </li>
-              <li className="nav-item">
-                <div className={styles.cartIcon}>
-                  <Link to="/carrito">
+                <Link to="/carrito" className="linkCarrito">
+                  <span className="nav-link"> Carrito</span>
+                  <span className={styles.cartIcon}>
                     <img src={cartIcon} alt="cart icon" />
-
                     {totalItems > 0 && (
                       <div className={styles.total}>{totalItems}</div>
                     )}
-                  </Link>
-                </div>
+                  </span>
+                </Link>
               </li>
               {/*<li className="nav-item dropdown">
                 <a

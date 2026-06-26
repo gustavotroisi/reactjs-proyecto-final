@@ -1,6 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Card, Button } from "react-bootstrap";
+import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import styled from "styled-components";
 
 //Firestore
@@ -65,7 +65,7 @@ export default function ItemDetalle() {
       .then((resp) => {
         if (!resp.empty) {
           // Verificamos si el documento existe
-          setProducto({ ...resp.docs[0].data(), id: resp.docs[0].id });
+          setProducto({ id: resp.docs[0].id, ...resp.docs[0].data() });
         } else {
           setError("Producto no encontrado");
         }
@@ -101,6 +101,7 @@ export default function ItemDetalle() {
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
+    console.log(producto, cantidad);
     alert(
       `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
     );
@@ -148,9 +149,10 @@ export default function ItemDetalle() {
                   </div>
 
                   {cantidadActual > 0 ? (
-                    <Card.Text style={{ margin: "0 15px", fontWeight: "bold" }}>
-                      Tienes {cantidadActual} agregadas en el carrito.
-                    </Card.Text>
+                    <Badge className="mb-2 bg-secondary">
+                      Tienes {cantidadActual} agregado
+                      {cantidadActual > 1 ? "s" : ""} al carrito
+                    </Badge>
                   ) : (
                     ""
                   )}
@@ -179,7 +181,6 @@ export default function ItemDetalle() {
                       <Col xs={12} md={9} lg={9} className="mb-4">
                         <Button
                           as={Link}
-                          to={`/producto/${id}`}
                           variant="primary"
                           className="mt-auto w-100"
                           onClick={agregarAlCarrito}

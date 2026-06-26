@@ -12,7 +12,9 @@
     display: block;
     margin: .2em 0;
     font-weight: 600;
+    color: #ccc;
 }
 .titulo{
     text-align: center;
+    color: var(--color-primary);
 }
