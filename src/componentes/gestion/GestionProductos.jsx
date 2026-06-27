@@ -3,12 +3,13 @@ import { db } from "../../firebase/config";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import FormularioContainer from "../formularioProductos/FormularioContainer";
 import { FaEdit, FaTrash } from "react-icons/fa";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import styles from "./GestionProductos.module.css";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
+  const [modalEliminar, setModalEliminar] = useState({ show: false, id: null });
   /*
   const estadoInicialForm = {
     nombre: "",
@@ -23,11 +24,19 @@ const GestionProductos = () => {
     const cargarProductos = async () => {
       const productosRef = collection(db, "productos");
       const resp = await getDocs(productosRef);
-      setProductos(resp.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      //setProductos(resp.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
+      setProductos(
+        resp.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+          idFirestore: doc.id,
+        })),
+      );
     };
     cargarProductos();
   }, []);
 
+  /*/*
   const handleDelete = async (id) => {
     const confirmacion = window.confirm(
       `¿Está seguro de que desea eliminar el producto con ID: ${id} ? `,
@@ -38,6 +47,17 @@ const GestionProductos = () => {
       setProductos(productos.filter((prod) => prod.id !== id));
       alert("Producto eliminado.");
     }
+  };
+  */
+  const handleDelete = (idFirestore) => {
+    setModalEliminar({ show: true, idFirestore });
+  };
+
+  const confirmarEliminar = async () => {
+    const docRef = doc(db, "productos", modalEliminar.idFirestore);
+    await deleteDoc(docRef);
+    setProductos(productos.filter((prod) => prod.id !== modalEliminar.id));
+    setModalEliminar({ show: false, id: null });
   };
 
   return (
@@ -80,7 +100,7 @@ const GestionProductos = () => {
                         <FaEdit style={{ marginRight: "5px" }} /> Editar
                       </Button>
                       <Button
-                        onClick={() => handleDelete(prod.id)}
+                        onClick={() => handleDelete(prod.idFirestore)}
                         variant="danger"
                         className="my-2"
                       >
@@ -93,6 +113,33 @@ const GestionProductos = () => {
             </table>
           </Col>
         </Row>
+
+        {/* Modal Eliminar */}
+        <Modal
+          centered
+          data-bs-theme="dark"
+          show={modalEliminar.show}
+          onHide={() => setModalEliminar({ show: false, id: null })}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Confirmar eliminación</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            ¿Está seguro de que desea eliminar el producto{" "}
+            <strong>ID: {modalEliminar.id}</strong>?
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => setModalEliminar({ show: false, id: null })}
+            >
+              Cancelar
+            </Button>
+            <Button variant="danger" onClick={confirmarEliminar}>
+              Eliminar
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </Container>
     </>
   );
