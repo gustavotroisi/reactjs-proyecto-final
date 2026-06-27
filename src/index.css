@@ -23,7 +23,7 @@ p {
   font-size: 16px;
 }
 
- #root{
+#root{
   background-color: var(--color-bg);
 }
 main{

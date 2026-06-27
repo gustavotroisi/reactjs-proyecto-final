@@ -1,15 +1,21 @@
-import { Card } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import styles from "./TarjetaContacto.module.css";
 
 export function TarjetaContacto(contacto) {
   return (
     <Card className="h-100" className={styles.card}>
-      <Card.Img variant="top" src={contacto.fotoURL} alt={contacto.nombre} />
+      <Card.Img
+        variant="top"
+        src={contacto.fotoURL}
+        className="mb-3"
+        alt={contacto.nombre}
+      />
       <Card.Title className={styles.nombre}>{contacto.nombre}</Card.Title>
-      <div>
-        <Card.Text>{contacto.linkedinURL}</Card.Text>
-        <Card.Text className="badge bg-secondary">{contacto.rol}</Card.Text>
-      </div>
+      <Badge className="mb-2 bg-primary mx-auto mt-2">{contacto.rol}</Badge>
+      <Link to="/productos" className={`  mb-2 ${styles.linkedIn}`}>
+        {contacto.linkedinURL}
+      </Link>
     </Card>
   );
 }

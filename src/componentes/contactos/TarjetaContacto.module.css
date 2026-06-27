@@ -1,14 +1,20 @@
 .card{
-    border: solid 4px #ccc;
+    border: none;
+    background-color: var(--color-bg-secondary);
     border-radius: 20px;
     padding: 1em;
-    background-color: white;
+    color: white;
+    text-align: center;
 }
 .card img{
     max-width: 140px;
+    margin: 0 auto;
 }
 .nombre {
     font-size: 1.15em;
     font-weight: 800;
     margin: 0;
+}
+.card a.linkedIn{
+    color: var(--color-primary);
 }
