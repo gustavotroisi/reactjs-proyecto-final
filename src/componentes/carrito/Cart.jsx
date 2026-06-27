@@ -14,9 +14,9 @@ export default function Cart() {
         <Helmet>
           <title>TechStore | Carrito</title>
         </Helmet>
-        <Container className={`mt-4 ${styles.cart}`}>
+        <Container className={`mt-4 mx-auto ${styles.cart}`}>
           <Row>
-            <Col xs={12} md={8} lg={8} className={`mb-4 mx-auto `}>
+            <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
               {cartHeader}
               <p style={{ textAlign: "center" }}>
                 <strong>El carrito está vacío.</strong>
