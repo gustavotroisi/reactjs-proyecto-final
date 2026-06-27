@@ -1,10 +1,10 @@
 .card {
     position: relative;
     border: solid 2px;
-    background-color: transparent;
+    background-color: var(--color-bg-secondary);
 }
 .card.dest{
-    border-color: #FFCC00;
+    border-color: var(--color-secondary);
 }
 .card .btn{
     padding: .1em .4em .25em .4em;
@@ -16,7 +16,11 @@
     width: 35px;
     border: 0;
 }
-
+.card .btnDetalle{
+    background-color: var(--color-bg);
+    border-color: var(--color-bg-secondary);
+    color: var(--color-secondary);
+}
 .card button:disabled{
     background-color: #ccc;
     cursor: not-allowed;

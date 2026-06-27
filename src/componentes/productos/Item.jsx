@@ -107,7 +107,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
           as={Link}
           to={`/producto/${id}`}
           variant="primary"
-          className="mt-auto"
+          className={`mt-auto ${styles.btnDetalle}`}
           aria-label="Ver detalle del producto"
         >
           Ver detalle
