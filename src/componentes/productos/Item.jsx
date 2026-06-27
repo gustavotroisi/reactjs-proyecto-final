@@ -4,6 +4,7 @@ import { useLike } from "../../context/LikeContext";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
+import { IoStar } from "react-icons/io5";
 import styles from "./Item.module.css";
 
 export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
@@ -37,7 +38,20 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
         alt={nombre}
         className={styles.imagen}
       />
-      {destacado ? <div className={styles.destacado}>⭐</div> : ""}
+      {destacado ? (
+        <div className={styles.destacado}>
+          <IoStar
+            style={{
+              top: "5px",
+              position: "absolute",
+              left: "5px",
+            }}
+          />{" "}
+          DESTACADO
+        </div>
+      ) : (
+        ""
+      )}
       <Card.Body className="d-flex flex-column">
         <div
           className={styles.fav}

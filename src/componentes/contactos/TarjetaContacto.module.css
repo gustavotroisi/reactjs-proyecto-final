@@ -5,6 +5,7 @@
     padding: 1em;
     color: white;
     text-align: center;
+    
 }
 .card img{
     max-width: 140px;
@@ -15,6 +16,9 @@
     font-weight: 800;
     margin: 0;
 }
-.card a.linkedIn{
+.card a.linkedIn {
+    color: var(--color-secondary);
+}
+.card a.linkedIn:hover{
     color: var(--color-primary);
 }

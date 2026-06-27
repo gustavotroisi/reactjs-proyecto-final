@@ -4,6 +4,7 @@ import { useLike } from "../../../context/LikeContext";
 import { Helmet } from "react-helmet";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
+import { IoStar } from "react-icons/io5";
 import styled from "styled-components";
 
 //Firestore
@@ -131,7 +132,20 @@ export default function ItemDetalle() {
             <Card
               className={`h-100 p-3 ${styles.card} ${destacado ? styles.dest : ""}`}
             >
-              {destacado ? <div className={styles.destacado}>⭐</div> : ""}
+              {destacado ? (
+                <div className={styles.destacado}>
+                  <IoStar
+                    style={{
+                      top: "5px",
+                      position: "absolute",
+                      left: "5px",
+                    }}
+                  />{" "}
+                  DESTACADO
+                </div>
+              ) : (
+                ""
+              )}
               <Row>
                 <Col xs={12} md={6} lg={6}>
                   <Card.Img
