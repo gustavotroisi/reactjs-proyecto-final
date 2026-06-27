@@ -1,17 +1,24 @@
 import { useState } from "react";
 import { useCart } from "../../context/CartContext";
+import { useLike } from "../../context/LikeContext";
 import { Link } from "react-router-dom";
 import { Row, Col, Card, Button, Badge } from "react-bootstrap";
+import { MdFavorite } from "react-icons/md";
 import styles from "./Item.module.css";
 
 export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
   const producto = { id, nombre, precio, stock, imagen, destacado };
   const [cantidad, setCantidad] = useState(1);
-  const [esFavorito, setEsFavorito] = useState(false);
+  //const [esFavorito, setEsFavorito] = useState(false);
 
   const { addToCart, getCantidadActual } = useCart();
+  const { setMeGusta, chequeaSiMeGusta } = useLike();
 
   const cantidadActual = getCantidadActual(producto.id);
+
+  const handleMeGusta = (id) => {
+    setMeGusta(id);
+  };
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
@@ -36,11 +43,16 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
           className={styles.fav}
           role="button"
           aria-label={
-            esFavorito ? "Quitar de favoritos" : "Agregar a favoritos"
+            chequeaSiMeGusta(id) ? "Quitar de favoritos" : "Agregar a favoritos"
           }
-          onClick={() => setEsFavorito(!esFavorito)}
+          //onClick={() => setEsFavorito(!esFavorito)}
+          onClick={() => handleMeGusta(id)}
         >
-          {esFavorito ? "❤️" : "🖤"}
+          {chequeaSiMeGusta(id) ? (
+            <MdFavorite style={{ color: "var(--color-primary)" }} />
+          ) : (
+            <MdFavorite style={{ color: "rgba(255, 255, 255, 0.2)" }} />
+          )}
         </div>
 
         <Card.Title className={styles.nombre}>{nombre}</Card.Title>

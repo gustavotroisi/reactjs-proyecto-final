@@ -1,7 +1,9 @@
 import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useLike } from "../../../context/LikeContext";
 import { Helmet } from "react-helmet";
 import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
+import { MdFavorite } from "react-icons/md";
 import styled from "styled-components";
 
 //Firestore
@@ -16,7 +18,13 @@ export default function ItemDetalle() {
   const [producto, setProducto] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [esFavorito, setEsFavorito] = useState(null);
+
+  //const [esFavorito, setEsFavorito] = useState(null);
+  const { setMeGusta, chequeaSiMeGusta } = useLike();
+  const handleMeGusta = (id) => {
+    setMeGusta(parseInt(id));
+  };
+
   const [cantidad, setCantidad] = useState(1);
 
   const { addToCart, getCantidadActual } = useCart();
@@ -138,10 +146,21 @@ export default function ItemDetalle() {
                     <div
                       className={styles.fav}
                       role="button"
-                      aria-label={esFavorito ? "Quitar de favoritos" : "Agregar a favoritos"}
-                      onClick={() => setEsFavorito(!esFavorito)}
+                      aria-label={
+                        chequeaSiMeGusta(id)
+                          ? "Quitar de favoritos"
+                          : "Agregar a favoritos"
+                      }
+                      //onClick={() => setEsFavorito(!esFavorito)}
+                      onClick={() => handleMeGusta(id)}
                     >
-                      {esFavorito ? "❤️" : "🖤"}
+                      {chequeaSiMeGusta(parseInt(id)) ? (
+                        <MdFavorite style={{ color: "var(--color-primary)" }} />
+                      ) : (
+                        <MdFavorite
+                          style={{ color: "rgba(255, 255, 255, 0.2)" }}
+                        />
+                      )}
                     </div>
 
                     <Card.Title className={styles.nombre}>{nombre}</Card.Title>
