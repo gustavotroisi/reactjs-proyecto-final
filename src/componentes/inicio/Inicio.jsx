@@ -75,6 +75,7 @@ export default function Inicio() {
                     padding: "11px 26px",
                     borderRadius: "8px",
                   }}
+                  aria-label="Ver productos"
                 >
                   Ver productos
                 </Button>
@@ -91,6 +92,7 @@ export default function Inicio() {
                     borderRadius: "8px",
                     backgroundColor: "transparent",
                   }}
+                  aria-label="Conocenos"
                 >
                   Conocenos
                 </Button>

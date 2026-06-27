@@ -137,6 +137,8 @@ export default function ItemDetalle() {
                   <Card.Body className="d-flex flex-column">
                     <div
                       className={styles.fav}
+                      role="button"
+                      aria-label={esFavorito ? "Quitar de favoritos" : "Agregar a favoritos"}
                       onClick={() => setEsFavorito(!esFavorito)}
                     >
                       {esFavorito ? "❤️" : "🖤"}
@@ -178,6 +180,7 @@ export default function ItemDetalle() {
                               className={styles.btn}
                               onClick={() => setCantidad(cantidad - 1)}
                               disabled={cantidad <= 1}
+                              aria-label="Disminuir cantidad"
                             >
                               -
                             </button>
@@ -186,6 +189,7 @@ export default function ItemDetalle() {
                               className={styles.btn}
                               onClick={() => setCantidad(cantidad + 1)}
                               disabled={cantidad >= stock}
+                              aria-label="Aumentar cantidad"
                             >
                               +
                             </button>

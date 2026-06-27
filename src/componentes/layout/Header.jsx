@@ -12,7 +12,7 @@ function Header() {
     <header>
       <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <div className="container-fluid">
-          <Link to="/" className="navbar-brand">
+          <Link to="/" className="navbar-brand" aria-label="Tech Store Home">
             <img className={styles.logo} src={logo} alt="Tech Store logo" />
           </Link>
           <button
@@ -29,28 +29,36 @@ function Header() {
           <div className="collapse navbar-collapse" id="navbarColor01">
             <ul className="navbar-nav me-auto">
               <li className="nav-item">
-                <Link to="/" className="nav-link">
+                <Link to="/" className="nav-link" aria-label="Inicio">
                   Inicio
                   <span className="visually-hidden">(current)</span>
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/productos" className="nav-link">
+                <Link
+                  to="/productos"
+                  className="nav-link"
+                  aria-label="Productos"
+                >
                   Productos
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/nosotros" className="nav-link">
+                <Link to="/nosotros" className="nav-link" aria-label="Nosotros">
                   Nosotros
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/gestion" className="nav-link">
+                <Link to="/gestion" className="nav-link" aria-label="Gestión">
                   Gestión
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/carrito" className="linkCarrito">
+                <Link
+                  to="/carrito"
+                  className="linkCarrito"
+                  aria-label="Carrito de compras"
+                >
                   <span className="nav-link"> Carrito</span>
                   <span className={styles.cartIcon}>
                     <img src={cartIcon} alt="cart icon" />

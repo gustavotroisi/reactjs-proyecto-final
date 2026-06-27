@@ -32,7 +32,14 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
       />
       {destacado ? <div className={styles.destacado}>⭐</div> : ""}
       <Card.Body className="d-flex flex-column">
-        <div className={styles.fav} onClick={() => setEsFavorito(!esFavorito)}>
+        <div
+          className={styles.fav}
+          role="button"
+          aria-label={
+            esFavorito ? "Quitar de favoritos" : "Agregar a favoritos"
+          }
+          onClick={() => setEsFavorito(!esFavorito)}
+        >
           {esFavorito ? "❤️" : "🖤"}
         </div>
 
@@ -65,6 +72,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
                   className={styles.btn}
                   onClick={() => setCantidad(cantidad - 1)}
                   disabled={cantidad <= 1}
+                  aria-label="Disminuir cantidad"
                 >
                   -
                 </button>
@@ -73,6 +81,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
                   className={styles.btn}
                   onClick={() => setCantidad(cantidad + 1)}
                   disabled={cantidad >= stock}
+                  aria-label="Aumentar cantidad"
                 >
                   +
                 </button>
@@ -84,6 +93,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
                 variant="primary"
                 className="mt-auto w-100"
                 onClick={agregarAlCarrito}
+                aria-label="Comprar"
               >
                 Comprar
               </Button>
@@ -98,6 +108,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
           to={`/producto/${id}`}
           variant="primary"
           className="mt-auto"
+          aria-label="Ver detalle del producto"
         >
           Ver detalle
         </Button>

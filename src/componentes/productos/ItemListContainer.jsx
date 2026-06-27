@@ -203,14 +203,22 @@ export default function ItemListContainer({
             <Col className="text-center d-flex justify-content-center gap-2">
               {/* El boton "Ver menos" solo aparece si hay mas de una pagina cargada */}
               {productos.length > PRODUCTOS_POR_PAGINA && (
-                <Button variant="secondary" onClick={verMenos}>
+                <Button
+                  variant="secondary"
+                  onClick={verMenos}
+                  aria-label="Ver menos productos"
+                >
                   Ver menos
                 </Button>
               )}
 
               {/* Boton "Cargar mas" */}
               {hayMas ? (
-                <Button onClick={obtenerMasProductos} disabled={cargandoMas}>
+                <Button
+                  onClick={obtenerMasProductos}
+                  disabled={cargandoMas}
+                  aria-label="Cargar más productos"
+                >
                   {cargandoMas ? (
                     <Spinner as="span" animation="border" size="sm" />
                   ) : (

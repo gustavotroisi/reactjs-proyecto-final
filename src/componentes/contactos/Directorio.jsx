@@ -89,7 +89,7 @@ export function Directorio({ titulo }) {
       <Container className="mt-4">
         <Row>
           <Col xs={12} md={12} lg={12} className="mb-4">
-            <h1 className="page-title">{titulo}</h1>
+            <h1 className={`page-title ${styles.titulo}`}>{titulo}</h1>
             <section className={styles.texto}>
               <p>
                 <strong>Tech Store</strong> es una empresa dedicada a la

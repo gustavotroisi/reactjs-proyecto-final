@@ -12,3 +12,10 @@
 .texto p{
     color: white;
 }
+.titulo{
+    text-align: center;
+}
+.titulo:before{
+    margin-left: auto;
+    margin-right: auto;
+}
