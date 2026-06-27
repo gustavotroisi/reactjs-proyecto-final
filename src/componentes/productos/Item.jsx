@@ -51,7 +51,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
           {chequeaSiMeGusta(id) ? (
             <MdFavorite style={{ color: "var(--color-primary)" }} />
           ) : (
-            <MdFavorite style={{ color: "rgba(255, 255, 255, 0.2)" }} />
+            <MdFavorite style={{ color: "var(--color-disabled)" }} />
           )}
         </div>
 

@@ -11,6 +11,7 @@
   --color-highlight: #b9468f;
   --color-bg: #080D1A;
   --color-bg-secondary: #0E1526;
+  --color-disabled: rgba(255, 255, 255, 0.2);
 }
 
 

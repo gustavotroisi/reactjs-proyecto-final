@@ -22,7 +22,7 @@
     color: var(--color-secondary);
 }
 .card button:disabled{
-    background-color: #ccc;
+    background-color: var(--color-disabled);
     cursor: not-allowed;
 }
 .imagen{

@@ -158,7 +158,7 @@ export default function ItemDetalle() {
                         <MdFavorite style={{ color: "var(--color-primary)" }} />
                       ) : (
                         <MdFavorite
-                          style={{ color: "rgba(255, 255, 255, 0.2)" }}
+                          style={{ color: "var(--color-disabled)" }}
                         />
                       )}
                     </div>
