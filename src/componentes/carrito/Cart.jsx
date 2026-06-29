@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCartPlus } from "react-icons/fa6";
 import { MdFavorite } from "react-icons/md";
+import { formatoPrecio } from "../../utils/formatoPrecio";
 
 export default function Cart() {
   const { cart, clearCart, removeItem, getCartTotal } = useCart();
@@ -84,13 +85,13 @@ export default function Cart() {
                 )}
               </Col>
               <Col xs={6} md={2} className={styles.precio}>
-                $ {item.precio}
+                {formatoPrecio(item.precio)}
               </Col>
               <Col xs={3} md={2} className={styles.cantidad}>
                 {item.quantity}
               </Col>
               <Col xs={3} md={2} className={styles.subtotal}>
-                $ {item.precio * item.quantity}
+                {formatoPrecio(item.precio * item.quantity)}
               </Col>
               <Col xs={12} md={1} className={styles.accion}>
                 <button
@@ -106,7 +107,9 @@ export default function Cart() {
         <Row className={styles.totalRow}>
           <Col xs={12} className={styles.total}>
             <span>Total: </span>
-            <span className={styles.totalPrecio}>$ {getCartTotal()}</span>
+            <span className={styles.totalPrecio}>
+              {formatoPrecio(getCartTotal())}
+            </span>
           </Col>
         </Row>
         <div className={styles.actionsWrapper}>

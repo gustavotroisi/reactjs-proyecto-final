@@ -6,6 +6,7 @@ import { Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import styles from "./Item.module.css";
+import { formatoPrecio } from "../../utils/formatoPrecio";
 
 export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
   const producto = { id, nombre, precio, stock, imagen, destacado };
@@ -71,7 +72,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
 
         <Card.Title className={styles.nombre}>{nombre}</Card.Title>
         <div className={styles.precio}>
-          $ {precio}
+          {formatoPrecio(precio)}
           {stock > 0 ? (
             <Card.Text className={styles.stock}>
               Stock disponible: {stock}

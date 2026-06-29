@@ -6,6 +6,7 @@ import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import styled from "styled-components";
+import { formatoPrecio } from "../../../utils/formatoPrecio";
 
 //Firestore
 //import { doc, getDoc } from "firebase/firestore";
@@ -184,7 +185,7 @@ export default function ItemDetalle() {
                     </Card.Text>
 
                     <div className={styles.precio}>
-                      $ {precio}
+                      {formatoPrecio(precio)}
                       {stock > 0 ? (
                         <Card.Text className={styles.stock}>
                           Stock disponible: {stock}
