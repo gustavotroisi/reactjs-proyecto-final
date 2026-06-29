@@ -53,6 +53,11 @@ footer {
     padding-right: 5px !important;
 }
 
+.navbar-nav .nav-link.active {
+    color: var(--color-primary) !important;
+}
+
+
 
 @media (min-width: 1025px) {/* Desktop only*/
 

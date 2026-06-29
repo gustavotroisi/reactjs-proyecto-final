@@ -103,19 +103,23 @@ export default function Cart() {
               </Col>
             </Row>
           ))}
+
+          <Row className="py-3">
+            <Col xs={12} md={6}>
+              <Link to="/productos" className={styles.verMasProductos}>
+                <FaCartPlus /> agregar mas productos
+              </Link>
+            </Col>
+
+            <Col xs={12} md={6} className={styles.total}>
+              <span>Total: </span>
+              <span className={styles.totalPrecio}>
+                {formatoPrecio(getCartTotal())}
+              </span>
+            </Col>
+          </Row>
         </div>
-        <Row className={styles.totalRow}>
-          <Col xs={12} className={styles.total}>
-            <span>Total: </span>
-            <span className={styles.totalPrecio}>
-              {formatoPrecio(getCartTotal())}
-            </span>
-          </Col>
-        </Row>
         <div className={styles.actionsWrapper}>
-          <Link to="/productos" className={styles.verMasProductos}>
-            <FaCartPlus /> agregar mas productos
-          </Link>
           <Link
             to="/"
             className={styles.btnPagar}

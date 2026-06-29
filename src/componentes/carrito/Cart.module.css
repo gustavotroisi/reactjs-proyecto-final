@@ -63,25 +63,14 @@
 .subtotal {
     padding: 4px 0;
 }
-@media (max-width: 767px) {
-    .headerRow {
-        display: none;
-    }
-    .itemRow .accion {
-        margin-top: 8px;
-    }
-    .precio::before { content: "Precio: "; font-weight: 600; }
-    .cantidad::before { content: "Cant: "; font-weight: 600; }
-    .subtotal::before { content: "Subtotal: "; font-weight: 600; }
-}
+
 .totalRow {
     max-width: 900px;
     margin: 0 auto;
 }
 .total{
-    padding: 18px 22px 0 22px;
     font-size: 1.5em;
-    text-align: center;
+    text-align: right;
     
 }
 .totalPrecio{
@@ -93,7 +82,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 2em;
+    
 }
 
 
@@ -107,9 +96,9 @@
     margin: 1em;
     border-radius: 8px;
     background-color: var(--color-secondary);
-    color: white;
+    color: black;
     text-decoration: none;
-    transition: background .5s;
+    transition: all .5s;
 }
 .btnPagar:hover { 
     background-color: var(--color-primary);
@@ -144,4 +133,31 @@
 }
 .verMasProductos:hover{
     color: var(--color-secondary);
+}
+
+
+
+@media (max-width: 767px) {
+    .headerRow {
+        display: none;
+    }
+
+    .itemRow .accion {
+        margin-top: 8px;
+    }
+
+    .precio::before {
+        content: "Precio: ";
+        font-weight: 600;
+    }
+
+    .cantidad::before {
+        content: "Cant: ";
+        font-weight: 600;
+    }
+
+    .subtotal::before {
+        content: "Subtotal: ";
+        font-weight: 600;
+    }
 }
