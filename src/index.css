@@ -14,7 +14,12 @@
   --color-disabled: rgba(255, 255, 255, 0.2);
 }
 
-
+html, body, #root {
+    height: 100%;
+    margin: 0;
+    background-color: var(--color-bg);
+    }
+}
 
 h1,
 h2,
@@ -24,8 +29,12 @@ p {
   font-size: 16px;
 }
 
+ 
 #root{
-  background-color: var(--color-bg);
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 main{
   margin-bottom: 30px;
