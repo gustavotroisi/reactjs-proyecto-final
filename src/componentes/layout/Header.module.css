@@ -55,9 +55,13 @@
 
 
 
-@media (max-width: 1024px) {
-
-    
+@media (max-width: 991.98px) {
+    .togglerFixed {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        z-index: 1030;
+    }
 
     .cartIcon {
         margin-left: 5px;
