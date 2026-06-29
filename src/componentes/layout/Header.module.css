@@ -14,6 +14,7 @@
     text-decoration: none;
     color: var(--color-secondary);
     cursor: pointer;
+    font-size: .85em;
     font-weight: 600;
     text-transform: uppercase;
     transition: all .5s;
@@ -57,7 +58,9 @@
         right: 20px;
         z-index: 1030;
     }
-
+    .nav{
+        font-size: 1.2em;
+    }
     .cartIcon {
         margin-left: 5px;
         align-items: center;
