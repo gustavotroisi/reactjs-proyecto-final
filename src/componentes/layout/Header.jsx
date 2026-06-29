@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
 import { Container, Row, Col } from "react-bootstrap";
 import * as bootstrap from "bootstrap";
@@ -10,8 +10,8 @@ function Header() {
   const { getCartQuantity } = useCart();
   const totalItems = getCartQuantity();
 
-  const closeNav = () => {
-    const el = document.getElementById("navbarColor01");
+  const handleClick = () => {
+    const el = document.getElementById("navbarCollapse");
     if (el && el.classList.contains("show")) {
       bootstrap.Collapse.getOrCreateInstance(el).hide();
     }
@@ -32,40 +32,57 @@ function Header() {
               </Link>
             </Col>
             <Col xs={12} lg={4} className="d-flex justify-content-center">
-              <div className="collapse navbar-collapse" id="navbarColor01">
+              <div className="collapse navbar-collapse" id="navbarCollapse">
                 <ul className="navbar-nav mx-auto">
                   <li className="nav-item">
-                    <Link to="/" className="nav-link" aria-label="Inicio" onClick={closeNav}>
+                    <NavLink
+                      to="/"
+                      className={styles.nav}
+                      aria-label="Inicio"
+                      className={({ isActive }) =>
+                        `${styles.nav} nav-link${isActive ? " active" : ""}`
+                      }
+                      onClick={handleClick}
+                    >
                       Inicio
                       <span className="visually-hidden">(current)</span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link
+                    <NavLink
                       to="/productos"
-                      className="nav-link"
+                      className={styles.nav}
                       aria-label="Productos"
-                      onClick={closeNav}
+                      className={({ isActive }) =>
+                        `${styles.nav} nav-link${isActive ? " active" : ""}`
+                      }
+                      onClick={handleClick}
                     >
                       Productos
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link
+                    <NavLink
                       to="/nosotros"
-                      className="nav-link"
+                      className={styles.nav}
                       aria-label="Nosotros"
-                      onClick={closeNav}
+                      className={({ isActive }) =>
+                        `${styles.nav} nav-link${isActive ? " active" : ""}`
+                      }
+                      onClick={handleClick}
                     >
                       Nosotros
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item d-lg-none">
-                    <Link
+                    <NavLink
                       to="/carrito"
-                      className="nav-link"
+                      className={styles.nav}
                       aria-label="Carrito de compras"
-                      onClick={closeNav}
+                      className={({ isActive }) =>
+                        `${styles.nav} nav-link${isActive ? " active" : ""}`
+                      }
+                      onClick={handleClick}
                     >
                       Carrito
                       <span className={`${styles.cartIcon} ms-2`}>
@@ -74,17 +91,20 @@ function Header() {
                           <div className={styles.total}>{totalItems}</div>
                         )}
                       </span>
-                    </Link>
+                    </NavLink>
                   </li>
                   <li className="nav-item">
-                    <Link
+                    <NavLink
                       to="/gestion"
-                      className="nav-link"
+                      className={styles.nav}
                       aria-label="Gestión"
-                      onClick={closeNav}
+                      className={({ isActive }) =>
+                        `${styles.nav} nav-link${isActive ? " active" : ""}`
+                      }
+                      onClick={handleClick}
                     >
                       Gestión
-                    </Link>
+                    </NavLink>
                   </li>
                 </ul>
               </div>
@@ -98,8 +118,8 @@ function Header() {
                 className={`navbar-toggler d-lg-none ${styles.togglerFixed}`}
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarColor01"
-                aria-controls="navbarColor01"
+                data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse"
                 aria-expanded="false"
                 aria-label="Toggle navigation"
               >
