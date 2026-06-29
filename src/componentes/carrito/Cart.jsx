@@ -1,14 +1,17 @@
 import { useCart } from "../../context/CartContext";
+import { useLike } from "../../context/LikeContext";
 import { Container, Row, Col } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCartPlus } from "react-icons/fa6";
+import { MdFavorite } from "react-icons/md";
 
 export default function Cart() {
   const { cart, clearCart, removeItem, getCartTotal } = useCart();
   const cartHeader = <h1 className={`page-title ${styles.titulo}`}>Carrito</h1>;
+  const { chequeaSiMeGusta } = useLike();
 
   if (cart.length === 0) {
     return (
@@ -58,7 +61,12 @@ export default function Cart() {
           </Row>
           {cart.map((item) => (
             <Row key={item.id} className={styles.itemRow}>
-              <Col xs={12} md={5} className={styles.producto}>
+              <Col
+                xs={12}
+                md={5}
+                className={styles.producto}
+                style={{ position: "relative" }}
+              >
                 <Link to={`/producto/${item.id}`}>
                   <img
                     src={item.imagen}
@@ -67,6 +75,13 @@ export default function Cart() {
                   />
                   {item.nombre}
                 </Link>
+                {chequeaSiMeGusta(item.id) ? (
+                  <div className={styles.favorito}>
+                    <MdFavorite style={{ color: "var(--color-primary)" }} />
+                  </div>
+                ) : (
+                  ""
+                )}
               </Col>
               <Col xs={6} md={2} className={styles.precio}>
                 $ {item.precio}

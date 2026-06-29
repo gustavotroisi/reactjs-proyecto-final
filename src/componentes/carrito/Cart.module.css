@@ -18,6 +18,12 @@
     max-width: 900px;
     margin: 0 auto;
 }
+.favorito{
+    position: absolute;
+    top: -10px;
+    left: 14px;
+    font-size: 2em;
+}
 .headerRow{
     border: solid 1px var(--color-bg-secondary);
     padding: 12px;
