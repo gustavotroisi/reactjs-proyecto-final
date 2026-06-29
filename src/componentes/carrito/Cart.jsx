@@ -42,11 +42,13 @@ export default function Cart() {
           <div>
             <table className={styles.table}>
               <thead>
-                <th>Producto</th>
-                <th>Precio Unitario</th>
-                <th>Cantidad</th>
-                <th>Subtotal</th>
-                <th></th>
+                <tr>
+                  <th>Producto</th>
+                  <th>Precio Unitario</th>
+                  <th>Cantidad</th>
+                  <th>Subtotal</th>
+                  <th></th>
+                </tr>
               </thead>
               <tbody>
                 {cart.map((item) => (
