@@ -31,13 +31,12 @@ function Header() {
                 <img className={styles.logo} src={logo} alt="Tech Store logo" />
               </Link>
             </Col>
-            <Col xs={12} lg={4} className="d-flex justify-content-center">
+            <Col xs={12} lg={5} className="d-flex justify-content-center">
               <div className="collapse navbar-collapse" id="navbarCollapse">
                 <ul className="navbar-nav mx-auto">
                   <li className="nav-item">
                     <NavLink
                       to="/"
-                      className={styles.nav}
                       aria-label="Inicio"
                       className={({ isActive }) =>
                         `${styles.nav} nav-link${isActive ? " active" : ""}`
@@ -51,7 +50,6 @@ function Header() {
                   <li className="nav-item">
                     <NavLink
                       to="/productos"
-                      className={styles.nav}
                       aria-label="Productos"
                       className={({ isActive }) =>
                         `${styles.nav} nav-link${isActive ? " active" : ""}`
@@ -64,7 +62,6 @@ function Header() {
                   <li className="nav-item">
                     <NavLink
                       to="/nosotros"
-                      className={styles.nav}
                       aria-label="Nosotros"
                       className={({ isActive }) =>
                         `${styles.nav} nav-link${isActive ? " active" : ""}`
@@ -74,10 +71,9 @@ function Header() {
                       Nosotros
                     </NavLink>
                   </li>
-                  <li className="nav-item d-lg-none">
+                  <li className="nav-item">
                     <NavLink
                       to="/carrito"
-                      className={styles.nav}
                       aria-label="Carrito de compras"
                       className={({ isActive }) =>
                         `${styles.nav} nav-link${isActive ? " active" : ""}`
@@ -85,7 +81,7 @@ function Header() {
                       onClick={handleClick}
                     >
                       Carrito
-                      <span className={`${styles.cartIcon} ms-2`}>
+                      <span className={`${styles.cartIcon} ms-2  d-lg-none`}>
                         <img src={cartIcon} alt="cart icon" />
                         {totalItems > 0 && (
                           <div className={styles.total}>{totalItems}</div>
@@ -96,7 +92,6 @@ function Header() {
                   <li className="nav-item">
                     <NavLink
                       to="/gestion"
-                      className={styles.nav}
                       aria-label="Gestión"
                       className={({ isActive }) =>
                         `${styles.nav} nav-link${isActive ? " active" : ""}`
@@ -111,7 +106,7 @@ function Header() {
             </Col>
             <Col
               xs={6}
-              lg={4}
+              lg={3}
               className="d-flex justify-content-end align-items-center gap-2"
             >
               <button
