@@ -1,4 +1,10 @@
- 
+.titulo {
+    text-align: center;
+}
+.titulo:after {
+    margin-left: auto;
+    margin-right: auto;
+}
 .cart{
     padding: 20px;
     margin: 40px;

@@ -8,7 +8,7 @@ import { FaCartPlus } from "react-icons/fa6";
 
 export default function Cart() {
   const { cart, clearCart, removeItem, getCartTotal } = useCart();
-  const cartHeader = <h1 className="page-title">Carrito</h1>;
+  const cartHeader = <h1 className={`page-title ${styles.titulo}`}>Carrito</h1>;
 
   if (cart.length === 0) {
     return (

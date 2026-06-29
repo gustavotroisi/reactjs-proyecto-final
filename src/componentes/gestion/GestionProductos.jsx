@@ -68,8 +68,10 @@ const GestionProductos = () => {
       <Container className="mt-4">
         <Row>
           <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
-            <h2 className={styles.titulo}>Gestión de Productos</h2>
-            <hr />
+            <h1 className={`page-title ${styles.titulo}`}>
+              Gestión de Productos
+            </h1>
+
             <FormularioContainer />
             <hr />
             <h3 className={styles.subtitulo}>Listado de Productos</h3>

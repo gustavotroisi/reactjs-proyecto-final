@@ -1,7 +1,8 @@
+
 .gestionTable {
-    border: solid 1px #ccc;
+    border: solid 1px var(--color-secondary);
     margin: 0 auto;
-    color: #ccc;
+    color: var(--color-secondary);
 }
 
 .gestionTable td {
@@ -14,12 +15,7 @@
     color: var(--color-primary);
    
 }
-.titulo {
-    text-align: center;
-    margin: 30px;
-    font-weight: 600;
-    color: #ccc;
-}
+
 .subtitulo{
     text-align: center;
     margin: 30px;
