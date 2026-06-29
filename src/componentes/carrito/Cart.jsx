@@ -3,10 +3,12 @@ import { Container, Row, Col } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 import styles from "./Cart.module.css";
 import { Link } from "react-router-dom";
+import { RiDeleteBin6Line } from "react-icons/ri";
+import { FaCartPlus } from "react-icons/fa6";
 
 export default function Cart() {
   const { cart, clearCart, removeItem, getCartTotal } = useCart();
-  const cartHeader = <h1 className={styles.header}>Carrito</h1>;
+  const cartHeader = <h1 className="page-title">Carrito</h1>;
 
   if (cart.length === 0) {
     return (
@@ -38,56 +40,63 @@ export default function Cart() {
       </Helmet>
       <div className={styles.cart}>
         {cartHeader}
-        <div className={styles.tablewrapper}>
-          <div>
-            <table className={styles.table}>
-              <thead>
-                <tr>
-                  <th>Producto</th>
-                  <th>Precio Unitario</th>
-                  <th>Cantidad</th>
-                  <th>Subtotal</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {cart.map((item) => (
-                  <tr key={item.id}>
-                    <td className={styles.producto}>
-                      <Link to={`/producto/${item.id}`}>
-                        <img
-                          src={item.imagen}
-                          alt={item.nombre}
-                          className={styles.productImage}
-                        />
-                        {item.nombre}
-                      </Link>
-                    </td>
-
-                    <td align="right">$ {item.precio}</td>
-                    <td align="center">{item.quantity}</td>
-                    <td align="right">$ {item.precio * item.quantity}</td>
-                    <td>
-                      <button
-                        onClick={() => removeItem(item.id)}
-                        className={styles.btnEliminar}
-                      >
-                        Eliminar
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          <div className={styles.total}>
+        <div className={styles.cartItems}>
+          <Row className={styles.headerRow}>
+            <Col xs={12} md={5}>
+              Producto
+            </Col>
+            <Col xs={6} md={2}>
+              $/Unidad
+            </Col>
+            <Col xs={3} md={2}>
+              Cantidad
+            </Col>
+            <Col xs={3} md={2}>
+              Subtotal
+            </Col>
+            <Col xs={0} md={1}></Col>
+          </Row>
+          {cart.map((item) => (
+            <Row key={item.id} className={styles.itemRow}>
+              <Col xs={12} md={5} className={styles.producto}>
+                <Link to={`/producto/${item.id}`}>
+                  <img
+                    src={item.imagen}
+                    alt={item.nombre}
+                    className={styles.productImage}
+                  />
+                  {item.nombre}
+                </Link>
+              </Col>
+              <Col xs={6} md={2} className={styles.precio}>
+                $ {item.precio}
+              </Col>
+              <Col xs={3} md={2} className={styles.cantidad}>
+                {item.quantity}
+              </Col>
+              <Col xs={3} md={2} className={styles.subtotal}>
+                $ {item.precio * item.quantity}
+              </Col>
+              <Col xs={12} md={1} className={styles.accion}>
+                <button
+                  onClick={() => removeItem(item.id)}
+                  className={styles.btnEliminar}
+                >
+                  <RiDeleteBin6Line />
+                </button>
+              </Col>
+            </Row>
+          ))}
+        </div>
+        <Row className={styles.totalRow}>
+          <Col xs={12} className={styles.total}>
             <span>Total: </span>
             <span className={styles.totalPrecio}>$ {getCartTotal()}</span>
-          </div>
-        </div>
+          </Col>
+        </Row>
         <div className={styles.actionsWrapper}>
           <Link to="/productos" className={styles.verMasProductos}>
-            Ver más productos
+            <FaCartPlus /> agregar mas productos
           </Link>
           <Link
             to="/"
