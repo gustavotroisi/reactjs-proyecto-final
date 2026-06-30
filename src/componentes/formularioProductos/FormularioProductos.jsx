@@ -18,33 +18,36 @@ export default function FormularioProductos({
         <Container>
           <Row>
             <Col xs={12} md={6}>
-              <div>
-                <label>ID</label>
-                <input
-                  type="number"
-                  name="id"
-                  value={datosForm.id}
-                  onChange={manejarCambio}
-                  className={`form-control ${styles.input}`}
-                  min="0"
-                  required
-                />
-              </div>
-              <div>
-                <label>Categoría</label>
-                <select
-                  name="categoria"
-                  value={datosForm.categoria}
-                  onChange={manejarCambio}
-                  className="form-select mb-3"
-                  required
-                >
-                  <option value="">Seleccione una categoría</option>
-                  <option value="componentes">Componentes</option>
-                  <option value="perifericos">Periféricos</option>
-                  <option value="equipos">Equipos</option>
-                </select>
-              </div>
+              <Row>
+                <Col xs={12} md={6}>
+                  <label>Id #</label>
+                  <input
+                    type="number"
+                    name="id"
+                    value={datosForm.id}
+                    onChange={manejarCambio}
+                    className={`form-control ${styles.input}`}
+                    min="0"
+                    required
+                  />
+                </Col>
+                <Col xs={12} md={6}>
+                  <label>Categoría</label>
+                  <select
+                    name="categoria"
+                    value={datosForm.categoria}
+                    onChange={manejarCambio}
+                    className="form-select mb-3"
+                    required
+                  >
+                    <option value="">Seleccione una categoría</option>
+                    <option value="componentes">Componentes</option>
+                    <option value="perifericos">Periféricos</option>
+                    <option value="equipos">Equipos</option>
+                  </select>
+                </Col>
+              </Row>
+
               <div>
                 <label>Nombre del Producto</label>
                 <input
@@ -102,7 +105,7 @@ export default function FormularioProductos({
                     </div>
                   </div>
                 </Col>
-                <Col>
+                <Col xs={12} md={6}>
                   <div>
                     <label>Stock</label>
                     <input
