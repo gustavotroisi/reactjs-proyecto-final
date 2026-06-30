@@ -247,7 +247,7 @@ export default function ItemDetalle() {
 
                     {stock > 0 ? (
                       <Row>
-                        <Col xs={12} md={3} lg={3} className="mb-4">
+                        <Col xs={12} md={4} lg={4} className="mb-4">
                           <div className={styles.cantidadContainer}>
                             <button
                               className={styles.btn}
@@ -268,7 +268,7 @@ export default function ItemDetalle() {
                             </button>
                           </div>
                         </Col>
-                        <Col xs={12} md={9} lg={9} className="mb-4">
+                        <Col xs={12} md={8} lg={8} className="mb-4">
                           <Button
                             as={Link}
                             variant="primary"

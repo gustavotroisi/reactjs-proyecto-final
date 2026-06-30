@@ -8,6 +8,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCartPlus } from "react-icons/fa6";
 import { MdFavorite } from "react-icons/md";
 import { formatoPrecio } from "../../utils/formatoPrecio";
+import { MdOutlineRemoveShoppingCart } from "react-icons/md";
 
 export default function Cart() {
   const { cart, clearCart, removeItem, getCartTotal } = useCart();
@@ -133,7 +134,7 @@ export default function Cart() {
         </div>
         <div className={styles.vaciarWrapper}>
           <button className={styles.btnVaciar} onClick={clearCart}>
-            Vaciar Carrito
+            Vaciar el carrito <MdOutlineRemoveShoppingCart />
           </button>
         </div>
       </div>
