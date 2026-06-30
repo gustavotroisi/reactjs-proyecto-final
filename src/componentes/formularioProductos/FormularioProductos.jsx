@@ -9,11 +9,14 @@ export default function FormularioProductos({
   manejarCambioImagen,
   loading,
   mensaje,
+  modoEdicion,
 }) {
   return (
     <>
       <form onSubmit={manejarEnvio} className={styles.formproducto}>
-        <h3 className={`${styles.titulo} mb-4`}>Agregar Nuevo Producto</h3>
+        <h3 className={`${styles.titulo} mb-4`}>
+          {modoEdicion ? "Editar Producto" : "Agregar Nuevo Producto"}
+        </h3>
         <Container>
           <Row>
             <Col xs={12} md={6}>
@@ -150,7 +153,11 @@ export default function FormularioProductos({
               disabled={loading}
             >
               <FaFloppyDisk style={{ marginRight: "5px" }} />
-              {loading ? "Guardando Producto..." : "Guardar Producto"}
+              {loading
+                ? "Procesando..."
+                : modoEdicion
+                  ? "Actualizar Producto"
+                  : "Guardar Producto"}
             </button>
           </Row>
         </Container>

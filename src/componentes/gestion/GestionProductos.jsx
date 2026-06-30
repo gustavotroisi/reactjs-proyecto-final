@@ -33,8 +33,10 @@ const GestionProductos = () => {
   const [imageFile, setImageFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mensaje, setMensaje] = useState(null);
-  const [imagenFile, setImagenFile] = useState(null);
+  //const [imagenFile, setImagenFile] = useState(null);
   const [productoAEditar, setProductoAEditar] = useState(null);
+
+  const modoEdicion = productoAEditar !== null;
 
   const cargarProductos = async () => {
     const productosRef = collection(db, "productos");
@@ -130,7 +132,7 @@ const GestionProductos = () => {
           await addDoc(productosCollection, productoCompleto);
           await cargarProductos();
           setDatosForm(estadoInicialForm);
-          setImagenFile(null);
+          //setImagenFile(null);
         } catch (e) {
           setMensaje({ texto: "Error al enviar el producto", tipo: "danger" });
           console.log("Error: ", e);
@@ -180,13 +182,14 @@ const GestionProductos = () => {
               manejarCambioImagen={manejarCambioImagen}
               loading={loading}
               mensaje={mensaje}
+              modoEdicion={modoEdicion}
             />
 
             <h1 className="page-title">Listado de Productos</h1>
             <table className={styles.gestionTable}>
               <thead>
                 <tr>
-                  <th>ID</th>
+                  <th>Id #</th>
                   <th>Nombre</th>
                   <th>Precio</th>
                   <th className={styles.acciones}>Acciones</th>
