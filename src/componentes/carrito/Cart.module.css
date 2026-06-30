@@ -9,15 +9,13 @@
     padding: 20px;
     margin: 40px;
     color: white;
-   
+    max-width: 900px;
+    margin: 0 auto;
 }
 .cart p{
     color: white;
 }
-.cartItems{
-    max-width: 900px;
-    margin: 0 auto;
-}
+ 
 .favorito{
     position: absolute;
     top: -10px;
@@ -58,10 +56,15 @@
 .itemRow .producto a:hover {
     text-decoration: underline;
 }
+
 .precio,
 .cantidad,
 .subtotal {
     padding: 4px 0;
+}
+
+.cantidad{
+    text-align: center;
 }
 
 .totalRow {
@@ -114,10 +117,18 @@
 .btnEliminar:hover {
     background-color: rgb(107, 25, 25);
 }
+
+
+.vaciarWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    padding: 30px 0;
+}
 .btnVaciar{
     background: none;
     border: none;
-    color: white;
+    color: var(--color-secondary);
     text-decoration: none;
     
     font-size: .8em;
@@ -155,9 +166,14 @@
         content: "Cant: ";
         font-weight: 600;
     }
-
-    .subtotal::before {
-        content: "Subtotal: ";
-        font-weight: 600;
+    .verMasProductos{
+        display: block;
+        text-align: center;
     }
+    .total {
+        margin-top: 30px;
+        text-align: center;
+
+    }
+     
 }

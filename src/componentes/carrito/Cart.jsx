@@ -44,7 +44,7 @@ export default function Cart() {
       </Helmet>
       <div className={styles.cart}>
         {cartHeader}
-        <div className={styles.cartItems}>
+        <div>
           <Row className={styles.headerRow}>
             <Col xs={12} md={5}>
               Producto
@@ -130,7 +130,8 @@ export default function Cart() {
           >
             Finalizar compra
           </Link>
-
+        </div>
+        <div className={styles.vaciarWrapper}>
           <button className={styles.btnVaciar} onClick={clearCart}>
             Vaciar Carrito
           </button>
