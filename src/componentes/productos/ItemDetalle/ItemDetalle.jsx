@@ -2,7 +2,15 @@ import { useParams, Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useLike } from "../../../context/LikeContext";
 import { Helmet } from "react-helmet";
-import { Container, Row, Col, Card, Button, Badge } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  Button,
+  Badge,
+  Spinner,
+} from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import styled from "styled-components";
@@ -101,11 +109,32 @@ export default function ItemDetalle() {
   }, [id]);
 
   if (loading) {
-    return <>Cargando...</>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh" }}
+      >
+        <Spinner
+          animation="border"
+          variant="primary"
+          role="status"
+          style={{ width: "3rem", height: "3rem" }}
+        >
+          <span className="visually-hidden">Cargando...</span>
+        </Spinner>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className={styles.error}>Error: {error}</div>;
+    return (
+      <div
+        className="d-flex justify-content-center align-items-center"
+        style={{ height: "50vh", color: "var(--color-secondary)" }}
+      >
+        Error: {error}
+      </div>
+    );
   }
 
   const { nombre, precio, stock, imagen, descripcion, destacado } = producto;
