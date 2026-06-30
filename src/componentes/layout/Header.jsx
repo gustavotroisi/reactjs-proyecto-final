@@ -22,7 +22,7 @@ function Header() {
       <nav className="navbar navbar-expand-lg" data-bs-theme="dark">
         <Container fluid>
           <Row className="w-100 align-items-center">
-            <Col xs={6} lg={4} className="d-flex justify-content-start">
+            <Col xs={6} lg={3} className="d-flex justify-content-start">
               <Link
                 to="/"
                 className="navbar-brand"
@@ -31,9 +31,9 @@ function Header() {
                 <img className={styles.logo} src={logo} alt="Tech Store logo" />
               </Link>
             </Col>
-            <Col xs={12} lg={5} className="d-flex justify-content-center">
+            <Col xs={12} lg={7} className="d-flex justify-content-center">
               <div className="collapse navbar-collapse" id="navbarCollapse">
-                <ul className="navbar-nav mx-auto">
+                <ul className={`navbar-nav mx-auto ${styles.navbarNav}`}>
                   <li className="nav-item">
                     <NavLink
                       to="/"
@@ -106,8 +106,8 @@ function Header() {
             </Col>
             <Col
               xs={6}
-              lg={3}
-              className="d-flex justify-content-end align-items-center gap-2"
+              lg={2}
+              className="d-flex justify-content-end align-items-center "
             >
               <button
                 className={`navbar-toggler d-lg-none ${styles.togglerFixed}`}

@@ -27,7 +27,7 @@ const GestionProductos = () => {
       //setProductos(resp.docs.map((doc) => ({ id: doc.id, ...doc.data() })));
       setProductos(
         resp.docs.map((doc) => ({
-          id: doc.id,
+          //id: doc.id,
           ...doc.data(),
           idFirestore: doc.id,
         })),

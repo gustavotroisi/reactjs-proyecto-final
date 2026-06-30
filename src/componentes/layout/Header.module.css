@@ -51,6 +51,9 @@
 
 
 
+.navbarNav {
+    flex-wrap: nowrap;
+}
 @media (max-width: 991.98px) {
     .togglerFixed {
         position: fixed;
