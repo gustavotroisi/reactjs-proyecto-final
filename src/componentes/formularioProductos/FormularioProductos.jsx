@@ -10,6 +10,7 @@ export default function FormularioProductos({
   loading,
   mensaje,
   modoEdicion,
+  keyInputFile,
 }) {
   return (
     <>
@@ -139,9 +140,9 @@ export default function FormularioProductos({
                 )}
                 <input
                   type="file"
+                  key={keyInputFile}
                   onChange={manejarCambioImagen}
                   className="form-control mb-3"
-                  required
                 />
               </div>
             </Col>

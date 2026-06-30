@@ -5,8 +5,9 @@ import {
   collection,
   getDocs,
   addDoc,
-  deleteDoc,
   doc,
+  updateDoc,
+  deleteDoc,
 } from "firebase/firestore";
 import FormularioProductos from "../formularioProductos/FormularioProductos";
 import { FaEdit, FaTrash } from "react-icons/fa";
@@ -18,6 +19,7 @@ import styles from "./GestionProductos.module.css";
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
   const [modalEliminar, setModalEliminar] = useState({ show: false, id: null });
+  const [keyInputFile, setKeyInputFile] = useState(0);
 
   const estadoInicialForm = {
     categoria: "",
@@ -30,7 +32,7 @@ const GestionProductos = () => {
   };
 
   const [datosForm, setDatosForm] = useState(estadoInicialForm);
-  const [imageFile, setImageFile] = useState(null);
+  const [imagenFile, setImagenFile] = useState(null);
   const [loading, setLoading] = useState(false);
   const [mensaje, setMensaje] = useState(null);
   //const [imagenFile, setImagenFile] = useState(null);
@@ -80,15 +82,16 @@ const GestionProductos = () => {
   };
 
   const manejarCambioImagen = (e) => {
-    setImageFile(e.target.files[0]);
+    setImagenFile(e.target.files[0]);
   };
 
   const manejarEnvio = async (e) => {
     e.preventDefault();
 
-    if (!imageFile) {
+    if (!imagenFile && !productoAEditar) {
       //alert("Por favor seleccione una imagen");
       setMensaje({ texto: "Por favor seleccione una imagen", tipo: "danger" });
+      setTimeout(() => setMensaje(null), 2000);
       return;
     }
 
@@ -97,59 +100,100 @@ const GestionProductos = () => {
     const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
 
     const formData = new FormData();
-    formData.append("image", imageFile);
-    //console.log("Envio realizado");
+    formData.append("image", imagenFile);
+
+    let urlImagen = datosForm.imagen;
+
+    //Solo si se sube una nueva imagen
+    if (imagenFile) {
+      formData.append("image", imagenFile);
+      //console.log("Envio realizado");
+
+      /* 
+      Imagen 
+      */
+      try {
+        const respuestaImgbb = await fetch(
+          `https://api.imgbb.com/1/upload?key=${apiKey}`,
+          {
+            method: "POST",
+            body: formData,
+          },
+        );
+
+        //console.log(respuestaImgbb);
+
+        const datosImgbb = await respuestaImgbb.json();
+
+        //console.log(datosImgbb);
+
+        if (datosImgbb.success) {
+          urlImagen = datosImgbb.data.url;
+          console.log("Imagen enviada");
+        } else {
+          //setMensaje({ texto: "Error al enviar la imagen", tipo: "danger" });
+          throw new Error("Error al enviar imagen");
+        }
+
+        //resetForm();
+      } catch (e) {
+        setMensaje({ texto: "Error al enviar la imagen", tipo: "danger" });
+        console.log("Error: ", e);
+      } finally {
+        setLoading(false);
+        setTimeout(() => setMensaje(null), 2000);
+      }
+    }
+
+    console.log("urlImagen: ".urlImagen);
+
+    /* 
+      Producto 
+    */
+    const productoCompleto = {
+      ...datosForm,
+      imagen: urlImagen,
+    };
+
+    setLoading(true);
 
     try {
-      const respuestaImgbb = await fetch(
-        `https://api.imgbb.com/1/upload?key=${apiKey}`,
-        {
-          method: "POST",
-          body: formData,
-        },
-      );
+      //console.log("Enviando producto a Firebase:", productoCompleto);
+      // Obtenemos la instancia de la base de datos
+      //const db = getFirestore();
+      // Apuntamos a la colección "productos" (si no existe, se crea)
+      //const productosCollection = collection(db, "productos");
+      // Agregamos el nuevo documento a la colección
 
-      //console.log(respuestaImgbb);
+      if (productoAEditar) {
+        const docRef = doc(db, "productos", productoAEditar.idFirestore);
 
-      const datosImgbb = await respuestaImgbb.json();
-
-      //console.log(datosImgbb);
-
-      if (datosImgbb.success) {
-        const productoCompleto = {
-          ...datosForm,
-          imagen: datosImgbb.data.url,
-        };
-        //console.log("Imagen enviada: ", productoCompleto);
-
-        try {
-          //console.log("Enviando producto a Firebase:", productoCompleto);
-          // Obtenemos la instancia de la base de datos
-          //const db = getFirestore();
-          // Apuntamos a la colección "productos" (si no existe, se crea)
-          const productosCollection = collection(db, "productos");
-          // Agregamos el nuevo documento a la colección
-          await addDoc(productosCollection, productoCompleto);
-          await cargarProductos();
-          setDatosForm(estadoInicialForm);
-          //setImagenFile(null);
-        } catch (e) {
-          setMensaje({ texto: "Error al enviar el producto", tipo: "danger" });
-          console.log("Error: ", e);
-        }
+        await updateDoc(docRef, productoCompleto);
+        //alert("Producto actualizado correctamente");
       } else {
-        setMensaje({ texto: "Error al enviar la imagen", tipo: "danger" });
-        throw new Error("Error al enviar imagen");
+        //await addDoc(productosCollection, productoCompleto);
+        const productosCollection = collection(db, "productos");
+        await addDoc(productosCollection, productoCompleto);
       }
-
-      setMensaje({ texto: "Producto guardado con éxito", tipo: "success" });
-      //resetForm();
+      await cargarProductos();
+      setDatosForm(estadoInicialForm);
+      setImagenFile(null);
+      setProductoAEditar(null);
+      setKeyInputFile((prev) => prev + 1);
+      setMensaje({
+        texto: `Producto ${modoEdicion ? "actualizado" : "guardado"} con éxito `,
+        tipo: "success",
+      });
     } catch (e) {
-      setMensaje({ texto: "Error al subir la imagen", tipo: "danger" });
+      setMensaje({
+        texto: "Error al enviar el producto",
+        tipo: "danger",
+      });
       console.log("Error: ", e);
     } finally {
+      console.log(productoCompleto);
       setLoading(false);
-      setTimeout(() => setMensaje(null), 4000);
+      setTimeout(() => setMensaje(null), 2000);
     }
   };
 
@@ -157,6 +201,7 @@ const GestionProductos = () => {
     //console.log(producto);
     setProductoAEditar(producto);
     setDatosForm(producto);
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   useEffect(() => {
@@ -183,6 +228,7 @@ const GestionProductos = () => {
               loading={loading}
               mensaje={mensaje}
               modoEdicion={modoEdicion}
+              keyInputFile={keyInputFile}
             />
 
             <h1 className="page-title">Listado de Productos</h1>
