@@ -5,6 +5,7 @@ import * as bootstrap from "bootstrap";
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_techstore4.png";
 import cartIcon from "../../../public/images/cart-svgrepo-com.svg";
+import { FaLock } from "react-icons/fa";
 
 function Header() {
   const { getCartQuantity } = useCart();
@@ -98,7 +99,7 @@ function Header() {
                       }
                       onClick={handleClick}
                     >
-                      Gestión
+                      <FaLock /> Gestión
                     </NavLink>
                   </li>
                 </ul>
