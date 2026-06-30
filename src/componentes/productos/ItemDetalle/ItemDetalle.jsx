@@ -184,27 +184,37 @@ export default function ItemDetalle() {
                       {descripcion}
                     </Card.Text>
 
-                    <div className={styles.precio}>
-                      {formatoPrecio(precio)}
-                      {stock > 0 ? (
-                        <Card.Text className={styles.stock}>
-                          Stock disponible: {stock}
-                        </Card.Text>
-                      ) : (
-                        <Card.Text className={styles.stock}>
-                          Sin stock
-                        </Card.Text>
-                      )}
-                    </div>
-
-                    {cantidadActual > 0 ? (
-                      <Badge className="mb-2 bg-secondary">
-                        Tienes {cantidadActual} agregado
-                        {cantidadActual > 1 ? "s" : ""} al carrito
-                      </Badge>
-                    ) : (
-                      ""
-                    )}
+                    <Row>
+                      <Col xs={12} lg={6}>
+                        <div className={styles.precio}>
+                          {formatoPrecio(precio)}
+                          {stock > 0 ? (
+                            <Card.Text className={styles.stock}>
+                              Stock disponible: {stock}
+                            </Card.Text>
+                          ) : (
+                            <Card.Text className={styles.stock}>
+                              Sin stock
+                            </Card.Text>
+                          )}
+                        </div>
+                      </Col>
+                      <Col
+                        xs={12}
+                        lg={6}
+                        className="d-flex justify-content-end"
+                      >
+                        {cantidadActual > 0 ? (
+                          <Link to="/carrito">
+                            <Badge className="mb-2 bg-secondary">
+                              Tienes {cantidadActual} en el carrito
+                            </Badge>{" "}
+                          </Link>
+                        ) : (
+                          ""
+                        )}
+                      </Col>
+                    </Row>
 
                     {stock > 0 ? (
                       <Row>

@@ -72,7 +72,23 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
 
         <Card.Title className={styles.nombre}>{nombre}</Card.Title>
         <div className={styles.precio}>
-          {formatoPrecio(precio)}
+          <Row>
+            <Col xs={12} lg={6}>
+              {formatoPrecio(precio)}{" "}
+            </Col>
+            <Col xs={12} lg={6}>
+              {cantidadActual > 0 ? (
+                <Link to="/carrito">
+                  <Badge className="mb-2 bg-secondary">
+                    Tienes {cantidadActual} en el carrito
+                  </Badge>{" "}
+                </Link>
+              ) : (
+                ""
+              )}
+            </Col>
+          </Row>
+
           {stock > 0 ? (
             <Card.Text className={styles.stock}>
               Stock disponible: {stock}
@@ -81,15 +97,6 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
             <Card.Text className={styles.stock}>Sin stock</Card.Text>
           )}
         </div>
-
-        {cantidadActual > 0 ? (
-          <Badge className="mb-2 bg-secondary">
-            Tienes {cantidadActual} agregado{cantidadActual > 1 ? "s" : ""} al
-            carrito
-          </Badge>
-        ) : (
-          ""
-        )}
 
         {stock > 0 ? (
           <Row>
