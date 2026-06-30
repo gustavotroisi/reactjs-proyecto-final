@@ -4,6 +4,7 @@ import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import FormularioContainer from "../formularioProductos/FormularioContainer";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { formatoPrecio } from "../../utils/formatoPrecio";
 import { Helmet } from "react-helmet";
 import styles from "./GestionProductos.module.css";
 
@@ -67,30 +68,32 @@ const GestionProductos = () => {
       </Helmet>
       <Container className="mt-4">
         <Row>
-          <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+          <Col xs={12} md={12} className="mb-4 mx-auto">
             <h1 className={`page-title ${styles.titulo}`}>
               Gestión de Productos
             </h1>
 
             <FormularioContainer />
-            <hr />
-            <h3 className={styles.subtitulo}>Listado de Productos</h3>
+
+            <h1 className="page-title">Listado de Productos</h1>
             <table className={styles.gestionTable}>
               <thead>
                 <tr>
                   <th>ID</th>
                   <th>Nombre</th>
                   <th>Precio</th>
-                  <th>Acciones</th>
+                  <th className={styles.acciones}>Acciones</th>
                 </tr>
               </thead>
               <tbody>
                 {productos.map((prod) => (
                   <tr key={prod.id}>
-                    <td style={{ textAlign: "right" }}>{prod.id}</td>
+                    <td>{prod.id}</td>
                     <td>{prod.nombre}</td>
-                    <td style={{ textAlign: "right" }}>$ {prod.precio}</td>
-                    <td>
+                    <td style={{ textAlign: "right" }}>
+                      {formatoPrecio(prod.precio)}
+                    </td>
+                    <td className={styles.acciones}>
                       <Button
                         onClick={() =>
                           alert(`Editar producto con ID: ${prod.id}`)
