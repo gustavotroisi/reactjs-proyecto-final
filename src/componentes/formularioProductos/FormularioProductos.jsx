@@ -68,7 +68,7 @@ export default function FormularioProductos({
                 <label>Descripción</label>
                 <textarea
                   name="descripcion"
-                  rows="6"
+                  rows="16"
                   cols="50"
                   onChange={manejarCambio}
                   className="form-control mb-3"
