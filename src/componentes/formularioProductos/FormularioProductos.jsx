@@ -80,7 +80,7 @@ export default function FormularioProductos({
                   onChange={manejarCambio}
                   className="form-check-input"
                 />
-                <label className="form-check-label">Destacado</label>
+                <label className="form-check-label">Producto destacado</label>
               </div>
             </Col>
             <Col xs={12} md={6}>
@@ -123,6 +123,17 @@ export default function FormularioProductos({
 
               <div>
                 <label>Imagen (800x600px)</label>
+
+                {datosForm.imagen ? (
+                  <>
+                    <img src={datosForm.imagen} style={{ width: "stretch" }} />
+                    <div className="py-2 text-white">
+                      Si quiere reeplazar la imagen, seleccione otra:
+                    </div>
+                  </>
+                ) : (
+                  ""
+                )}
                 <input
                   type="file"
                   onChange={manejarCambioImagen}

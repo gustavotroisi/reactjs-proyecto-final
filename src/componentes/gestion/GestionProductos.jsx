@@ -18,15 +18,6 @@ import styles from "./GestionProductos.module.css";
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
   const [modalEliminar, setModalEliminar] = useState({ show: false, id: null });
-  /*
-  const estadoInicialForm = {
-    nombre: "",
-    categoria: "",
-    precio: 0,
-    stock: 0,
-    imagen: "",
-  };
-  */
 
   const estadoInicialForm = {
     categoria: "",
@@ -43,6 +34,7 @@ const GestionProductos = () => {
   const [loading, setLoading] = useState(false);
   const [mensaje, setMensaje] = useState(null);
   const [imagenFile, setImagenFile] = useState(null);
+  const [productoAEditar, setProductoAEditar] = useState(null);
 
   const cargarProductos = async () => {
     const productosRef = collection(db, "productos");
@@ -56,23 +48,6 @@ const GestionProductos = () => {
     );
   };
 
-  useEffect(() => {
-    cargarProductos();
-  }, []);
-
-  /*/*
-  const handleDelete = async (id) => {
-    const confirmacion = window.confirm(
-      `¿Está seguro de que desea eliminar el producto con ID: ${id} ? `,
-    );
-    if (confirmacion) {
-      const docRef = doc(db, "productos", id);
-      await deleteDoc(docRef);
-      setProductos(productos.filter((prod) => prod.id !== id));
-      alert("Producto eliminado.");
-    }
-  };
-  */
   const handleDelete = (idFirestore) => {
     setModalEliminar({ show: true, idFirestore });
   };
@@ -86,9 +61,6 @@ const GestionProductos = () => {
   };
 
   const manejarCambio = (e) => {
-    /*let elem = e.target.name;
-      let val = e.target.value;
-      */
     const { name, value, type, checked } = e.target;
     //console.log(name, value);
     //setdatosForm({ ...datosForm, [name]: value });
@@ -103,7 +75,6 @@ const GestionProductos = () => {
             : parseInt(value, 10);
     }
     setDatosForm({ ...datosForm, [name]: nuevoValor });
-    //console.log(datosForm);
   };
 
   const manejarCambioImagen = (e) => {
@@ -180,6 +151,16 @@ const GestionProductos = () => {
     }
   };
 
+  const manejarEditar = (producto) => {
+    //console.log(producto);
+    setProductoAEditar(producto);
+    setDatosForm(producto);
+  };
+
+  useEffect(() => {
+    cargarProductos();
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -221,9 +202,7 @@ const GestionProductos = () => {
                     </td>
                     <td className={styles.acciones}>
                       <Button
-                        onClick={() =>
-                          alert(`Editar producto con ID: ${prod.id}`)
-                        }
+                        onClick={() => manejarEditar(prod)}
                         variant="primary"
                         className="my-2"
                         style={{ marginRight: "10px" }}
