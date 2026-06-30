@@ -9,7 +9,6 @@ export default function FormularioProductos({
   manejarCambioImagen,
   loading,
   mensaje,
-  fileKey,
 }) {
   return (
     <>
@@ -128,7 +127,6 @@ export default function FormularioProductos({
                   type="file"
                   onChange={manejarCambioImagen}
                   className="form-control mb-3"
-                  key={fileKey}
                   required
                 />
               </div>
