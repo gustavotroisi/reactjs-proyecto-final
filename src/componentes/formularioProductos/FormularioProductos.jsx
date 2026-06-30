@@ -82,33 +82,42 @@ export default function FormularioProductos({
               </div>
             </Col>
             <Col xs={12} md={6}>
-              <div>
-                <label>Precio</label>
-                <input
-                  type="number"
-                  placeholder="Ej: 95"
-                  name="precio"
-                  value={datosForm.precio}
-                  onChange={manejarCambio}
-                  className="form-control mb-3"
-                  min="0"
-                  required
-                />
-              </div>
-
-              <div>
-                <label>Stock</label>
-                <input
-                  type="number"
-                  placeholder="Ej: 5"
-                  name="stock"
-                  value={datosForm.stock}
-                  onChange={manejarCambio}
-                  className={`form-control ${styles.input}`}
-                  min="0"
-                  required
-                />
-              </div>
+              <Row>
+                <Col xs={12} md={6}>
+                  <div>
+                    <label>Precio</label>
+                    <div className="input-group mb-3">
+                      <span className="input-group-text">$</span>
+                      <input
+                        type="number"
+                        step="0.01"
+                        placeholder="Ej: 95"
+                        name="precio"
+                        value={datosForm.precio}
+                        onChange={manejarCambio}
+                        className="form-control"
+                        min="0"
+                        required
+                      />
+                    </div>
+                  </div>
+                </Col>
+                <Col>
+                  <div>
+                    <label>Stock</label>
+                    <input
+                      type="number"
+                      placeholder="Ej: 5"
+                      name="stock"
+                      value={datosForm.stock}
+                      onChange={manejarCambio}
+                      className={`form-control ${styles.input}`}
+                      min="0"
+                      required
+                    />
+                  </div>
+                </Col>
+              </Row>
 
               <div>
                 <label>Imagen (800x600px)</label>
