@@ -17,6 +17,7 @@ export function TarjetaContacto(contacto) {
         to={contacto.linkedinURL}
         aria-label={`LinkedIn de ${contacto.nombre}`}
         className={`  mb-2 ${styles.linkedIn}`}
+        target="_blank"
       >
         {contacto.linkedinURL}
       </Link>
