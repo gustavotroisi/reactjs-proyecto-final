@@ -2,6 +2,7 @@ import Item from "./Item";
 import { useState } from "react";
 import { Row, Col } from "react-bootstrap";
 //import styles from "./ItemList.module.css";
+import { FaSearch } from "react-icons/fa";
 
 export default function ItemList({ productos, buscador }) {
   const [searchTerm, setSearchTerm] = useState("");
@@ -16,12 +17,17 @@ export default function ItemList({ productos, buscador }) {
       {buscador ? (
         <Row className="mb-4">
           <Col>
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Buscar productos por nombre..."
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
+            <div className="input-group">
+              <span className="input-group-text">
+                <FaSearch />
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                placeholder="Buscar productos por nombre..."
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            </div>
           </Col>
         </Row>
       ) : (

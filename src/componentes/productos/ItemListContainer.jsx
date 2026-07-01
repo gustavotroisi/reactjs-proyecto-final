@@ -1,6 +1,6 @@
 import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
-import { Container, Row, Col, Button, Spinner, Alert } from "react-bootstrap";
+import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
 
 //Firestore
