@@ -130,16 +130,14 @@ export default function FormularioProductos({
                 <label>Imagen (800x600px)</label>
 
                 {datosForm.imagen ? (
-                  <img
-                    src={datosForm.imagen}
-                    style={{
-                      width: "100%",
-                    }}
-                  />
+                  <img src={datosForm.imagen} />
                 ) : (
                   <img
                     src="https://placehold.net/product-800x600.png"
-                    style={{ width: "stretch" }}
+                    style={{
+                      width: "100%",
+                      height: "auto",
+                    }}
                   />
                 )}
                 <input
