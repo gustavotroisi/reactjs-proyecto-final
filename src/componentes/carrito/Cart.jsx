@@ -69,7 +69,10 @@ export default function Cart() {
                 className={styles.producto}
                 style={{ position: "relative" }}
               >
-                <Link to={`/producto/${item.id}`}>
+                <Link
+                  to={`/producto/${item.id}`}
+                  aria-label={`Ver detalles de ${item.nombre}`}
+                >
                   <img
                     src={item.imagen}
                     alt={item.nombre}
@@ -98,6 +101,7 @@ export default function Cart() {
                 <button
                   onClick={() => removeItem(item.id)}
                   className={styles.btnEliminar}
+                  aria-label={`Eliminar ${item.nombre} del carrito`}
                 >
                   <RiDeleteBin6Line />
                 </button>
@@ -107,7 +111,11 @@ export default function Cart() {
 
           <Row className="py-3">
             <Col xs={12} md={6}>
-              <Link to="/productos" className={styles.verMasProductos}>
+              <Link
+                to="/productos"
+                className={styles.verMasProductos}
+                aria-label="Agregar más productos"
+              >
                 <FaCartPlus /> agregar mas productos
               </Link>
             </Col>
@@ -128,12 +136,17 @@ export default function Cart() {
               alert("Gracias por comprar");
               clearCart();
             }}
+            arial-label="Finalizar compra"
           >
             Finalizar compra
           </Link>
         </div>
         <div className={styles.vaciarWrapper}>
-          <button className={styles.btnVaciar} onClick={clearCart}>
+          <button
+            className={styles.btnVaciar}
+            onClick={clearCart}
+            aria-label="Vaciar carrito"
+          >
             Vaciar el carrito <MdOutlineRemoveShoppingCart />
           </button>
         </div>

@@ -78,7 +78,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
             </Col>
             <Col xs={12} lg={6}>
               {cantidadActual > 0 ? (
-                <Link to="/carrito">
+                <Link to="/carrito" aria-label="Tienes productos en el carrito">
                   <Badge className="mb-2 bg-secondary">
                     Tienes {cantidadActual} en el carrito
                   </Badge>{" "}

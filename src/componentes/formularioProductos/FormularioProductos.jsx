@@ -150,6 +150,7 @@ export default function FormularioProductos({
               type="submit"
               className="btn btn-primary btn-lg"
               disabled={loading}
+              aria-label="Enviar formulario"
             >
               <FaFloppyDisk style={{ marginRight: "5px" }} />
               {loading

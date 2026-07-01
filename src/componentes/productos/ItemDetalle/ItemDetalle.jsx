@@ -234,7 +234,10 @@ export default function ItemDetalle() {
                         className="d-flex justify-content-end"
                       >
                         {cantidadActual > 0 ? (
-                          <Link to="/carrito">
+                          <Link
+                            to="/carrito"
+                            arial-label="Tienes productos en el carrito"
+                          >
                             <Badge className="mb-2 bg-secondary">
                               Tienes {cantidadActual} en el carrito
                             </Badge>{" "}
@@ -274,6 +277,7 @@ export default function ItemDetalle() {
                             variant="primary"
                             className="mt-auto w-100"
                             onClick={agregarAlCarrito}
+                            aria-label="Comprar producto"
                           >
                             Comprar
                           </Button>
@@ -290,7 +294,12 @@ export default function ItemDetalle() {
         </Row>
         <Row>
           <Col xs={12} md={12} lg={12} className="mb-4">
-            <BotonVerOtros as={Link} to="/productos" className="text-center">
+            <BotonVerOtros
+              as={Link}
+              to="/productos"
+              className="text-center"
+              arial-label="Ver otros productos"
+            >
               Ver otros productos
             </BotonVerOtros>
           </Col>

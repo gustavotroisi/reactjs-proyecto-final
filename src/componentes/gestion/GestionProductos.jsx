@@ -237,6 +237,7 @@ const GestionProductos = () => {
                     onClick={() => {
                       resetForm();
                     }}
+                    aria-label="Crear nuevo producto"
                   >
                     <MdOutlineLibraryAdd /> Crear Nuevo
                   </button>
@@ -280,6 +281,7 @@ const GestionProductos = () => {
                         variant="primary"
                         className="my-2"
                         style={{ marginRight: "10px" }}
+                        aria-label="Editar producto"
                       >
                         <FaEdit style={{ marginRight: "5px" }} /> Editar
                       </Button>
@@ -287,6 +289,7 @@ const GestionProductos = () => {
                         onClick={() => handleDelete(prod.idFirestore)}
                         variant="danger"
                         className="my-2"
+                        aria-label="Eliminar producto"
                       >
                         <FaTrash style={{ marginRight: "5px" }} /> Eliminar
                       </Button>
