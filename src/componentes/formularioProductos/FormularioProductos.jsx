@@ -145,6 +145,11 @@ export default function FormularioProductos({
               </div>
             </Col>
           </Row>
+          {mensaje && (
+            <div className={`alert alert-${mensaje.tipo} text-center`}>
+              {mensaje.texto}
+            </div>
+          )}
           <Row className="mt-4">
             <button
               type="submit"
@@ -162,11 +167,6 @@ export default function FormularioProductos({
           </Row>
         </Container>
       </form>
-      {mensaje && (
-        <div className={`alert alert-${mensaje.tipo} text-center`}>
-          {mensaje.texto}
-        </div>
-      )}
     </>
   );
 }

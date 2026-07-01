@@ -62,6 +62,7 @@ const GestionProductos = () => {
     await deleteDoc(docRef);
     //setProductos(productos.filter((prod) => prod.id !== modalEliminar.id));
     await cargarProductos();
+    resetForm();
     setModalEliminar({ show: false, id: null });
   };
 
@@ -102,6 +103,20 @@ const GestionProductos = () => {
       return;
     }
 
+    if (
+      datosForm.nombre.trim() === "" ||
+      datosForm.precio <= 0 ||
+      datosForm.precio <= 0 ||
+      datosForm.stock <= 0
+    ) {
+      setMensaje({
+        texto:
+          "Por favor complete todos los campos y asegúrese de que el precio y el stock sean mayores que cero",
+        tipo: "danger",
+      });
+      setTimeout(() => setMensaje(null), 2000);
+      return;
+    }
     setLoading(true);
 
     const apiKey = import.meta.env.VITE_IMGBB_API_KEY;
