@@ -13,7 +13,11 @@ export function TarjetaContacto(contacto) {
       />
       <Card.Title className={styles.nombre}>{contacto.nombre}</Card.Title>
       <Badge className="mb-2 bg-primary mx-auto mt-2">{contacto.rol}</Badge>
-      <Link to="/productos" className={`  mb-2 ${styles.linkedIn}`}>
+      <Link
+        to={contacto.linkedinURL}
+        aria-label={`LinkedIn de ${contacto.nombre}`}
+        className={`  mb-2 ${styles.linkedIn}`}
+      >
         {contacto.linkedinURL}
       </Link>
     </Card>
