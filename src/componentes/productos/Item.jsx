@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
+import { toast } from "react-toastify";
 import styles from "./Item.module.css";
 import { formatoPrecio } from "../../utils/formatoPrecio";
 
@@ -24,7 +25,10 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
-    alert(
+    /*alert(
+      `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
+    );*/
+    toast.success(
       `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
     );
   };

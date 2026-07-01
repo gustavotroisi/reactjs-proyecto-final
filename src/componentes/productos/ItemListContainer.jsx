@@ -2,6 +2,7 @@ import ItemList from "./ItemList";
 import { useState, useEffect } from "react";
 import { Container, Row, Col, Button, Spinner } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { ToastContainer } from "react-toastify";
 
 //Firestore
 import {
@@ -192,6 +193,7 @@ export default function ItemListContainer({
           content={`Los mejores productos para tu oficina y hogar.`}
         />
       </Helmet>
+      <ToastContainer />
       <Container className="mt-4">
         <h1 className="page-title">{titulo}</h1>
         {/*console.log(mensaje)*/}

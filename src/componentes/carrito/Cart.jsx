@@ -1,19 +1,25 @@
+import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 import { useLike } from "../../context/LikeContext";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { Helmet } from "react-helmet";
-import styles from "./Cart.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCartPlus } from "react-icons/fa6";
 import { MdFavorite } from "react-icons/md";
 import { formatoPrecio } from "../../utils/formatoPrecio";
 import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import styles from "./Cart.module.css";
 
 export default function Cart() {
   const { cart, clearCart, removeItem, getCartTotal } = useCart();
   const cartHeader = <h1 className={`page-title ${styles.titulo}`}>Carrito</h1>;
   const { chequeaSiMeGusta } = useLike();
+  const [modalFinalizar, setModalFinalizar] = useState({
+    show: false,
+    id: null,
+  });
+  const navigate = useNavigate();
 
   if (cart.length === 0) {
     return (
@@ -129,17 +135,16 @@ export default function Cart() {
           </Row>
         </div>
         <div className={styles.actionsWrapper}>
-          <Link
-            to="/"
+          <Button
             className={styles.btnPagar}
             onClick={() => {
-              alert("Gracias por comprar");
-              clearCart();
+              //alert("Gracias por comprar");
+              setModalFinalizar({ show: true });
             }}
             arial-label="Finalizar compra"
           >
             Finalizar compra
-          </Link>
+          </Button>
         </div>
         <div className={styles.vaciarWrapper}>
           <button
@@ -150,6 +155,46 @@ export default function Cart() {
             Vaciar el carrito <MdOutlineRemoveShoppingCart />
           </button>
         </div>
+
+        {/* Modal Finalizar */}
+        <Modal
+          centered
+          data-bs-theme="dark"
+          show={modalFinalizar.show}
+          onHide={() => setModalFinalizar({ show: false, id: null })}
+        >
+          <Modal.Header closeButton>
+            <Modal.Title>Finalizar la compra</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <p style={{ color: "white", textAlign: "center" }}>
+              Serás dirigido a la página de pago para completar tu compra.
+            </p>
+            <p style={{ color: "white", textAlign: "center" }}>
+              ¡Gracias por comprar en <strong>TechStore</strong>!
+            </p>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button
+              variant="secondary"
+              onClick={() => {
+                setModalFinalizar({ show: false, id: null });
+              }}
+            >
+              Cancelar
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                navigate("/");
+                setModalFinalizar({ show: false, id: null });
+                clearCart();
+              }}
+            >
+              Confirmar
+            </Button>
+          </Modal.Footer>
+        </Modal>
       </div>
     </>
   );

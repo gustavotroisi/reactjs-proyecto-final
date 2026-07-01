@@ -1,6 +1,7 @@
 import ItemListContainer from "../productos/ItemListContainer";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { ToastContainer } from "react-toastify";
 import styles from "./Inicio.module.css";
 import homeImage from "../../../public/images/home_imagen.png";
 
@@ -14,6 +15,7 @@ export default function Inicio() {
           content={`Equipos y accesorios de computación. Los mejores precios, la mejor atención.`}
         />
       </Helmet>
+      <ToastContainer />
       <section
         style={{
           backgroundColor: "var(--color-bg)",

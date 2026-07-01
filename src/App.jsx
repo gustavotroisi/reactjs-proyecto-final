@@ -1,5 +1,6 @@
 import * as bootstrap from "bootstrap";
-//import "bootswatch/dist/solar/bootstrap.min.css";
+
+import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
@@ -15,22 +16,33 @@ import ProductosNacionales from "./componentes/ProductosNacionales/ProductosNaci
 
 function App() {
   return (
-    <Routes>
-      <Route element={<Layout />}>
-        <Route path="/" element={<Inicio />} />
-        <Route
-          path="productos"
-          element={
-            <ItemListContainer titulo={"Nuestros Productos"} buscador={true} />
-          }
-        />
-        <Route path="/producto/:id" element={<ItemDetalle />} />
-        <Route path="/nosotros" element={<Directorio titulo={"Nosotros"} />} />
-        <Route path="/gestion" element={<GestionProductos />} />
-        <Route path="/carrito" element={<Cart />} />
-        <Route path="/productos-nacionales" element={<ProductosNacionales />} />
-      </Route>
-    </Routes>
+    <>
+      <Routes>
+        <Route element={<Layout />}>
+          <Route path="/" element={<Inicio />} />
+          <Route
+            path="productos"
+            element={
+              <ItemListContainer
+                titulo={"Nuestros Productos"}
+                buscador={true}
+              />
+            }
+          />
+          <Route path="/producto/:id" element={<ItemDetalle />} />
+          <Route
+            path="/nosotros"
+            element={<Directorio titulo={"Nosotros"} />}
+          />
+          <Route path="/gestion" element={<GestionProductos />} />
+          <Route path="/carrito" element={<Cart />} />
+          <Route
+            path="/productos-nacionales"
+            element={<ProductosNacionales />}
+          />
+        </Route>
+      </Routes>
+    </>
   );
 }
 export default App;

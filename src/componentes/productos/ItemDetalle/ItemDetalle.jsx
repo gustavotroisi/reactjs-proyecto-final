@@ -14,6 +14,8 @@ import {
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import styled from "styled-components";
+import { toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import { formatoPrecio } from "../../../utils/formatoPrecio";
 
 //Firestore
@@ -142,7 +144,10 @@ export default function ItemDetalle() {
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
     //console.log(producto, cantidad);
-    alert(
+    /*alert(
+      `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
+    );*/
+    toast.success(
       `Has agregado ${cantidad} unidad${cantidad > 1 ? "es de" : " de"} ${nombre} al carrito.`,
     );
   };
@@ -156,6 +161,7 @@ export default function ItemDetalle() {
           content={`Detalles y precio del producto ${nombre}.`}
         />
       </Helmet>
+      <ToastContainer />
       <Container className="mt-4">
         <Row>
           <Col xs={12} md={12} lg={12} className="mb-4">
