@@ -228,9 +228,9 @@ export default function ItemListContainer({
               ) : (
                 // No mostramos el alert si solo hay una pagina de resultados
                 productos.length > PRODUCTOS_POR_PAGINA && (
-                  <Alert variant="light" className="m-0">
+                  <div className="text-white p-3">
                     No hay mas productos para mostrar.
-                  </Alert>
+                  </div>
                 )
               )}
             </Col>
