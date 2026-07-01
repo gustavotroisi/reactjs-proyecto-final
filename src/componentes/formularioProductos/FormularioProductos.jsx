@@ -30,6 +30,7 @@ export default function FormularioProductos({
                     value={datosForm.id}
                     onChange={manejarCambio}
                     className={`form-control ${styles.input}`}
+                    placeholder="Ej: 1"
                     min="0"
                     required
                   />
@@ -43,7 +44,7 @@ export default function FormularioProductos({
                     className="form-select mb-3"
                     required
                   >
-                    <option value="">Seleccione una categoría</option>
+                    <option value="">Selecciona una categoría</option>
                     <option value="componentes">Componentes</option>
                     <option value="perifericos">Periféricos</option>
                     <option value="equipos">Equipos</option>
