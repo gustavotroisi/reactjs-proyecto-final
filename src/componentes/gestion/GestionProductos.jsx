@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import FormularioProductos from "../formularioProductos/FormularioProductos";
 import { FaEdit, FaTrash } from "react-icons/fa";
+import { MdOutlineLibraryAdd } from "react-icons/md";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { formatoPrecio } from "../../utils/formatoPrecio";
 import { Helmet } from "react-helmet";
@@ -85,6 +86,12 @@ const GestionProductos = () => {
     setImagenFile(e.target.files[0]);
   };
 
+  const resetForm = () => {
+    setDatosForm(estadoInicialForm);
+    setImagenFile(null);
+    setProductoAEditar(null);
+    setKeyInputFile((prev) => prev + 1);
+  };
   const manejarEnvio = async (e) => {
     e.preventDefault();
 
@@ -176,10 +183,7 @@ const GestionProductos = () => {
         await addDoc(productosCollection, productoCompleto);
       }
       await cargarProductos();
-      setDatosForm(estadoInicialForm);
-      setImagenFile(null);
-      setProductoAEditar(null);
-      setKeyInputFile((prev) => prev + 1);
+      resetForm();
       setMensaje({
         texto: `Producto ${modoEdicion ? "actualizado" : "guardado"} con éxito `,
         tipo: "success",
@@ -216,10 +220,31 @@ const GestionProductos = () => {
       <Container className="mt-4">
         <Row>
           <Col xs={12} md={12} className="mb-4 mx-auto">
-            <h1 className={`page-title ${styles.titulo}`}>
-              Gestión de Productos
-            </h1>
-
+            <Row>
+              <Col xs={12} md={6}>
+                <h1 className={`page-title ${styles.titulo}`}>
+                  Gestión de Productos
+                </h1>
+              </Col>
+              <Col
+                xs={12}
+                md={6}
+                className="d-flex justify-content-end align-items-center"
+              >
+                {modoEdicion ? (
+                  <button
+                    className="btn btn-primary"
+                    onClick={() => {
+                      resetForm();
+                    }}
+                  >
+                    <MdOutlineLibraryAdd /> Crear Nuevo
+                  </button>
+                ) : (
+                  ""
+                )}
+              </Col>
+            </Row>
             <FormularioProductos
               datosForm={datosForm}
               manejarCambio={manejarCambio}
