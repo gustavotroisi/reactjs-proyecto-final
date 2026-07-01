@@ -83,7 +83,7 @@ function Header() {
                     >
                       Carrito
                       <span className={`${styles.cartIcon} ms-2  d-lg-none`}>
-                        <img src={cartIcon} alt="cart icon" />
+                        <img src={cartIcon} alt="Icono del carrito" />
                         {totalItems > 0 && (
                           <div className={styles.total}>{totalItems}</div>
                         )}
@@ -127,7 +127,7 @@ function Header() {
                 aria-label="Carrito de compras"
               >
                 <span className={styles.cartIcon}>
-                  <img src={cartIcon} alt="cart icon" />
+                  <img src={cartIcon} alt="Icono del carrito" />
                   {totalItems > 0 && (
                     <div className={styles.total}>{totalItems}</div>
                   )}

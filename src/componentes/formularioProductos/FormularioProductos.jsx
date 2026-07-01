@@ -135,6 +135,7 @@ export default function FormularioProductos({
                       ? datosForm.imagen
                       : "https://placehold.net/product-800x600.png"
                   }
+                  alt="Vista previa del producto"
                   style={{
                     width: "100%",
                     height: "auto",
