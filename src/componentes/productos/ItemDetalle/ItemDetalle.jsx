@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
+import { IoBasket } from "react-icons/io5";
 import styled from "styled-components";
 import { toast } from "react-toastify";
 import { ToastContainer } from "react-toastify";
@@ -245,7 +246,7 @@ export default function ItemDetalle() {
                             arial-label="Tienes productos en el carrito"
                           >
                             <Badge className="mb-2 bg-secondary">
-                              Tienes {cantidadActual} en el carrito
+                              <IoBasket /> Hay {cantidadActual} en el carrito
                             </Badge>{" "}
                           </Link>
                         ) : (

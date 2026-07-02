@@ -6,6 +6,7 @@ import { Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { toast } from "react-toastify";
+import { IoBasket } from "react-icons/io5";
 import styles from "./Item.module.css";
 import { formatoPrecio } from "../../utils/formatoPrecio";
 
@@ -84,7 +85,7 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
               {cantidadActual > 0 ? (
                 <Link to="/carrito" aria-label="Tienes productos en el carrito">
                   <Badge className="mb-2 bg-secondary">
-                    Tienes {cantidadActual} en el carrito
+                    <IoBasket /> Hay {cantidadActual} en el carrito
                   </Badge>{" "}
                 </Link>
               ) : (
