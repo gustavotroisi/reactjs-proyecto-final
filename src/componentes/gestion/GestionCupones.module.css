@@ -1,0 +1,21 @@
+.gestionTable {
+    border: solid 1px var(--color-secondary);
+    margin: 0 auto;
+    color: var(--color-secondary);
+    width: 100%;
+}
+
+.gestionTable td {
+    padding: 3px 12px;
+    border: solid 1px;
+}
+
+.gestionTable th {
+    padding: 3px 12px;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.gestionTable .acciones {
+    width: 15.2em;
+}

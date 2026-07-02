@@ -9,6 +9,7 @@ import { Layout } from "./componentes/layout/Layout";
 import ItemListContainer from "./componentes/productos/ItemListContainer";
 import { Directorio } from "./componentes/contactos/Directorio";
 import GestionProductos from "./componentes/gestion/GestionProductos";
+import GestionCupones from "./componentes/gestion/GestionCupones";
 import Inicio from "./componentes/inicio/Inicio";
 import ItemDetalle from "./componentes/productos/ItemDetalle/ItemDetalle";
 import Cart from "./componentes/carrito/Cart";
@@ -35,6 +36,7 @@ function App() {
             element={<Directorio titulo={"Nosotros"} />}
           />
           <Route path="/gestion" element={<GestionProductos />} />
+          <Route path="/cupones" element={<GestionCupones />} />
           <Route path="/carrito" element={<Cart />} />
           <Route
             path="/productos-nacionales"
