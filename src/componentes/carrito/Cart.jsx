@@ -8,7 +8,7 @@ import { RiDeleteBin6Line } from "react-icons/ri";
 import { FaCartPlus } from "react-icons/fa6";
 import { MdFavorite } from "react-icons/md";
 import { formatoPrecio } from "../../utils/formatoPrecio";
-import { MdOutlineRemoveShoppingCart } from "react-icons/md";
+import { TbBasketOff } from "react-icons/tb";
 import styles from "./Cart.module.css";
 
 export default function Cart() {
@@ -152,7 +152,7 @@ export default function Cart() {
             onClick={clearCart}
             aria-label="Vaciar carrito"
           >
-            Vaciar el carrito <MdOutlineRemoveShoppingCart />
+            <TbBasketOff size={20} /> Vaciar el carrito
           </button>
         </div>
 

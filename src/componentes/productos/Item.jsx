@@ -6,7 +6,7 @@ import { Row, Col, Card, Button, Badge } from "react-bootstrap";
 import { MdFavorite } from "react-icons/md";
 import { IoStar } from "react-icons/io5";
 import { toast } from "react-toastify";
-import { IoBasket } from "react-icons/io5";
+import { TbBasketCheck } from "react-icons/tb";
 import styles from "./Item.module.css";
 import { formatoPrecio } from "../../utils/formatoPrecio";
 
@@ -84,8 +84,12 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
             <Col xs={12} lg={6}>
               {cantidadActual > 0 ? (
                 <Link to="/carrito" aria-label="Tienes productos en el carrito">
-                  <Badge className="mb-2 bg-secondary">
-                    <IoBasket /> Hay {cantidadActual} en el carrito
+                  <Badge className="mb-2 bg-secondary pt-2">
+                    <TbBasketCheck
+                      size="1.5rem"
+                      className="d-inline-flex align-items-center  pb-1 "
+                    />{" "}
+                    Hay {cantidadActual} en el carrito
                   </Badge>{" "}
                 </Link>
               ) : (
