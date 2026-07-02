@@ -11,10 +11,13 @@ import {
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { FaFloppyDisk } from "react-icons/fa6";
 import styles from "./GestionCupones.module.css";
 
 const GestionCupones = () => {
   const [cupones, setCupones] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [mensaje, setMensaje] = useState(null);
   const [modalEliminar, setModalEliminar] = useState({ show: false, id: null });
 
   const obtenerCupones = async () => {
@@ -38,6 +41,10 @@ const GestionCupones = () => {
   useEffect(() => {
     obtenerCupones();
   }, []);
+
+  const manejarEnvio = async (e) => {
+    e.preventDefault();
+  };
 
   const handleDelete = (idFirestore) => {
     setModalEliminar({ show: true, idFirestore });
@@ -69,6 +76,65 @@ const GestionCupones = () => {
             </Row>
           </Col>
         </Row>
+
+        <Row>
+          <form onSubmit={manejarEnvio} className={styles.formcupones}>
+            <h3 className={`${styles.titulo} mb-4`}> Agregar Nuevo Cupón</h3>
+
+            <Container>
+              <Row>
+                <Col xs={12} md={8}>
+                  <div>
+                    <label>Código</label>
+                    <input
+                      type="text"
+                      placeholder="Ej: INVIERNO25"
+                      name="codigo"
+                      value={cupones.codigo}
+                      className={`form-control ${styles.input}`}
+                      required
+                    />
+                  </div>
+                </Col>
+
+                <Col xs={12} md={4}>
+                  <div>
+                    <label>Porcentaje</label>
+                    <div className="input-group mb-3">
+                      <input
+                        type="number"
+                        placeholder="Ej: 25"
+                        name="porcentaje"
+                        value={cupones.porcentaje}
+                        className="form-control"
+                        min="1"
+                        required
+                      />{" "}
+                      <span className="input-group-text">%</span>
+                    </div>
+                  </div>
+                </Col>
+              </Row>
+              {mensaje && (
+                <div className={`alert alert-${mensaje.tipo} text-center`}>
+                  {mensaje.texto}
+                </div>
+              )}
+              <Row className="mt-4">
+                <button
+                  type="submit"
+                  className="btn btn-primary btn-lg"
+                  disabled={loading}
+                  aria-label="Enviar formulario"
+                >
+                  <FaFloppyDisk style={{ marginRight: "5px" }} />
+                  Guardar Cupón
+                </button>
+              </Row>
+            </Container>
+          </form>
+        </Row>
+
         <Row>
           <h1 className="page-title">Listado de Cupones</h1>
           <table className={styles.gestionTable}>
