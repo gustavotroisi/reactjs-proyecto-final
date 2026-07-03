@@ -9,6 +9,7 @@ import {
 } from "firebase/firestore";
 import { FaTrash } from "react-icons/fa";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import { FaFloppyDisk } from "react-icons/fa6";
 import styles from "./GestionCupones.module.css";
@@ -43,7 +44,7 @@ const GestionCupones = () => {
       setCupones(lista);
     } catch (error) {
       console.error("Error al obtener los cupones:", error);
-      alert("Ocurrió un error al cargar los cupones.");
+      toast.error("Ocurrió un error al cargar los cupones.");
     }
   };
 
@@ -52,17 +53,15 @@ const GestionCupones = () => {
   }, []);
 
   const manejarCambio = (e) => {
-    const { name, value, type } = e.target;
-    let nuevoValor = value;
-    if (type === "number") {
-      nuevoValor =
-        value === ""
-          ? ""
-          : name === "precio"
-            ? parseFloat(value)
-            : parseInt(value, 10);
+    const { name, value } = e.target;
+    let nuevoValor;
+    if (name == "porcentaje") {
+      nuevoValor = parseInt(value, 10);
+    } else if (name == "codigo") {
+      nuevoValor = value.toUpperCase().replace(/[^A-Z0-9]/g, "");
     }
     setDatosForm({ ...datosForm, [name]: nuevoValor });
+    console.log(datosForm);
   };
 
   const manejarEnvio = async (e) => {
@@ -86,7 +85,7 @@ const GestionCupones = () => {
       await addDoc(cuponCollection, datosForm);
 
       await obtenerCupones();
-      //resetForm();
+      setDatosForm(estadoInicialForm); //reset
       setMensaje({
         texto: "Cupón guardado con éxito",
         tipo: "success",
@@ -112,6 +111,7 @@ const GestionCupones = () => {
     const docRef = doc(db, "cupones", modalEliminar.id);
     await deleteDoc(docRef);
     await obtenerCupones();
+    toast.success("Cupón eliminado con éxito.");
     //resetForm();
     setModalEliminar({ show: false, id: null, codigo: null });
   };
@@ -121,6 +121,7 @@ const GestionCupones = () => {
       <Helmet>
         <title>TechStore | Gestión</title>
       </Helmet>
+      <ToastContainer />
       <Container className="mt-4">
         <Row>
           <Col xs={12} md={12} className="mb-4 mx-auto">
@@ -145,7 +146,7 @@ const GestionCupones = () => {
                       type="text"
                       placeholder="Ej: INVIERNO25"
                       name="codigo"
-                      value={cupones.codigo}
+                      value={datosForm.codigo}
                       className={`form-control ${styles.input}`}
                       required
                       onChange={manejarCambio}
@@ -161,9 +162,10 @@ const GestionCupones = () => {
                         type="number"
                         placeholder="Ej: 25"
                         name="porcentaje"
-                        value={cupones.porcentaje}
+                        value={datosForm.porcentaje}
                         className="form-control"
                         min="1"
+                        max="100"
                         required
                         onChange={manejarCambio}
                       />{" "}
