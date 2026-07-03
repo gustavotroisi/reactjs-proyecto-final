@@ -61,7 +61,7 @@ const GestionCupones = () => {
       nuevoValor = value.toUpperCase().replace(/[^A-Z0-9]/g, "");
     }
     setDatosForm({ ...datosForm, [name]: nuevoValor });
-    console.log(datosForm);
+    //console.log(datosForm);
   };
 
   const manejarEnvio = async (e) => {
