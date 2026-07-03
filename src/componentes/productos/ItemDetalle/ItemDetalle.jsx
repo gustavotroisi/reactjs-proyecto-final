@@ -140,7 +140,8 @@ export default function ItemDetalle() {
     );
   }
 
-  const { nombre, precio, stock, imagen, descripcion, destacado } = producto;
+  const { nombre, precio, stock, imagen, descripcion, destacado, categoria } =
+    producto;
 
   const agregarAlCarrito = () => {
     addToCart(producto, cantidad);
@@ -193,7 +194,10 @@ export default function ItemDetalle() {
                   />
                 </Col>
                 <Col xs={12} md={6} lg={6}>
-                  <Card.Body className="d-flex flex-column">
+                  <Card.Body
+                    className="d-flex flex-column"
+                    style={{ position: "relative" }}
+                  >
                     <div
                       className={styles.fav}
                       role="button"
@@ -214,6 +218,13 @@ export default function ItemDetalle() {
                       )}
                     </div>
 
+                    <Badge
+                      pill
+                      bg="secondary"
+                      className="mb-1 align-self-start"
+                    >
+                      {categoria}
+                    </Badge>
                     <Card.Title className={styles.nombre}>{nombre}</Card.Title>
 
                     <Card.Text className={styles.texto}>

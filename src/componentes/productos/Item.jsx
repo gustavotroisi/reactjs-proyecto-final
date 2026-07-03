@@ -10,7 +10,15 @@ import { TbBasketCheck } from "react-icons/tb";
 import styles from "./Item.module.css";
 import { formatoPrecio } from "../../utils/formatoPrecio";
 
-export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
+export default function Item({
+  id,
+  nombre,
+  precio,
+  stock,
+  imagen,
+  destacado,
+  categoria,
+}) {
   const producto = { id, nombre, precio, stock, imagen, destacado };
   const [cantidad, setCantidad] = useState(1);
   //const [esFavorito, setEsFavorito] = useState(false);
@@ -58,7 +66,14 @@ export default function Item({ id, nombre, precio, stock, imagen, destacado }) {
       ) : (
         ""
       )}
-      <Card.Body className="d-flex flex-column">
+      <Card.Body
+        className="d-flex flex-column"
+        style={{ position: "relative" }}
+      >
+        <Badge pill bg="secondary" className="mb-1 align-self-start ">
+          {categoria}
+        </Badge>
+
         <div
           className={styles.fav}
           role="button"

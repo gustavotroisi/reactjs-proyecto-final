@@ -53,7 +53,8 @@
 .fav {
     cursor: pointer;
     position: absolute;
-    right: 10px;
+    right: 0;
+    top: 0;
     font-size: 2em;
 }
 
