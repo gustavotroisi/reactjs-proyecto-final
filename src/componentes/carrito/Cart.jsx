@@ -168,10 +168,10 @@ export default function Cart() {
           </Modal.Header>
           <Modal.Body>
             <p style={{ color: "white", textAlign: "center" }}>
-              Serás dirigido a la página de pago para completar tu compra.
-            </p>
-            <p style={{ color: "white", textAlign: "center" }}>
               ¡Gracias por comprar en <strong>TechStore</strong>!
+            </p>{" "}
+            <p style={{ color: "white", textAlign: "center" }}>
+              Serás dirigido a la página de pago para completar tu compra.
             </p>
           </Modal.Body>
           <Modal.Footer>
