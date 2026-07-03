@@ -280,48 +280,54 @@ const GestionProductos = () => {
             />
 
             <h1 className="page-title">Listado de Productos</h1>
-            <table className={styles.gestionTable}>
-              <thead>
-                <tr>
-                  <th>Id #</th>
-                  <th>Nombre</th>
-                  <th>Precio</th>
-                  <th className={styles.acciones}>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {productos.map((prod) => (
-                  <tr key={prod.id}>
-                    <td>{prod.id}</td>
-                    <td>{prod.nombre}</td>
-                    <td style={{ textAlign: "right" }}>
-                      {formatoPrecio(prod.precio)}
-                    </td>
-                    <td className={styles.acciones}>
-                      <Button
-                        onClick={() => manejarEditar(prod)}
-                        variant="primary"
-                        className="my-2"
-                        style={{ marginRight: "10px" }}
-                        aria-label="Editar producto"
-                      >
-                        <FaEdit style={{ marginRight: "5px" }} /> Editar
-                      </Button>
-                      <Button
-                        onClick={() =>
-                          handleDelete(prod.idFirestore, prod.nombre)
-                        }
-                        variant="danger"
-                        className="my-2"
-                        aria-label="Eliminar producto"
-                      >
-                        <FaTrash style={{ marginRight: "5px" }} /> Eliminar
-                      </Button>
-                    </td>
+            {productos.length == 0 ? (
+              <p className="text-center text-white">
+                No hay productos disponibles.
+              </p>
+            ) : (
+              <table className={styles.gestionTable}>
+                <thead>
+                  <tr>
+                    <th>Id #</th>
+                    <th>Nombre</th>
+                    <th>Precio</th>
+                    <th className={styles.acciones}>Acciones</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {productos.map((prod) => (
+                    <tr key={prod.id}>
+                      <td>{prod.id}</td>
+                      <td>{prod.nombre}</td>
+                      <td style={{ textAlign: "right" }}>
+                        {formatoPrecio(prod.precio)}
+                      </td>
+                      <td className={styles.acciones}>
+                        <Button
+                          onClick={() => manejarEditar(prod)}
+                          variant="primary"
+                          className="my-2"
+                          style={{ marginRight: "10px" }}
+                          aria-label="Editar producto"
+                        >
+                          <FaEdit style={{ marginRight: "5px" }} /> Editar
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            handleDelete(prod.idFirestore, prod.nombre)
+                          }
+                          variant="danger"
+                          className="my-2"
+                          aria-label="Eliminar producto"
+                        >
+                          <FaTrash style={{ marginRight: "5px" }} /> Eliminar
+                        </Button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </Col>
         </Row>
 
