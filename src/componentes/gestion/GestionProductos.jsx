@@ -10,6 +10,7 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import FormularioProductos from "../formularioProductos/FormularioProductos";
+import { ToastContainer, toast } from "react-toastify";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import { Container, Row, Col, Button, Modal } from "react-bootstrap";
@@ -19,7 +20,11 @@ import styles from "./GestionProductos.module.css";
 
 const GestionProductos = () => {
   const [productos, setProductos] = useState([]);
-  const [modalEliminar, setModalEliminar] = useState({ show: false, id: null });
+  const [modalEliminar, setModalEliminar] = useState({
+    show: false,
+    nombre: null,
+    id: null,
+  });
   const [keyInputFile, setKeyInputFile] = useState(0);
 
   const estadoInicialForm = {
@@ -53,8 +58,8 @@ const GestionProductos = () => {
     );
   };
 
-  const handleDelete = (idFirestore) => {
-    setModalEliminar({ show: true, idFirestore });
+  const handleDelete = (idFirestore, nombre) => {
+    setModalEliminar({ show: true, nombre: nombre, idFirestore });
   };
 
   const confirmarEliminar = async () => {
@@ -63,7 +68,8 @@ const GestionProductos = () => {
     //setProductos(productos.filter((prod) => prod.id !== modalEliminar.id));
     await cargarProductos();
     resetForm();
-    setModalEliminar({ show: false, id: null });
+    toast.success("Producto eliminado con éxito.");
+    setModalEliminar({ show: false, nombre: null, id: null });
   };
 
   const manejarCambio = (e) => {
@@ -232,6 +238,7 @@ const GestionProductos = () => {
       <Helmet>
         <title>TechStore | Gestión</title>
       </Helmet>
+      <ToastContainer />
       <Container className="mt-4">
         <Row>
           <Col xs={12} md={12} className="mb-4 mx-auto">
@@ -248,7 +255,7 @@ const GestionProductos = () => {
               >
                 {modoEdicion ? (
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary mb-3"
                     onClick={() => {
                       resetForm();
                     }}
@@ -301,7 +308,9 @@ const GestionProductos = () => {
                         <FaEdit style={{ marginRight: "5px" }} /> Editar
                       </Button>
                       <Button
-                        onClick={() => handleDelete(prod.idFirestore)}
+                        onClick={() =>
+                          handleDelete(prod.idFirestore, prod.nombre)
+                        }
                         variant="danger"
                         className="my-2"
                         aria-label="Eliminar producto"
@@ -321,19 +330,23 @@ const GestionProductos = () => {
           centered
           data-bs-theme="dark"
           show={modalEliminar.show}
-          onHide={() => setModalEliminar({ show: false, id: null })}
+          onHide={() =>
+            setModalEliminar({ show: false, nombre: null, id: null })
+          }
         >
           <Modal.Header closeButton>
             <Modal.Title>Confirmar eliminación</Modal.Title>
           </Modal.Header>
           <Modal.Body>
             ¿Está seguro de que desea eliminar el producto{" "}
-            <strong>ID: {modalEliminar.id}</strong>?
+            <strong>{modalEliminar.nombre}</strong>?
           </Modal.Body>
           <Modal.Footer>
             <Button
               variant="secondary"
-              onClick={() => setModalEliminar({ show: false, id: null })}
+              onClick={() =>
+                setModalEliminar({ show: false, nombre: null, id: null })
+              }
             >
               Cancelar
             </Button>
