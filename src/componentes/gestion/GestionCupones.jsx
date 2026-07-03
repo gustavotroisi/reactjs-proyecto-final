@@ -194,34 +194,40 @@ const GestionCupones = () => {
 
         <Row>
           <h1 className="page-title">Listado de Cupones</h1>
-          <table className={styles.gestionTable}>
-            <thead>
-              <tr>
-                <th>Código</th>
-                <th>Porcentaje</th>
-                <th className={styles.acciones}>Acciones</th>
-              </tr>
-            </thead>
-            <tbody>
-              {cupones.map((cupon) => (
-                <tr key={cupon.id}>
-                  <td className="text-center">{cupon.codigo}</td>
-
-                  <td className="text-center">{cupon.porcentaje} %</td>
-                  <td className="text-center">
-                    <Button
-                      onClick={() => handleDelete(cupon.id, cupon.codigo)}
-                      variant="danger"
-                      className="my-2"
-                      aria-label="Eliminar cupón"
-                    >
-                      <FaTrash style={{ marginRight: "5px" }} /> Eliminar
-                    </Button>
-                  </td>
+          {cupones.length == 0 ? (
+            <p className="text-center text-white">
+              No hay cupones disponibles.
+            </p>
+          ) : (
+            <table className={styles.gestionTable}>
+              <thead>
+                <tr>
+                  <th>Código</th>
+                  <th>Porcentaje</th>
+                  <th className={styles.acciones}>Acciones</th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {cupones.map((cupon) => (
+                  <tr key={cupon.id}>
+                    <td className="text-center">{cupon.codigo}</td>
+
+                    <td className="text-center">{cupon.porcentaje} %</td>
+                    <td className="text-center">
+                      <Button
+                        onClick={() => handleDelete(cupon.id, cupon.codigo)}
+                        variant="danger"
+                        className="my-2"
+                        aria-label="Eliminar cupón"
+                      >
+                        <FaTrash style={{ marginRight: "5px" }} /> Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
         </Row>
 
         {/* Modal Eliminar */}
