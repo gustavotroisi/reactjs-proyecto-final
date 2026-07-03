@@ -126,110 +126,114 @@ const GestionCupones = () => {
         <Row>
           <Col xs={12} md={12} className="mb-4 mx-auto">
             <Row>
-              <Col xs={12} md={6}>
+              <Col>
                 <h1 className={`page-title `}>Gestión de Cupones</h1>
+
+                <form onSubmit={manejarEnvio} className={styles.formcupones}>
+                  <h3 className={`${styles.titulo} mb-4`}>
+                    {" "}
+                    Agregar Nuevo Cupón
+                  </h3>
+
+                  <Container>
+                    <Row>
+                      <Col xs={12} md={8}>
+                        <div>
+                          <label>Código</label>
+                          <input
+                            type="text"
+                            placeholder="Ej: INVIERNO25"
+                            name="codigo"
+                            value={datosForm.codigo}
+                            className={`form-control ${styles.input}`}
+                            required
+                            onChange={manejarCambio}
+                          />
+                        </div>
+                      </Col>
+
+                      <Col xs={12} md={4}>
+                        <div>
+                          <label>Porcentaje</label>
+                          <div className="input-group mb-3">
+                            <input
+                              type="number"
+                              placeholder="Ej: 25"
+                              name="porcentaje"
+                              value={datosForm.porcentaje}
+                              className="form-control"
+                              min="1"
+                              max="100"
+                              required
+                              onChange={manejarCambio}
+                            />{" "}
+                            <span className="input-group-text">%</span>
+                          </div>
+                        </div>
+                      </Col>
+                    </Row>
+                    {mensaje && (
+                      <div
+                        className={`alert alert-${mensaje.tipo} text-center`}
+                      >
+                        {mensaje.texto}
+                      </div>
+                    )}
+                    <Row className="mt-4">
+                      <button
+                        type="submit"
+                        className="btn btn-primary btn-lg"
+                        disabled={loading}
+                        aria-label="Enviar formulario"
+                      >
+                        <FaFloppyDisk style={{ marginRight: "5px" }} />
+                        Guardar Cupón
+                      </button>
+                    </Row>
+                  </Container>
+                </form>
+
+                <h1 className="page-title">Listado de Cupones</h1>
+                {cupones.length == 0 ? (
+                  <p className="text-center text-white">
+                    No hay cupones disponibles.
+                  </p>
+                ) : (
+                  <table className={styles.gestionTable}>
+                    <thead>
+                      <tr>
+                        <th>Código</th>
+                        <th>Porcentaje</th>
+                        <th className={styles.acciones}>Acciones</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {cupones.map((cupon) => (
+                        <tr key={cupon.id}>
+                          <td className="text-center">{cupon.codigo}</td>
+
+                          <td className="text-center">{cupon.porcentaje} %</td>
+                          <td className="text-center">
+                            <Button
+                              onClick={() =>
+                                handleDelete(cupon.id, cupon.codigo)
+                              }
+                              variant="danger"
+                              className="my-2"
+                              aria-label="Eliminar cupón"
+                            >
+                              <FaTrash style={{ marginRight: "5px" }} />{" "}
+                              Eliminar
+                            </Button>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                )}
               </Col>
             </Row>
           </Col>
-        </Row>
-
-        <Row>
-          <form onSubmit={manejarEnvio} className={styles.formcupones}>
-            <h3 className={`${styles.titulo} mb-4`}> Agregar Nuevo Cupón</h3>
-
-            <Container>
-              <Row>
-                <Col xs={12} md={8}>
-                  <div>
-                    <label>Código</label>
-                    <input
-                      type="text"
-                      placeholder="Ej: INVIERNO25"
-                      name="codigo"
-                      value={datosForm.codigo}
-                      className={`form-control ${styles.input}`}
-                      required
-                      onChange={manejarCambio}
-                    />
-                  </div>
-                </Col>
-
-                <Col xs={12} md={4}>
-                  <div>
-                    <label>Porcentaje</label>
-                    <div className="input-group mb-3">
-                      <input
-                        type="number"
-                        placeholder="Ej: 25"
-                        name="porcentaje"
-                        value={datosForm.porcentaje}
-                        className="form-control"
-                        min="1"
-                        max="100"
-                        required
-                        onChange={manejarCambio}
-                      />{" "}
-                      <span className="input-group-text">%</span>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-              {mensaje && (
-                <div className={`alert alert-${mensaje.tipo} text-center`}>
-                  {mensaje.texto}
-                </div>
-              )}
-              <Row className="mt-4">
-                <button
-                  type="submit"
-                  className="btn btn-primary btn-lg"
-                  disabled={loading}
-                  aria-label="Enviar formulario"
-                >
-                  <FaFloppyDisk style={{ marginRight: "5px" }} />
-                  Guardar Cupón
-                </button>
-              </Row>
-            </Container>
-          </form>
-        </Row>
-
-        <Row>
-          <h1 className="page-title">Listado de Cupones</h1>
-          {cupones.length == 0 ? (
-            <p className="text-center text-white">
-              No hay cupones disponibles.
-            </p>
-          ) : (
-            <table className={styles.gestionTable}>
-              <thead>
-                <tr>
-                  <th>Código</th>
-                  <th>Porcentaje</th>
-                  <th className={styles.acciones}>Acciones</th>
-                </tr>
-              </thead>
-              <tbody>
-                {cupones.map((cupon) => (
-                  <tr key={cupon.id}>
-                    <td className="text-center">{cupon.codigo}</td>
-
-                    <td className="text-center">{cupon.porcentaje} %</td>
-                    <td className="text-center">
-                      <Button
-                        onClick={() => handleDelete(cupon.id, cupon.codigo)}
-                        variant="danger"
-                        className="my-2"
-                        aria-label="Eliminar cupón"
-                      >
-                        <FaTrash style={{ marginRight: "5px" }} /> Eliminar
-                      </Button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
         </Row>
 
         {/* Modal Eliminar */}
