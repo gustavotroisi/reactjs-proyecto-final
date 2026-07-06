@@ -114,6 +114,18 @@ function Header() {
                       <FaLock /> Cupones
                     </NavLink>
                   </li>
+                  <li className="nav-item">
+                    <NavLink
+                      to="/login"
+                      aria-label="Login"
+                      className={({ isActive }) =>
+                        `${styles.nav} nav-link${isActive ? " active" : ""}`
+                      }
+                      onClick={handleClick}
+                    >
+                      <FaLock /> Login
+                    </NavLink>
+                  </li>
                 </ul>
               </div>
             </Col>
