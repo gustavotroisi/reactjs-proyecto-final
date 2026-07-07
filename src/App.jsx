@@ -15,6 +15,8 @@ import ItemDetalle from "./componentes/productos/ItemDetalle/ItemDetalle";
 import Cart from "./componentes/carrito/Cart";
 import ProductosNacionales from "./componentes/ProductosNacionales/ProductosNacionales";
 import Login from "./componentes/login/Login";
+import Registro from "./componentes/registro/Registro";
+import ProtectedRoute from "./componentes/protectedRoute/ProtectedRoute";
 
 function App() {
   return (
@@ -36,10 +38,25 @@ function App() {
             path="/nosotros"
             element={<Directorio titulo={"Nosotros"} />}
           />
-          <Route path="/gestion" element={<GestionProductos />} />
-          <Route path="/cupones" element={<GestionCupones />} />
+          <Route
+            path="/gestion"
+            element={
+              <ProtectedRoute rolesPermitidos={["admin"]}>
+                <GestionProductos />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/cupones"
+            element={
+              <ProtectedRoute rolesPermitidos={["admin"]}>
+                <GestionCupones />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/carrito" element={<Cart />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/registro" element={<Registro />} />
           <Route
             path="/productos-nacionales"
             element={<ProductosNacionales />}

@@ -1,5 +1,6 @@
 import { NavLink, Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useAuth } from "../../context/AuthContext";
 import { Container, Row, Col } from "react-bootstrap";
 import * as bootstrap from "bootstrap";
 import styles from "./Header.module.css";
@@ -10,6 +11,7 @@ import { FaLock } from "react-icons/fa";
 function Header() {
   const { getCartQuantity } = useCart();
   const totalItems = getCartQuantity();
+  const { user, logout } = useAuth();
 
   const handleClick = () => {
     const el = document.getElementById("navbarCollapse");
@@ -90,42 +92,52 @@ function Header() {
                       </span>
                     </NavLink>
                   </li>
-                  <li className="nav-item">
-                    <NavLink
-                      to="/gestion"
-                      aria-label="Gestión"
-                      className={({ isActive }) =>
-                        `${styles.nav} nav-link${isActive ? " active" : ""}`
-                      }
-                      onClick={handleClick}
-                    >
-                      <FaLock /> Gestión
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink
-                      to="/cupones"
-                      aria-label="Cupones"
-                      className={({ isActive }) =>
-                        `${styles.nav} nav-link${isActive ? " active" : ""}`
-                      }
-                      onClick={handleClick}
-                    >
-                      <FaLock /> Cupones
-                    </NavLink>
-                  </li>
-                  <li className="nav-item">
-                    <NavLink
-                      to="/login"
-                      aria-label="Login"
-                      className={({ isActive }) =>
-                        `${styles.nav} nav-link${isActive ? " active" : ""}`
-                      }
-                      onClick={handleClick}
-                    >
-                      <FaLock /> Login
-                    </NavLink>
-                  </li>
+
+                  {user ? (
+                    <>
+                      <li className="nav-item">
+                        <NavLink
+                          to="/gestion"
+                          aria-label="Gestión"
+                          className={({ isActive }) =>
+                            `${styles.nav} nav-link${isActive ? " active" : ""}`
+                          }
+                          onClick={handleClick}
+                        >
+                          <FaLock /> Gestión
+                        </NavLink>
+                      </li>
+                      <li className="nav-item">
+                        <NavLink
+                          to="/cupones"
+                          aria-label="Cupones"
+                          className={({ isActive }) =>
+                            `${styles.nav} nav-link${isActive ? " active" : ""}`
+                          }
+                          onClick={handleClick}
+                        >
+                          <FaLock /> Cupones
+                        </NavLink>
+                      </li>
+                      <span>¡Hola, {user.email}!</span>
+                      <button onClick={logout}>Cerrar Sesión</button>
+                    </>
+                  ) : (
+                    <>
+                      <li className="nav-item">
+                        <NavLink
+                          to="/login"
+                          aria-label="Login"
+                          className={({ isActive }) =>
+                            `${styles.nav} nav-link${isActive ? " active" : ""}`
+                          }
+                          onClick={handleClick}
+                        >
+                          <FaLock /> Login
+                        </NavLink>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </Col>
