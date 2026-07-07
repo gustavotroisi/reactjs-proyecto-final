@@ -27,6 +27,8 @@
 }
 .imagen{
     border-radius: 3px;
+    min-height: 286px;
+    background-color:var(--color-disabled);;
 }
 .nombre{
     display: flex;
