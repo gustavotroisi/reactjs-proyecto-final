@@ -19,6 +19,10 @@ const Registro = () => {
     setError(null); // Reseteamos cualquier error previo
     setQuiereLoguearse(false); // Reseteamos la bandera de querer loguearse
 
+    const errorCodes = {
+      "auth/invalid-email": "El correo electrónico no es válido.",
+      "auth/weak-password": "La contraseña debe tener al menos 6 caracteres.",
+    };
     try {
       // Intentamos crear el nuevo usuario en Firebase
       await createUserWithEmailAndPassword(auth, email, password);
@@ -33,8 +37,10 @@ const Registro = () => {
       } else {
         // Para cualquier otro error (contraseña débil, email inválido, etc.),
         // mostramos un mensaje genérico.
-
-        setError(`Error en el registro: ${error.message}`);
+        //console.log(error.code);
+        setError(
+          `Error en el registro: ${errorCodes[error.code] || error.message}`,
+        );
       }
     }
   };
