@@ -6,7 +6,7 @@ import * as bootstrap from "bootstrap";
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_techstore4.png";
 import cartIcon from "../../../public/images/cart-svgrepo-com.svg";
-import { FaUserAlt } from "react-icons/fa";
+import { FaUserAlt, FaUser } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 
 function Header() {
@@ -139,7 +139,10 @@ function Header() {
                         </li>
                       ) : (
                         <>
-                          <li className="nav-item">
+                          <li className="nav-item d-flex">
+                            <span style={{ color: "white", marginTop: "8px" }}>
+                              <FaUser /> {user.email}
+                            </span>
                             <NavLink
                               className="nav-link"
                               aria-label="Salir"

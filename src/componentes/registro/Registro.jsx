@@ -9,6 +9,7 @@ const Registro = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(null);
   const [quiereLoguearse, setQuiereLoguearse] = useState(false);
 
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Registro = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     setError(null); // Reseteamos cualquier error previo
     setQuiereLoguearse(false); // Reseteamos la bandera de querer loguearse
 
@@ -42,6 +44,7 @@ const Registro = () => {
           `Error en el registro: ${errorCodes[error.code] || error.message}`,
         );
       }
+      setLoading(false);
     }
   };
 
@@ -71,9 +74,11 @@ const Registro = () => {
                           value={email}
                           onChange={(e) => {
                             setError(null);
+                            setQuiereLoguearse(false);
                             setEmail(e.target.value);
                           }}
                           className="form-control"
+                          disabled={loading}
                           required
                         />
                       </Col>
@@ -95,9 +100,11 @@ const Registro = () => {
                           value={password}
                           onChange={(e) => {
                             setError(null);
+                            setQuiereLoguearse(false);
                             setPassword(e.target.value);
                           }}
                           className="form-control"
+                          disabled={loading}
                           required
                         />
                       </Col>
@@ -126,7 +133,9 @@ const Registro = () => {
                     xs={12}
                     className="mb-3 w-fit d-flex justify-content-center"
                   >
-                    <Button type="submit">Registrarse</Button>
+                    <Button disabled={loading} type="submit">
+                      Registrarse
+                    </Button>
                   </Col>
                 </Row>
               </Container>

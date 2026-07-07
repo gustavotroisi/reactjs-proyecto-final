@@ -12,6 +12,10 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
+  const errorCodes = {
+    "auth/invalid-credential": "Las credenciales de acceso son incorrectas.",
+  };
+
   const handleLogin = (e) => {
     e.preventDefault();
     setLoading(true);
@@ -23,16 +27,21 @@ const Login = () => {
         const user = userCredential.user;
         console.log("Usuario logueado:", user);
         //alert("¡Inicio de sesión exitoso!");
-        toast.success("Inicio de sesión exitoso. Ud. será redirigido.", {
-          onClose: () => navigate("/"),
-        });
+        toast.success(
+          "Inicio de sesión exitoso! Ud. está siendo redirigido...",
+          {
+            onClose: () => navigate("/"),
+          },
+        );
       })
       .catch((error) => {
         //const errorCode = error.code;
-        const errorMessage = error.message;
+        //const errorMessage = error.message;
         //console.error("Error en el login:", errorCode, errorMessage);
         //alert("Error: " + errorMessage);
-        toast.error("Error en el inicio de sesión: " + errorMessage);
+        toast.error(
+          `Error en el registro: ${errorCodes[error.code] || error.message}`,
+        );
         setLoading(false);
       });
   };
@@ -64,6 +73,7 @@ const Login = () => {
                           className="form-control"
                           onChange={(e) => setEmail(e.target.value)}
                           disabled={loading}
+                          required
                         />
                       </Col>
                     </Row>
@@ -83,6 +93,7 @@ const Login = () => {
                           className="form-control"
                           onChange={(e) => setPassword(e.target.value)}
                           disabled={loading}
+                          required
                         />
                       </Col>
                     </Row>
