@@ -6,7 +6,8 @@ import * as bootstrap from "bootstrap";
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_techstore4.png";
 import cartIcon from "../../../public/images/cart-svgrepo-com.svg";
-import { FaLock } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
+import { MdLogout } from "react-icons/md";
 
 function Header() {
   const { getCartQuantity } = useCart();
@@ -95,32 +96,48 @@ function Header() {
 
                   {user ? (
                     <>
-                      <li className="nav-item">
-                        <NavLink
-                          to="/gestion"
-                          aria-label="Gestión"
-                          className={({ isActive }) =>
-                            `${styles.nav} nav-link${isActive ? " active" : ""}`
-                          }
-                          onClick={handleClick}
-                        >
-                          <FaLock /> Gestión
-                        </NavLink>
-                      </li>
-                      <li className="nav-item">
-                        <NavLink
-                          to="/cupones"
-                          aria-label="Cupones"
-                          className={({ isActive }) =>
-                            `${styles.nav} nav-link${isActive ? " active" : ""}`
-                          }
-                          onClick={handleClick}
-                        >
-                          <FaLock /> Cupones
-                        </NavLink>
-                      </li>
-                      <span>¡Hola, {user.email}!</span>
-                      <button onClick={logout}>Cerrar Sesión</button>
+                      {user.rol === "admin" && (
+                        <li className="nav-item dropdown">
+                          <a
+                            className={`${styles.nav} nav-link dropdown-toggle`}
+                            href="#"
+                            role="button"
+                            data-bs-toggle="dropdown"
+                            aria-expanded="false"
+                          >
+                            <FaUserAlt /> {user.rol}
+                          </a>
+                          <ul className="dropdown-menu">
+                            <li>
+                              <NavLink
+                                to="/gestion"
+                                className={({ isActive }) =>
+                                  `dropdown-item${isActive ? " active" : ""}`
+                                }
+                                onClick={handleClick}
+                              >
+                                Gestión de Productos
+                              </NavLink>
+                            </li>
+                            <li>
+                              <NavLink
+                                to="/cupones"
+                                className={({ isActive }) =>
+                                  `dropdown-item${isActive ? " active" : ""}`
+                                }
+                                onClick={handleClick}
+                              >
+                                Gestión de Cupones
+                              </NavLink>
+                            </li>
+                            <li className="nav-item">
+                              <Link className="dropdown-item" onClick={logout}>
+                                <MdLogout /> Salir
+                              </Link>
+                            </li>
+                          </ul>
+                        </li>
+                      )}
                     </>
                   ) : (
                     <>
@@ -133,7 +150,7 @@ function Header() {
                           }
                           onClick={handleClick}
                         >
-                          <FaLock /> Login
+                          <FaUserAlt /> Acceder
                         </NavLink>
                       </li>
                     </>
