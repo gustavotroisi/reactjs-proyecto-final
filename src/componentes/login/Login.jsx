@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
+import { Helmet } from "react-helmet";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import styles from "./Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -27,27 +30,71 @@ const Login = () => {
       });
   };
   return (
-    <div>
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Correo electrónico"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <button type="submit">Ingresar</button>
-      </form>
-      <p>
-        ¿No tenés una cuenta? <Link to="/registro">Registrate aquí</Link>
-      </p>
-    </div>
+    <>
+      <Helmet>
+        <title>TechStore | Login</title>
+      </Helmet>
+      <Container className="mt-4 mx-auto">
+        <Row>
+          <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+            <h2 className={`page-title ${styles.titulo}`}>Iniciar Sesión</h2>
+            <form onSubmit={handleLogin} className={styles.formlogin}>
+              <Container>
+                <Row>
+                  <Col
+                    xs={12}
+                    className="mb-3 w-fit d-flex justify-content-center"
+                  >
+                    <Row>
+                      <Col>
+                        <label>Correo electrónico</label>
+                        <input
+                          type="email"
+                          placeholder="Correo electrónico"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                        />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col
+                    xs={12}
+                    className="mb-3 w-fit d-flex justify-content-center"
+                  >
+                    <Row>
+                      <Col>
+                        <label>Contraseña</label>
+                        <input
+                          type="password"
+                          placeholder="Contraseña"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                        />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col
+                    xs={12}
+                    className="mb-3 w-fit d-flex justify-content-center"
+                  >
+                    <Button type="submit">Ingresar</Button>
+                  </Col>
+                </Row>
+              </Container>
+            </form>
+            <p
+              style={{ textAlign: "center", marginTop: "10px", color: "white" }}
+            >
+              ¿No tenés una cuenta? <Link to="/registro">Registrate aquí</Link>
+            </p>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 export default Login;

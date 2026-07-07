@@ -1,0 +1,14 @@
+.titulo {
+    text-align: center;
+}
+
+.titulo:after {
+    margin-left: auto;
+    margin-right: auto;
+}
+.formlogin label {
+    display: block;
+    margin: .2em 0;
+    font-weight: 600;
+    color: #ccc;
+}
