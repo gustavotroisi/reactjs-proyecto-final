@@ -13,3 +13,25 @@
     font-weight: 600;
     color: #ccc;
 }
+
+.formregistro .errorMessage {
+    background: #ffadad;
+    padding: 12px;
+    border-radius: 12px;
+}
+.formregistro .errorMessage {
+    background: #ffadad;
+    padding: 12px;
+    border-radius: 12px;
+}
+.formregistro .quiereLoguearse {
+    background: var(--color-secondary);
+    padding: 12px;
+    border-radius: 12px;
+}
+.formregistro .quiereLoguearse a{
+    color: black;
+}
+.formregistro .quiereLoguearse a:hover {
+    color: var(--color-primary);
+}

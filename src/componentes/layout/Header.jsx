@@ -96,7 +96,7 @@ function Header() {
 
                   {user ? (
                     <>
-                      {user.rol === "admin" && (
+                      {user.rol === "admin" ? (
                         <li className="nav-item dropdown">
                           <a
                             className={`${styles.nav} nav-link dropdown-toggle`}
@@ -137,6 +137,18 @@ function Header() {
                             </li>
                           </ul>
                         </li>
+                      ) : (
+                        <>
+                          <li className="nav-item">
+                            <NavLink
+                              className="nav-link"
+                              aria-label="Salir"
+                              onClick={logout}
+                            >
+                              <MdLogout /> Salir
+                            </NavLink>
+                          </li>
+                        </>
                       )}
                     </>
                   ) : (

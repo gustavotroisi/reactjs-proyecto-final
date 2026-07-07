@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { Helmet } from "react-helmet";
 import { Container, Row, Col, Button } from "react-bootstrap";
@@ -9,6 +9,7 @@ const Registro = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
+  const [quiereLoguearse, setQuiereLoguearse] = useState(false);
 
   const navigate = useNavigate();
   const auth = getAuth();
@@ -16,6 +17,7 @@ const Registro = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError(null); // Reseteamos cualquier error previo
+    setQuiereLoguearse(false); // Reseteamos la bandera de querer loguearse
 
     try {
       // Intentamos crear el nuevo usuario en Firebase
@@ -27,23 +29,12 @@ const Registro = () => {
       // Aquí es donde manejamos el caso específico que nos interesa
       if (error.code === "auth/email-already-in-use") {
         // Usamos window.confirm para hacer la pregunta al usuario
-        const quiereLoguearse = window.confirm(
-          "Este correo electrónico ya está registrado. ¿Desea intentar iniciar sesión?",
-        );
-        if (quiereLoguearse) {
-          // Si el usuario confirma, lo redirigimos a la página de login;
-          navigate("/login");
-        } else {
-          // Si el usuario cancela, lo redirigimos a la página de inicio;
-          navigate("/");
-        }
+        setQuiereLoguearse(true);
       } else {
         // Para cualquier otro error (contraseña débil, email inválido, etc.),
         // mostramos un mensaje genérico.
-        setError(
-          "Ocurrió un error al registrar el usuario. Verifique los datos e intente nuevamente.",
-        );
-        console.error("Error en el registro:", error.message);
+
+        setError(`Error en el registro: ${error.message}`);
       }
     }
   };
@@ -72,7 +63,10 @@ const Registro = () => {
                         <input
                           type="email"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={(e) => {
+                            setError(null);
+                            setEmail(e.target.value);
+                          }}
                           className="form-control"
                           required
                         />
@@ -93,7 +87,10 @@ const Registro = () => {
                         <input
                           type="password"
                           value={password}
-                          onChange={(e) => setPassword(e.target.value)}
+                          onChange={(e) => {
+                            setError(null);
+                            setPassword(e.target.value);
+                          }}
                           className="form-control"
                           required
                         />
@@ -101,12 +98,28 @@ const Registro = () => {
                     </Row>
                   </Col>
                 </Row>
+                {quiereLoguearse && (
+                  <Row>
+                    <Col className="mb-3 d-flex justify-content-center">
+                      <p className={styles.quiereLoguearse}>
+                        El correo electrónico ya está registrado.{" "}
+                        <Link to="/login">¿Desea iniciar sesión?</Link>
+                      </p>
+                    </Col>
+                  </Row>
+                )}
+                {error && (
+                  <Row>
+                    <Col className="mb-3 d-flex justify-content-center">
+                      <p className={styles.errorMessage}>{error}</p>
+                    </Col>
+                  </Row>
+                )}
                 <Row>
                   <Col
                     xs={12}
                     className="mb-3 w-fit d-flex justify-content-center"
                   >
-                    {error && <p className="error-message">{error}</p>}
                     <Button type="submit">Registrarse</Button>
                   </Col>
                 </Row>

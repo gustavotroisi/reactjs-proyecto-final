@@ -3,15 +3,18 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { Container, Row, Col, Button } from "react-bootstrap";
+import { ToastContainer, toast } from "react-toastify";
 import styles from "./Login.module.css";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
+    setLoading(true);
 
     const auth = getAuth();
 
@@ -19,14 +22,18 @@ const Login = () => {
       .then((userCredential) => {
         const user = userCredential.user;
         console.log("Usuario logueado:", user);
-        alert("¡Inicio de sesión exitoso!");
-        navigate("/");
+        //alert("¡Inicio de sesión exitoso!");
+        toast.success("Inicio de sesión exitoso. Ud. será redirigido.", {
+          onClose: () => navigate("/"),
+        });
       })
       .catch((error) => {
-        const errorCode = error.code;
+        //const errorCode = error.code;
         const errorMessage = error.message;
-        console.error("Error en el login:", errorCode, errorMessage);
-        alert("Error: " + errorMessage);
+        //console.error("Error en el login:", errorCode, errorMessage);
+        //alert("Error: " + errorMessage);
+        toast.error("Error en el inicio de sesión: " + errorMessage);
+        setLoading(false);
       });
   };
   return (
@@ -34,6 +41,7 @@ const Login = () => {
       <Helmet>
         <title>TechStore | Login</title>
       </Helmet>
+      <ToastContainer />
       <Container className="mt-4 mx-auto">
         <Row>
           <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
@@ -83,7 +91,9 @@ const Login = () => {
                     xs={12}
                     className="mb-3 w-fit d-flex justify-content-center"
                   >
-                    <Button type="submit">Ingresar</Button>
+                    <Button disabled={loading} type="submit">
+                      Ingresar
+                    </Button>
                   </Col>
                 </Row>
               </Container>
