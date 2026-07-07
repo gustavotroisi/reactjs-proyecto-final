@@ -114,6 +114,7 @@ function Header() {
                                 className={({ isActive }) =>
                                   `dropdown-item${isActive ? " active" : ""}`
                                 }
+                                aria-label="Gestión de Productos"
                                 onClick={handleClick}
                               >
                                 Gestión de Productos
@@ -126,12 +127,17 @@ function Header() {
                                   `dropdown-item${isActive ? " active" : ""}`
                                 }
                                 onClick={handleClick}
+                                aria-label="Gestión de cupones"
                               >
                                 Gestión de Cupones
                               </NavLink>
                             </li>
                             <li className="nav-item">
-                              <Link className="dropdown-item" onClick={logout}>
+                              <Link
+                                className="dropdown-item"
+                                aria-label="Salir"
+                                onClick={logout}
+                              >
                                 <MdLogout /> Salir
                               </Link>
                             </li>
@@ -185,7 +191,7 @@ function Header() {
                 data-bs-target="#navbarCollapse"
                 aria-controls="navbarCollapse"
                 aria-expanded="false"
-                aria-label="Toggle navigation"
+                aria-label="Menu de navegación"
               >
                 <span className="navbar-toggler-icon"></span>
               </button>

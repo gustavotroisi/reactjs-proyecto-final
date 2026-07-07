@@ -133,7 +133,11 @@ const Registro = () => {
                     xs={12}
                     className="mb-3 w-fit d-flex justify-content-center"
                   >
-                    <Button disabled={loading} type="submit">
+                    <Button
+                      disabled={loading}
+                      aria-label="Registrarse"
+                      type="submit"
+                    >
                       Registrarse
                     </Button>
                   </Col>

@@ -104,7 +104,11 @@ const Login = () => {
                     xs={12}
                     className="mb-3 w-fit d-flex justify-content-center"
                   >
-                    <Button disabled={loading} type="submit">
+                    <Button
+                      aria-label="Ingresar"
+                      disabled={loading}
+                      type="submit"
+                    >
                       Ingresar
                     </Button>
                   </Col>
@@ -115,7 +119,11 @@ const Login = () => {
               style={{ textAlign: "center", marginTop: "10px", color: "white" }}
             >
               ¿No tenés una cuenta?{" "}
-              <Link to="/registro" style={{ color: "var(--color-primary)" }}>
+              <Link
+                to="/registro"
+                aria-label="Registrate aquí"
+                style={{ color: "var(--color-primary)" }}
+              >
                 Registrate aquí
               </Link>
             </p>
