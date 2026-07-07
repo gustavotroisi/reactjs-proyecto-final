@@ -47,10 +47,11 @@ const Login = () => {
                   >
                     <Row>
                       <Col>
-                        <label>Correo electrónico</label>
+                        <label className="text-center">
+                          Correo electrónico
+                        </label>
                         <input
                           type="email"
-                          placeholder="Correo electrónico"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
                         />
@@ -65,10 +66,9 @@ const Login = () => {
                   >
                     <Row>
                       <Col>
-                        <label>Contraseña</label>
+                        <label className="text-center">Contraseña</label>
                         <input
                           type="password"
-                          placeholder="Contraseña"
                           value={password}
                           onChange={(e) => setPassword(e.target.value)}
                         />
@@ -89,7 +89,10 @@ const Login = () => {
             <p
               style={{ textAlign: "center", marginTop: "10px", color: "white" }}
             >
-              ¿No tenés una cuenta? <Link to="/registro">Registrate aquí</Link>
+              ¿No tenés una cuenta?{" "}
+              <Link to="/registro" style={{ color: "var(--color-primary)" }}>
+                Registrate aquí
+              </Link>
             </p>
           </Col>
         </Row>
