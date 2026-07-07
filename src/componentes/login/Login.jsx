@@ -53,6 +53,7 @@ const Login = () => {
                         <input
                           type="email"
                           value={email}
+                          className="form-control"
                           onChange={(e) => setEmail(e.target.value)}
                         />
                       </Col>
@@ -70,6 +71,7 @@ const Login = () => {
                         <input
                           type="password"
                           value={password}
+                          className="form-control"
                           onChange={(e) => setPassword(e.target.value)}
                         />
                       </Col>

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { Helmet } from "react-helmet";
+import { Container, Row, Col, Button } from "react-bootstrap";
+import styles from "./Registro.module.css";
 
 const Registro = () => {
   const [email, setEmail] = useState("");
@@ -46,32 +49,73 @@ const Registro = () => {
   };
 
   return (
-    <div className="auth-container">
-      <h2>Crear una nueva cuenta</h2>
-      <form onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label>Correo Electrónico</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div className="form-group">
-          <label>Contraseña</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Mínimo 6 caracteres"
-          />
-        </div>
-        {error && <p className="error-message">{error}</p>}
-        <button type="submit">Registrarse</button>
-      </form>
-    </div>
+    <>
+      <Helmet>
+        <title>TechStore | Login</title>
+      </Helmet>
+      <Container className="mt-4 mx-auto">
+        <Row>
+          <Col xs={12} md={8} lg={8} className="mb-4 mx-auto">
+            <h2 className={`page-title ${styles.titulo}`}>Crear cuenta</h2>
+            <form onSubmit={handleSubmit} className={styles.formregistro}>
+              <Container>
+                <Row>
+                  <Col
+                    xs={12}
+                    className="mb-3 w-fit d-flex justify-content-center"
+                  >
+                    <Row>
+                      <Col>
+                        <label className="text-center">
+                          Correo Electrónico
+                        </label>
+                        <input
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
+                          className="form-control"
+                          required
+                        />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col
+                    xs={12}
+                    className="mb-3 w-fit d-flex justify-content-center"
+                  >
+                    <Row>
+                      <Col>
+                        <label className="text-center">
+                          Contraseña (mínimo 6 caracteres)
+                        </label>
+                        <input
+                          type="password"
+                          value={password}
+                          onChange={(e) => setPassword(e.target.value)}
+                          className="form-control"
+                          required
+                        />
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+                <Row>
+                  <Col
+                    xs={12}
+                    className="mb-3 w-fit d-flex justify-content-center"
+                  >
+                    {error && <p className="error-message">{error}</p>}
+                    <Button type="submit">Registrarse</Button>
+                  </Col>
+                </Row>
+              </Container>
+            </form>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 };
 export default Registro;
