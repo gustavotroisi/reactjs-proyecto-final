@@ -84,6 +84,11 @@ footer {
     .linkCarrito span.nav-link {
         padding-right: 0 !important;
     }
+    ul.dropdown-menu.show a {
+        font-size: 1.2em;
+        text-align: center;
+        padding: 8px;
+    }
 }
 
 
