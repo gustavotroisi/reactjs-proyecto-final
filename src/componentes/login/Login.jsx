@@ -63,6 +63,7 @@ const Login = () => {
                           value={email}
                           className="form-control"
                           onChange={(e) => setEmail(e.target.value)}
+                          disabled={loading}
                         />
                       </Col>
                     </Row>
@@ -81,6 +82,7 @@ const Login = () => {
                           value={password}
                           className="form-control"
                           onChange={(e) => setPassword(e.target.value)}
+                          disabled={loading}
                         />
                       </Col>
                     </Row>
