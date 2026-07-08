@@ -19,11 +19,11 @@ export function Perfil() {
       </Helmet>
       <Container className="mt-4">
         <Row>
-          <Col xs={12} md={12} lg={12} className="mb-4">
+          <Col xs={12} md={12} lg={8} className="mb-4 mx-auto">
             <h1 className={`page-title ${styles.titulo}`}>Perfil</h1>
             <Row>
-              <Col xs={12} md={4}>
-                <img src={profileImage} className="pb-4" />
+              <Col xs={12} md={4} className="text-center">
+                <img src={profileImage} className="pb-4 img-fluid" />
               </Col>
               <Col xs={12} md={8}>
                 <section className={styles.texto}>
