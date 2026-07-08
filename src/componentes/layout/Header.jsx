@@ -104,7 +104,7 @@ function Header() {
                           data-bs-toggle="dropdown"
                           aria-expanded="false"
                         >
-                          <FaUserAlt /> {user.rol || user.email.split("@")[0]}
+                          <FaUserAlt /> {user.email.split("@")[0]}
                         </a>
                         <ul className="dropdown-menu">
                           <li>
