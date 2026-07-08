@@ -23,7 +23,11 @@ export function Perfil() {
             <h1 className={`page-title ${styles.titulo}`}>Perfil</h1>
             <Row>
               <Col xs={12} md={4} className="text-center">
-                <img src={profileImage} className="pb-4 img-fluid" />
+                <img
+                  src={profileImage}
+                  alt="Imagen de perfil"
+                  className="pb-4 img-fluid"
+                />
               </Col>
               <Col xs={12} md={8}>
                 <section className={styles.texto}>
