@@ -1,5 +1,6 @@
-import { Container, Row, Col, Spinner } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Helmet } from "react-helmet";
+import { FaUserAlt } from "react-icons/fa";
 import { useAuth } from "../../context/AuthContext";
 import styles from "./Perfil.module.css";
 
@@ -22,7 +23,7 @@ export function Perfil() {
             <section className={styles.texto}>
               <p>Gracias por ser parte de TechStore</p>
               <p>
-                Ingresa a tus opciones en el menu{" "}
+                Accede a tus secciones exclusivas desde el menu <FaUserAlt />{" "}
                 <strong style={{ textTransform: "uppercase" }}>
                   {user.rol || user.email.split("@")[0]}
                 </strong>
