@@ -28,7 +28,7 @@ const Login = () => {
         console.log("Usuario logueado:", user);
         //alert("¡Inicio de sesión exitoso!");
         toast.success("Inicio de sesión exitoso! Serás redirigido...", {
-          onClose: () => navigate("/"),
+          onClose: () => navigate("/perfil"),
         });
       })
       .catch((error) => {

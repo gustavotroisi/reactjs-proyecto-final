@@ -6,7 +6,7 @@ import * as bootstrap from "bootstrap";
 import styles from "./Header.module.css";
 import logo from "../../../public/images/logo_techstore4.png";
 import cartIcon from "../../../public/images/cart-svgrepo-com.svg";
-import { FaUserAlt, FaUser } from "react-icons/fa";
+import { FaUserAlt } from "react-icons/fa";
 import { MdLogout } from "react-icons/md";
 
 function Header() {
@@ -107,6 +107,18 @@ function Header() {
                           <FaUserAlt /> {user.rol || user.email.split("@")[0]}
                         </a>
                         <ul className="dropdown-menu">
+                          <li>
+                            <NavLink
+                              to="/perfil"
+                              className={({ isActive }) =>
+                                `dropdown-item${isActive ? " active" : ""}`
+                              }
+                              onClick={handleClick}
+                              aria-label="Perfil"
+                            >
+                              Perfil
+                            </NavLink>
+                          </li>
                           {
                             /*
                              *

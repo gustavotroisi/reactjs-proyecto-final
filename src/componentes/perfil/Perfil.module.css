@@ -1,0 +1,12 @@
+.titulo {
+    text-align: center;
+}
+
+.titulo:after {
+    margin-left: auto;
+    margin-right: auto;
+}
+.texto p{
+    text-align: center;
+    color: white;
+}

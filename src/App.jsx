@@ -13,10 +13,11 @@ import GestionCupones from "./componentes/gestion/GestionCupones";
 import Inicio from "./componentes/inicio/Inicio";
 import ItemDetalle from "./componentes/productos/ItemDetalle/ItemDetalle";
 import Cart from "./componentes/carrito/Cart";
-import ProductosNacionales from "./componentes/ProductosNacionales/ProductosNacionales";
+//import ProductosNacionales from "./componentes/ProductosNacionales/ProductosNacionales";
 import Login from "./componentes/login/Login";
 import Registro from "./componentes/registro/Registro";
 import ProtectedRoute from "./componentes/protectedRoute/ProtectedRoute";
+import { Perfil } from "./componentes/perfil/Perfil";
 
 function App() {
   return (
@@ -54,13 +55,21 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/perfil"
+            element={
+              <ProtectedRoute rolesPermitidos={["admin", ""]}>
+                <Perfil />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/carrito" element={<Cart />} />
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
-          <Route
+          {/*<Route
             path="/productos-nacionales"
             element={<ProductosNacionales />}
-          />
+          />*/}
         </Route>
       </Routes>
     </>
