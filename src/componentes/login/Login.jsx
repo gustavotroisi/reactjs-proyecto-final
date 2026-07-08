@@ -13,7 +13,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const errorCodes = {
-    "auth/invalid-credential": "Las credenciales de acceso son incorrectas.",
+    "auth/invalid-credential": "Las credenciales son incorrectas.",
   };
 
   const handleLogin = (e) => {
@@ -27,12 +27,9 @@ const Login = () => {
         const user = userCredential.user;
         console.log("Usuario logueado:", user);
         //alert("¡Inicio de sesión exitoso!");
-        toast.success(
-          "Inicio de sesión exitoso! Ud. está siendo redirigido...",
-          {
-            onClose: () => navigate("/"),
-          },
-        );
+        toast.success("Inicio de sesión exitoso! Serás redirigido...", {
+          onClose: () => navigate("/"),
+        });
       })
       .catch((error) => {
         //const errorCode = error.code;
@@ -40,7 +37,7 @@ const Login = () => {
         //console.error("Error en el login:", errorCode, errorMessage);
         //alert("Error: " + errorMessage);
         toast.error(
-          `Error en el registro: ${errorCodes[error.code] || error.message}`,
+          `Error al intentar acceder: ${errorCodes[error.code] || error.message}`,
         );
         setLoading(false);
       });

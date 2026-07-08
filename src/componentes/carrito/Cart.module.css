@@ -98,13 +98,13 @@
     font-weight: 700;
     margin: 1em;
     border-radius: 8px;
-    background-color: var(--color-secondary);
+    background-color: var(--color-primary);
     color: black;
     text-decoration: none;
     transition: all .5s;
 }
 .btnPagar:hover { 
-    background-color: var(--color-primary);
+    background-color: white;
 }
 .btnEliminar{
     padding: 6px 12px;
@@ -138,12 +138,12 @@
     text-decoration: underline;
 }
 .verMasProductos{
-    color: white;
+    color: var(--color-secondary);
     text-decoration: none;
     font-size: 1.2em;
 }
 .verMasProductos:hover{
-    color: var(--color-secondary);
+    color: white;
 }
 
 

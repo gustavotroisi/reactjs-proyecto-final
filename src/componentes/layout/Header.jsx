@@ -96,69 +96,89 @@ function Header() {
 
                   {user ? (
                     <>
-                      {user.rol === "admin" ? (
-                        <li className="nav-item dropdown">
-                          <a
-                            className={`${styles.nav} nav-link dropdown-toggle`}
-                            href="#"
-                            role="button"
-                            data-bs-toggle="dropdown"
-                            aria-expanded="false"
-                          >
-                            <FaUserAlt /> {user.rol}
-                          </a>
-                          <ul className="dropdown-menu">
-                            <li>
-                              <NavLink
-                                to="/gestion"
-                                className={({ isActive }) =>
-                                  `dropdown-item${isActive ? " active" : ""}`
-                                }
-                                aria-label="Gestión de Productos"
-                                onClick={handleClick}
+                      {
+                        /*
+                         *
+                         * ADMIN
+                         *
+                         */
+                        user.rol === "admin" ? (
+                          <li className="nav-item dropdown">
+                            <a
+                              className={`${styles.nav} nav-link dropdown-toggle`}
+                              href="#"
+                              role="button"
+                              data-bs-toggle="dropdown"
+                              aria-expanded="false"
+                            >
+                              <FaUserAlt /> {user.rol}
+                            </a>
+                            <ul className="dropdown-menu">
+                              <li>
+                                <NavLink
+                                  to="/gestion"
+                                  className={({ isActive }) =>
+                                    `dropdown-item${isActive ? " active" : ""}`
+                                  }
+                                  aria-label="Gestión de Productos"
+                                  onClick={handleClick}
+                                >
+                                  Gestión de Productos
+                                </NavLink>
+                              </li>
+                              <li>
+                                <NavLink
+                                  to="/cupones"
+                                  className={({ isActive }) =>
+                                    `dropdown-item${isActive ? " active" : ""}`
+                                  }
+                                  onClick={handleClick}
+                                  aria-label="Gestión de cupones"
+                                >
+                                  Gestión de Cupones
+                                </NavLink>
+                              </li>
+                              <li className="nav-item">
+                                <Link
+                                  className="dropdown-item"
+                                  aria-label="Salir"
+                                  onClick={logout}
+                                >
+                                  <MdLogout /> Salir
+                                </Link>
+                              </li>
+                            </ul>
+                          </li>
+                        ) : (
+                          <>
+                            {/*
+                             *
+                             * USER
+                             *
+                             */}
+                            <li className="nav-item d-flex flex-column flex-sm-row align-items-center align-items-sm-start">
+                              <span
+                                style={{
+                                  color: "white",
+                                  marginTop: "8px",
+                                  display: "flex",
+                                  alignItems: "center",
+                                  gap: "6px",
+                                }}
                               >
-                                Gestión de Productos
-                              </NavLink>
-                            </li>
-                            <li>
+                                <FaUser /> {user.email.split("@")[0]}
+                              </span>
                               <NavLink
-                                to="/cupones"
-                                className={({ isActive }) =>
-                                  `dropdown-item${isActive ? " active" : ""}`
-                                }
-                                onClick={handleClick}
-                                aria-label="Gestión de cupones"
-                              >
-                                Gestión de Cupones
-                              </NavLink>
-                            </li>
-                            <li className="nav-item">
-                              <Link
-                                className="dropdown-item"
+                                className="nav-link"
                                 aria-label="Salir"
                                 onClick={logout}
                               >
                                 <MdLogout /> Salir
-                              </Link>
+                              </NavLink>
                             </li>
-                          </ul>
-                        </li>
-                      ) : (
-                        <>
-                          <li className="nav-item d-flex">
-                            <span style={{ color: "white", marginTop: "8px" }}>
-                              <FaUser /> {user.email}
-                            </span>
-                            <NavLink
-                              className="nav-link"
-                              aria-label="Salir"
-                              onClick={logout}
-                            >
-                              <MdLogout /> Salir
-                            </NavLink>
-                          </li>
-                        </>
-                      )}
+                          </>
+                        )
+                      }
                     </>
                   ) : (
                     <>

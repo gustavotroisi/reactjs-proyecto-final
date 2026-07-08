@@ -1,5 +1,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { useNavigate } from "react-router-dom";
 import {
   getAuth,
   onAuthStateChanged, // es como un event listener
@@ -26,6 +27,7 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const auth = getAuth(); // Obtenemos la instancia de auth una sola vez
   const db = getFirestore(); // Inicializamos Firestore
+  const navigate = useNavigate();
 
   // Función para registrar un nuevo usuario
   const signup = (email, password) => {
@@ -38,8 +40,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   // Función para cerrar sesión
-  const logout = () => {
-    signOut(auth);
+  const logout = async () => {
+    await signOut(auth);
+    navigate("/");
   };
 
   useEffect(() => {
